@@ -41,9 +41,9 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="flex flex-col justify-between min-h-screen bg-black"
+      className="flex flex-col justify-between min-h-screen bg-black pb-0 overflow-hidden"
     >
-      <div>
+      <div className="flex-grow">
         {/* Animated header */}
         <AnimatedHeaderSection
           subTitle={"Let's Create Something Legendary"}
@@ -54,7 +54,7 @@ const Contact = () => {
         />
         
         {/* Contact information */}
-        <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10">
+        <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-20">
           <div className="flex flex-col w-full gap-10">
             {/* Email */}
             <div className="social-link">
@@ -101,8 +101,10 @@ const Contact = () => {
         </div>
       </div>
       
-      {/* Bottom marquee with brand messages */}
-      <Marquee items={items} className="text-white bg-transparent" />
+      {/* Bottom marquee with brand messages - Fixed to bottom */}
+      <div className="mt-auto">
+        <Marquee items={items} className="text-white bg-transparent" />
+      </div>
     </section>
   );
 };
