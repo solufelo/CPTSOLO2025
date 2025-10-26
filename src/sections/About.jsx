@@ -21,10 +21,10 @@ const About = () => {
 What makes me different? I don't just build your website—I shoot the content to fill it. Restaurant site? I'll code the menu AND photograph the dishes. Artist portfolio? I'll build the platform AND film the music video. That's the Captain Solo advantage.
 
 When I'm not coding or behind the camera:
-🎮 Turning game mechanics into UI/UX insights (yes, that counts as research)
-🎬 Rewatching iconic movie scenes for cinematography notes
-🏀 Playing pickup basketball (great for team dynamics... and cardio)
-🎵 Blasting music while debugging (volume = productivity, fight me)
+Turning game mechanics into UI/UX insights (yes, that counts as research)
+Rewatching iconic movie scenes for cinematography notes
+Playing pickup basketball (great for team dynamics... and cardio)
+Blasting music while debugging (volume = productivity, fight me)
 
 Based in Brampton, serving the GTA. Remote-friendly for web dev, will travel for video. Let's build something unforgettable.`;
 

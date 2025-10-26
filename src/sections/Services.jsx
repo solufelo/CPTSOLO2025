@@ -82,16 +82,29 @@ const Services = () => {
                 {service.description}
               </p>
               
-              {/* Service items list with numbered dividers */}
+              {/* Service items list with numbered dividers and hover descriptions */}
               <div className="flex flex-col gap-2 text-2xl sm:gap-4 lg:text-3xl text-white/80">
                 {service.items.map((item, itemIndex) => (
-                  <div key={`item-${index}-${itemIndex}`}>
-                    <h3 className="flex">
-                      <span className="mr-12 text-lg text-white/30">
+                  <div key={`item-${index}-${itemIndex}`} className="group/item relative">
+                    <h3 className="flex cursor-help transition-colors group-hover/item:text-gold">
+                      <span className="mr-12 text-lg text-white/30 group-hover/item:text-gold/50">
                         0{itemIndex + 1}
                       </span>
                       {item.title}
                     </h3>
+                    
+                    {/* Hover description - shows on desktop hover, always visible on mobile */}
+                    {item.hoverDescription && (
+                      <div className="mt-2 text-base text-white/70 leading-relaxed md:opacity-0 md:max-h-0 md:overflow-hidden md:group-hover/item:opacity-100 md:group-hover/item:max-h-[200px] transition-all duration-300">
+                        {item.hoverDescription}
+                      </div>
+                    )}
+                    
+                    {/* Tech stack - smaller text */}
+                    <div className="mt-1 text-sm text-white/40">
+                      {item.description}
+                    </div>
+                    
                     {/* Divider line between items */}
                     {itemIndex < service.items.length - 1 && (
                       <div className="w-full h-px my-2 bg-white/30" />

@@ -1,13 +1,14 @@
 import { useGSAP } from "@gsap/react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
+import ContactForm from "../components/ContactForm";
 import Marquee from "../components/Marquee";
 import { socials } from "../constants";
 import gsap from "gsap";
 
 /**
  * Contact Section Component
- * Solomon's contact information and call-to-action
- * Features GSAP staggered animations for contact links
+ * Solomon's contact information, working contact form, and call-to-action
+ * Features GSAP staggered animations and EmailJS integration
  */
 const Contact = () => {
   // Header text - CTA for potential clients
@@ -52,6 +53,14 @@ const Contact = () => {
           textColor={"text-white"}
           withScrollTrigger={true}
         />
+        
+        {/* Contact Form */}
+        <div className="px-10 mb-20">
+          <ContactForm />
+        </div>
+
+        {/* Divider */}
+        <div className="w-full h-px bg-white/20 mb-20" />
         
         {/* Contact information */}
         <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-20">

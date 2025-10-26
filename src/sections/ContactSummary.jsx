@@ -1,16 +1,11 @@
-import { useRef } from "react";
 import Marquee from "../components/Marquee";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 
 /**
  * ContactSummary Section Component
  * Call-to-action section before Contact with Captain Solo brand values
- * Features pinned scroll animation and dual marquees
+ * Features dual marquees (no pin animation - keeps it simple and bug-free)
  */
 const ContactSummary = () => {
-  const containerRef = useRef(null);
-  
   // Top marquee - Captain Solo brand values
   const items = [
     "Code",
@@ -29,26 +24,8 @@ const ContactSummary = () => {
     "Let's create something legendary",
   ];
 
-  // GSAP scroll pin animation - section stays pinned while scrolling
-  useGSAP(() => {
-    gsap.to(containerRef.current, {
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "center center",
-        end: "+=800 center",
-        scrub: 0.5,
-        pin: true,
-        pinSpacing: true,
-        markers: false,
-      },
-    });
-  }, []);
-
   return (
-    <section
-      ref={containerRef}
-      className="flex flex-col items-center justify-between min-h-screen gap-12 mt-16"
-    >
+    <section className="flex flex-col items-center justify-between min-h-screen gap-12 mt-16">
       {/* Top marquee - Brand values */}
       <Marquee items={items} />
       
