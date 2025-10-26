@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added - October 26, 2025
+- **ContactSummary Section with Brand CTA**
+  - Added new section between Works and Contact
+  - Top marquee: Code, Creativity, Results, Innovation, Excellence
+  - Center CTA message: "I don't just build your website — I shoot the content to fill it"
+  - Bottom marquee: "Let's create something legendary" (reverse scroll)
+  - Pinned scroll animation (stays pinned for 800px)
+  - Creates smooth transition from portfolio to contact info
+  - **Files Changed:**
+    - `src/sections/ContactSummary.jsx` - New component
+    - `src/App.jsx` - Added to layout between Works and Contact
+  - **Commits:**
+    - `31c9716` - feat: Personalize ContactSummary section
+    - `87af3c4` - feat: Add ContactSummary section to App layout
+
 ### Changed - October 26, 2025
 - **Updated Contact Information**
   - Email changed: hello@captainsolo.ca → work@captainsolo.ca
