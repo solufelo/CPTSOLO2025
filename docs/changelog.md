@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added - October 26, 2025
+- **Personalized About Section**
+  - Implemented full About component with authentic Captain Solo story
+  - Highlights dual expertise: Full-Stack Developer + Videographer
+  - Real stats included: 6 years experience, 1,400+ projects, 4.8★ rating
+  - GSAP scroll animations:
+    - Section scale down to 0.95 for depth effect
+    - Image clip-path reveal animation (bottom-to-top, 2s duration)
+  - Personal touches: gaming, basketball, music, cinematography interests
+  - Location: Waterloo/Brampton, serving GTA
+  - Unique value proposition: "I don't just build your website—I shoot the content to fill it"
+  - Profile image: `images/solomon-profile.jpg` (needs to be added)
+  - Mobile responsive: stacks vertically on small screens
+  - **Files Changed:**
+    - `src/sections/About.jsx` - Complete rewrite from placeholder
+  - **Commit:** `05511b7` - feat: Implement personalized About section
+
+### Added - October 26, 2025
 - **Complete Services Section with Sticky Scroll**
   - Implemented full Services component with GSAP scroll animations
   - Added sticky scroll effect on desktop (5em stacking per card)
