@@ -7,7 +7,7 @@ function Hero() {
         <div ref={contextRef} className='w-full'>
             <div className='w-full'>
                 <div className='flex flex-col justify-center gap-8 pt-16 pb-20 sm:gap-12'>
-                    <div className='flex flex-col gap-6'>
+                    <div className='flex flex-col justify-end min-h-screen gap-6'>
                         {/* Tagline */}
                         <p className='text-sm font-light tracking-[0.5rem] uppercase px-10 text-black'>
                             404 No Bugs Found
@@ -17,7 +17,7 @@ function Hero() {
                         <div className='px-10 flex flex-col gap-4'>
                             {/* Name - Large title */}
                             <h1 className='text-[68px] sm:text-[100px] md:text-[120px] lg:text-[152px] 
-                            leading-[0.9] font-black uppercase text-black tracking-tight'>
+                            leading-[0.9] font-bold uppercase text-black tracking-tight'>
                                 Solomon<br />Olufelo
                             </h1>
                             
