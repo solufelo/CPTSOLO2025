@@ -211,25 +211,18 @@ const ContactForm = () => {
     });
 
     try {
-      // cPanel PHP backend endpoint
-      // TODO: Replace with your actual domain
-      const PHP_API_URL = "https://captainsolo.ca/api/contact.php";
+      // Netlify Forms - automatically handles form submissions
+      const formElement = formRef.current;
+      const formDataToSend = new FormData(formElement);
       
-      // For local testing, you can use:
-      // const PHP_API_URL = "http://localhost/contact.php";
-
-      const response = await fetch(PHP_API_URL, {
+      const response = await fetch("/", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formDataToSend).toString(),
       });
 
-      const data = await response.json();
-
-      if (!response.ok || !data.success) {
-        throw new Error(data.message || "Failed to send message");
+      if (!response.ok) {
+        throw new Error("Failed to send message");
       }
       
       // Success state
@@ -237,7 +230,7 @@ const ContactForm = () => {
         loading: false,
         success: true,
         error: false,
-        message: data.message || "Message sent! I'll get back to you within 24 hours. 🚀",
+        message: "Message sent! I'll get back to you within 24 hours. 🚀",
       });
 
       // Reset form after 3 seconds
@@ -272,9 +265,22 @@ const ContactForm = () => {
   return (
     <form 
       ref={formRef}
+      name="contact"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="w-full max-w-2xl mx-auto space-y-5"
     >
+      {/* Netlify form detection */}
+      <input type="hidden" name="form-name" value="contact" />
+      
+      {/* Honeypot spam protection */}
+      <p className="hidden">
+        <label>
+          Don't fill this out if you're human: <input name="bot-field" />
+        </label>
+      </p>
       {/* Name and Email row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Name input */}
