@@ -1,10 +1,12 @@
 import React from 'react'
 import Navbar from './sections/Navbar'
+import Hero from './sections/Hero'
+
 function App() {
-  return (
-    <div className='relative w-full overflow-x-hidden'>
+  return (  
+    <>
       <Navbar/>
-      <main className='relative w-full overflow-x-hidden'>  
+      <main className='relative w-full'>
         {/* Home Section */}
         <section id='home' className='min-h-screen bg-gradient-to-br from-gray-900 to-black flex items-center justify-center'>
           <h1 className='text-6xl md:text-8xl text-white font-bold uppercase'>Home</h1>
@@ -30,7 +32,7 @@ function App() {
           <h1 className='text-6xl md:text-8xl text-white font-bold uppercase'>Contact</h1>
         </section>
       </main>
-    </div>
+    </>
   )
 }
 
