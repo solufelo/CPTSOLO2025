@@ -1,11 +1,122 @@
-import React from 'react'
+import { useGSAP } from "@gsap/react";
+import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
+import Marquee from "../components/Marquee";
+import { socials } from "../constants";
+import gsap from "gsap";
 
-function Contact() {
+/**
+ * Contact Section Component
+ * Solomon's contact information and call-to-action
+ * Features GSAP staggered animations for contact links
+ */
+const Contact = () => {
+  // Header text - CTA for potential clients
+  const text = `Got a project idea? Need a website AND the content to fill it?
+    Let's build something unforgettable together.`;
+  
+  // Marquee items - Captain Solo brand messages
+  const items = [
+    "Code it. Film it. Ship it.",
+    "Where creativity meets execution.",
+    "Full-Stack Development + Video Production.",
+    "Code it. Film it. Ship it.",
+    "Where creativity meets execution.",
+  ];
+
+  // GSAP staggered animations for contact links
+  useGSAP(() => {
+    gsap.from(".social-link", {
+      y: 100,
+      opacity: 0,
+      delay: 0.5,
+      duration: 1,
+      stagger: 0.3,
+      ease: "back.out",
+      scrollTrigger: {
+        trigger: ".social-link",
+      },
+    });
+  }, []);
+
   return (
-    <section id='contact' className='min-h-screen bg-gradient-to-br from-red-900 to-red-600 flex items-center justify-center'>
-        <h1 className='text-6xl md:text-8xl text-white font-bold uppercase'>Contact</h1>
+    <section
+      id="contact"
+      className="flex flex-col justify-between min-h-screen bg-black"
+    >
+      <div>
+        {/* Animated header */}
+        <AnimatedHeaderSection
+          subTitle={"Let's Create Something Legendary"}
+          title={"Contact"}
+          text={text}
+          textColor={"text-white"}
+          withScrollTrigger={true}
+        />
+        
+        {/* Contact information */}
+        <div className="flex px-10 font-light text-white uppercase lg:text-[32px] text-[26px] leading-none mb-10">
+          <div className="flex flex-col w-full gap-10">
+            {/* Email */}
+            <div className="social-link">
+              <h2>E-mail</h2>
+              <div className="w-full h-px my-2 bg-white/30" />
+              <a 
+                href="mailto:hello@captainsolo.ca"
+                className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
+              >
+                hello@captainsolo.ca
+              </a>
+            </div>
+            
+            {/* Phone */}
+            <div className="social-link">
+              <h2>Phone</h2>
+              <div className="w-full h-px my-2 bg-white/30" />
+              <a
+                href="tel:+12892338317"
+                className="text-xl lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
+              >
+                (289) 233-8317
+              </a>
+            </div>
+            
+            {/* Location */}
+            <div className="social-link">
+              <h2>Location</h2>
+              <div className="w-full h-px my-2 bg-white/30" />
+              <p className="text-xl tracking-wider md:text-2xl lg:text-3xl">
+                Waterloo/Brampton, ON • Serving GTA
+              </p>
+            </div>
+            
+            {/* Social Media */}
+            <div className="social-link">
+              <h2>Social Media</h2>
+              <div className="w-full h-px my-2 bg-white/30" />
+              <div className="flex flex-wrap gap-2">
+                {socials.map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs leading-loose tracking-wides uppercase md:text-sm hover:text-white/80 transition-colors duration-200"
+                  >
+                    {"{ "}
+                    {social.name}
+                    {" }"}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Bottom marquee with brand messages */}
+      <Marquee items={items} className="text-white bg-transparent" />
     </section>
-  );    
-}
+  );
+};
 
 export default Contact;
