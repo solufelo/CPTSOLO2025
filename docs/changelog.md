@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added - October 26, 2025
+- **Personalized ServiceSummary Component**
+  - Replaced generic tech terms with Solomon's actual services
+  - Line 1: Web Development
+  - Line 2: React & Node.js (main tech stack)
+  - Line 3: APIs, Databases, Deployment (full-stack capabilities)
+  - Line 4: Video Production (creative services)
+  - Maintained GSAP scroll animations (xPercent transforms)
+  - Added inline comments for maintainability
+  - **Files Changed:**
+    - `src/sections/ServiceSummary.jsx`
+  - **Commit:** `e7dbb82` - feat: Personalize ServiceSummary with web dev + video production
+
+### Added - October 26, 2025
 - **3D Planet Background to Hero Section**
   - Implemented Canvas with React Three Fiber for 3D rendering
   - Added animated floating planet component with GSAP animations
