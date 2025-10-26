@@ -1,5 +1,5 @@
 // Solomon Olufelo - Captain Solo Portfolio Constants
-// Contact: hello@captainsolo.ca | 289-233-8317
+// Contact: work@captainsolo.ca
 // Instagram: @caaptainsolo
 
 // =============================================================================
@@ -223,12 +223,12 @@ export const socials = [
 // CONTACT INFORMATION
 // =============================================================================
 export const contactInfo = {
-  email: "hello@captainsolo.ca",
+  email: "work@captainsolo.ca",
   emailAlt: "solomonolufelo@outlook.com",
   phone: "289-233-8317",
   phoneFormatted: "(289) 233-8317",
-  location: "Waterloo, Ontario, Canada",
-  locationShort: "Waterloo, ON",
+  location: "Brampton, Ontario, Canada",
+  locationShort: "Brampton, ON",
   website: "https://www.captainsolo.ca/",
   availability: "Monday-Sunday (See schedule for details)",
 };
@@ -316,19 +316,19 @@ export const testimonials = [
 // =============================================================================
 export const serviceAreas = {
   primary: [
-    "Waterloo",
-    "Kitchener",
-    "Cambridge",
-    "Guelph",
     "Brampton",
     "Mississauga",
+    "Toronto",
+    "Vaughan",
+    "Etobicoke",
+    "Scarborough",
   ],
   extended: [
-    "Toronto",
-    "Hamilton",
     "Oakville",
     "Burlington",
+    "Hamilton",
     "Milton",
+    "Markham",
   ],
   remote: "Web development services available globally",
 };

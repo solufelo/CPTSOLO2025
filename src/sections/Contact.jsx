@@ -61,22 +61,10 @@ const Contact = () => {
               <h2>E-mail</h2>
               <div className="w-full h-px my-2 bg-white/30" />
               <a 
-                href="mailto:hello@captainsolo.ca"
+                href="mailto:work@captainsolo.ca"
                 className="text-xl tracking-wider lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
               >
-                hello@captainsolo.ca
-              </a>
-            </div>
-            
-            {/* Phone */}
-            <div className="social-link">
-              <h2>Phone</h2>
-              <div className="w-full h-px my-2 bg-white/30" />
-              <a
-                href="tel:+12892338317"
-                className="text-xl lowercase md:text-2xl lg:text-3xl hover:text-white/80 transition-colors duration-200"
-              >
-                (289) 233-8317
+                work@captainsolo.ca
               </a>
             </div>
             
@@ -85,7 +73,7 @@ const Contact = () => {
               <h2>Location</h2>
               <div className="w-full h-px my-2 bg-white/30" />
               <p className="text-xl tracking-wider md:text-2xl lg:text-3xl">
-                Waterloo/Brampton, ON • Serving GTA
+                Brampton, ON • Serving GTA
               </p>
             </div>
             
