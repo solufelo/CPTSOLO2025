@@ -125,9 +125,9 @@ useEffect(() => {
                     <Link 
                       to={item}
                       spy={true}
-                      smooth='easeInOutQuart'
+                      smooth='easeInOutCubic'
                       offset={0}
-                      duration={1200}
+                      duration={1000}
                       onClick={() => setIsOpen(false)}
                       className='hover:text-gold transition-all duration-300 cursor-pointer'
                     >

@@ -106,14 +106,9 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   background: #e5e5e0;
   color: black;
-  scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-amiamie);
 }
@@ -135,11 +130,6 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, #d4ab5f 0%, #b08840 100%);
-}
-
-/* Smooth scrolling for all elements */
-* {
-  scroll-behavior: smooth;
 }
 
 @utility clip-path {
