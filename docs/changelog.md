@@ -18,9 +18,13 @@ All notable changes to this project will be documented in this file.
   - Numbered service items (01, 02, 03) with divider lines
   - Dark theme (bg-black) with rounded-t-4xl top corners
   - ScrollTrigger start: "top 80%", duration: 1s
+  - Added to App layout: Hero → ServiceSummary → **Services** → About → Work → Contact
   - **Files Changed:**
     - `src/sections/Services.jsx` - Complete rewrite from placeholder
-  - **Commit:** `d0f7f7f` - feat: Implement full Services section with sticky scroll
+    - `src/App.jsx` - Added Services import and render
+  - **Commits:** 
+    - `d0f7f7f` - feat: Implement full Services section with sticky scroll
+    - `83b1e74` - feat: Add Services section to App layout
 
 ### Added - October 26, 2025
 - **Personalized ServiceSummary Component**
