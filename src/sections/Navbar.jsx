@@ -12,6 +12,7 @@ function Navbar() {
   const bottomRef = useRef(null)
   const menuButtonRef = useRef(null) // Reference for the hamburger button
   const tl = useRef(null)
+  const iconTl = useRef(null)
   const [isOpen, setIsOpen] = useState(false) // State to control the open/close of the navbar
   // GSAP animation for navbar slide-in and fade effects
   useGSAP(() => {
@@ -42,6 +43,21 @@ function Navbar() {
       duration: 0.3, // Faster duration
       ease: "power2.Out" 
     }, "-=0.4"); // Start almost at the same time as links
+    
+    // Separate timeline for hamburger icon animation
+    iconTl.current = gsap.timeline({ paused: true })
+    .to(topRef.current, {
+      rotation: 45,
+      y: 3.3,
+      duration: 0.3,
+      ease: "power2.inOut"
+    }, 0) // Start at time 0
+    .to(bottomRef.current, {
+      rotation: -45,
+      y: -3.3,
+      duration: 0.3,
+      ease: "power2.inOut"
+    }, 0); // Start at the same time as top 
   });
 
   useEffect(() => { // Effect to play/reverse the timeline animation based on the isOpen state
@@ -49,34 +65,12 @@ function Navbar() {
       tl.current.play() // Play the timeline animation
       
       // Animate hamburger to X
-      gsap.to(topRef.current, {
-        rotation: 45,
-        y: 4,
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
-      gsap.to(bottomRef.current, {
-        rotation: -45,
-        y: -4,
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
+      iconTl.current.play()
     } else {
       tl.current.reverse() // Reverse the timeline animation
       
       // Animate X back to hamburger
-      gsap.to(topRef.current, {
-        rotation: 0,
-        y: 0,
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
-      gsap.to(bottomRef.current, {
-        rotation: 0,
-        y: 0,
-        duration: 0.3,
-        ease: "power2.inOut"
-      });
+      iconTl.current.reverse()
     }
   }, [tl, isOpen])
 
