@@ -1,0 +1,513 @@
+# Services Content Guide
+**Captain Solo - Full-Stack Development & Video Production**
+
+---
+
+## 🎯 SERVICE POSITIONING
+
+**Primary Offering:**  
+"Complete Digital Solutions — The Platform + The Content"
+
+**Unique Value Proposition:**  
+Most businesses need a developer for the website and a videographer for the content. You get both, ensuring cohesive brand experience from foundation to final post.
+
+---
+
+## 💻 SERVICE CATEGORY 1: FULL-STACK WEB DEVELOPMENT
+
+### Headline Options
+1. "Digital Foundations That Scale With Your Business"
+2. "Modern Web Applications Built for Growth"
+3. "From Concept to Launch in Weeks, Not Months"
+
+### Service Description
+
+**Main Copy:**
+> Build fast, secure, and scalable web applications with modern technology. I develop custom solutions with clean architecture, optimized databases, and seamless user experiences—ensuring your platform performs as well as it looks.
+
+**What's Included:**
+- Custom web application development
+- Responsive UI/UX design
+- Database design and optimization
+- RESTful API development
+- Payment gateway integration
+- Performance optimization & SEO
+- Deployment and hosting setup
+- Post-launch support
+
+### Tech Stack (Display with icons if possible)
+**Frontend:**
+- React 18
+- Next.js 14
+- TypeScript
+- Tailwind CSS v4
+- HTML5/CSS3
+
+**Backend:**
+- Node.js
+- Express
+- Python
+- REST APIs
+- Authentication systems
+
+**Databases:**
+- MongoDB
+- PostgreSQL
+- Firebase
+- Prisma ORM
+
+**Tools & Deployment:**
+- Git/GitHub
+- VS Code
+- Vercel/Netlify
+- Docker
+
+### Project Types & Pricing Guidance
+
+**MVP/Startup Launch**
+- Single-page application with core features
+- User authentication
+- Database integration
+- Mobile-responsive design
+- **Timeline:** 2-3 weeks
+- **Investment:** $2,000-$4,000
+
+**E-Commerce Platform**
+- Product catalog
+- Shopping cart functionality
+- Payment processing (Stripe/PayPal)
+- Order management
+- Admin dashboard
+- **Timeline:** 4-6 weeks
+- **Investment:** $4,000-$8,000
+
+**Custom Web Application**
+- Multi-user system
+- Complex database architecture
+- API integrations
+- Advanced features
+- Scalable infrastructure
+- **Timeline:** 6-12 weeks
+- **Investment:** $6,000-$15,000+
+
+**Landing Page / Portfolio Site**
+- Professional design
+- Contact forms
+- SEO optimization
+- Content management
+- Fast performance
+- **Timeline:** 1-2 weeks
+- **Investment:** $1,000-$2,500
+
+### Development Process
+
+**Phase 1: Discovery (Week 1)**
+- Requirement gathering
+- Technical planning
+- Design mockups
+- Project timeline
+
+**Phase 2: Development (Weeks 2-X)**
+- Frontend build
+- Backend development
+- Database setup
+- Weekly progress updates
+
+**Phase 3: Testing (Final Week)**
+- Quality assurance
+- Bug fixes
+- Performance optimization
+- Client review
+
+**Phase 4: Launch**
+- Deployment
+- DNS setup
+- Training/documentation
+- Post-launch support
+
+### Ideal Clients
+- ✅ Startups needing MVP development
+- ✅ Small businesses going digital
+- ✅ E-commerce brands scaling online
+- ✅ Artists/creatives needing portfolios
+- ✅ Service businesses needing booking systems
+- ✅ Companies modernizing legacy systems
+
+---
+
+## 🎬 SERVICE CATEGORY 2: VIDEO PRODUCTION & CONTENT CREATION
+
+### Headline Options
+1. "Content That Converts Attention Into Customers"
+2. "Professional Video Production for the Digital Age"
+3. "Stories That Stop The Scroll"
+
+### Service Description
+
+**Main Copy:**
+> Six years experience. 1,400+ projects. 4.8★ rating. I create video content that performs—from social media reels to commercial productions. Shot on professional equipment, edited for maximum impact, optimized for results.
+
+**What You Get:**
+- Professional cinematography
+- Strategic content planning
+- Fast turnaround (48hrs standard)
+- Horizontal + vertical formats
+- Music + sound design
+- Color grading
+- Caption copywriting (optional)
+- Usage rights included
+
+### Video Service Packages
+
+---
+
+#### 📱 Social Media Content Package
+
+**Perfect For:** Consistent social presence, building audience, brand awareness
+
+**Deliverables:**
+- 3-5 Instagram Reels or TikTok videos (15-60 seconds each)
+- Vertical format (9:16) optimized for social
+- Music sync and transitions
+- On-brand editing style
+- Caption hooks included
+
+**Investment:** $350-$500
+**Timeline:** 48-hour turnaround
+**ROI Expected:** 3-5x engagement increase vs phone posts
+
+**Add-Ons:**
+- +$50 - Horizontal versions for YouTube
+- +$75 - Hashtag strategy document
+- +$100 - Same-day rush delivery
+
+---
+
+#### 🏢 Brand/Commercial Video
+
+**Perfect For:** Company intros, service showcases, promotional content
+
+**Deliverables:**
+- 60-90 second commercial video
+- Professional cinematography
+- Multiple locations (1-2)
+- Voiceover or music
+- Color grading
+- Web and social formats
+
+**Investment:** $500-$900
+**Timeline:** 3-5 days
+**ROI Expected:** 25-35% conversion rate increase
+
+**Usage:** Website, social media, ads, presentations
+
+---
+
+#### 🎵 Music Video Production
+
+**Perfect For:** Artists, musicians, performers building visual catalog
+
+**Packages:**
+
+**Mic Freestyle Promo** 🔥
+- 1 hour shoot, single location
+- Professional mic stand + props
+- 1 edited performance video (60-90 sec)
+- Horizontal + vertical formats
+- **Investment:** $150
+- **Timeline:** 3-5 days
+
+**Single Location Video**
+- 2-3 hours shoot
+- Multiple camera angles
+- Full song production
+- Basic effects and color grade
+- **Investment:** $500
+- **Timeline:** 1 week
+
+**Multi-Location Premium**
+- Full-day shoot (2-3 locations)
+- Cinematic shots
+- Advanced editing and effects
+- Professional color grading
+- **Investment:** $750-$900
+- **Timeline:** 1-2 weeks
+
+**Full Production Package**
+- Concept development
+- Multiple days/locations
+- Drone footage (if applicable)
+- Advanced VFX
+- Label-quality production
+- **Investment:** $1,200+
+- **Timeline:** 2-3 weeks
+
+**Expected Results:** 2-4x stream increase, booking credibility, playlist consideration
+
+---
+
+#### 🎉 Event Coverage
+
+**Perfect For:** Grand openings, product launches, corporate events, performances
+
+**Packages:**
+
+**Highlight Reel Package**
+- 2-3 hours on-site coverage
+- 60-90 second highlight video
+- 20-30 edited photos
+- Social media ready
+- **Investment:** $400-$600
+
+**Full Event Documentation**
+- 4-6 hours coverage
+- Multi-angle filming
+- 3-5 minute full edit
+- 50+ photos
+- Raw footage provided
+- **Investment:** $800-$1,200
+
+**Live Social Coverage**
+- Real-time Instagram/TikTok stories
+- 3 hours coverage
+- Immediate social engagement
+- Highlight reel next day
+- **Investment:** $350
+
+**Expected Results:** 50-100+ shares, 200-500% reach boost, 2-3x attendance at next event
+
+---
+
+#### 📸 Product & Menu Photography
+
+**Perfect For:** Restaurants, e-commerce, retail, food & beverage
+
+**Packages:**
+
+**Quick Product Shoot**
+- 10-15 professional photos
+- Basic editing and color correction
+- Web-ready files
+- 1 hour shoot
+- **Investment:** $200
+
+**Full Menu/Catalog**
+- 25-50+ photos
+- Styled product shots
+- Multiple angles per item
+- Lifestyle context shots
+- **Investment:** $400-$600
+
+**Lifestyle + Product Package**
+- Product in use/context
+- 20-30 photos
+- Premium editing
+- Social media versions
+- **Investment:** $500
+
+**Expected Results:** 30-60% increase in online sales/orders
+
+---
+
+#### 🎤 Podcast & Audio Production
+
+**Perfect For:** Podcasters, content creators, businesses needing audio assets
+
+**Services:**
+
+**Custom Voice Tags**
+- Professional audio branding
+- Multiple variations
+- Broadcast-quality mixing
+- **Investment:** $50-$100
+
+**Podcast Editing (Per Episode)**
+- Audio cleanup and leveling
+- Intro/outro integration
+- Noise reduction
+- Final mix and export
+- **Investment:** $75/episode
+
+**Ad Voiceover Production**
+- Script recording
+- Professional mixing
+- Multiple formats
+- **Investment:** $150-$300
+
+---
+
+### 🔄 MONTHLY RETAINER PACKAGES
+
+**For businesses serious about growth**
+
+---
+
+#### Bronze Retainer - $600/month
+
+**Perfect For:** Businesses building consistent presence
+
+**Included:**
+- 2 shoots per month (60 min each)
+- 6 reels OR 24 photos per month
+- Basic caption copywriting
+- 48-hour turnaround
+- Monthly analytics report
+
+**Expected Growth:** 25-40% follower increase per month
+**Average Client ROI:** $2,400-$3,600 new revenue/month
+
+---
+
+#### Silver Retainer - $1,000/month
+
+**Perfect For:** Businesses ready for aggressive growth
+
+**Included:**
+- 4 shoots per month (45-60 min each)
+- 12 reels OR 40 photos per month
+- Caption copy + hashtag strategy
+- Priority scheduling
+- 24-hour turnaround
+- Bi-weekly analytics + strategy calls
+
+**Expected Growth:** 40-70% follower increase per month
+**Average Client ROI:** $4,000-$8,000 new revenue/month
+
+---
+
+#### Gold Retainer - $1,500/month
+
+**Perfect For:** Maximum growth and market domination
+
+**Included:**
+- Weekly shoots (4-5 per month)
+- 16 reels + 30 photos per month
+- Full content calendar + strategy
+- Caption copy + scheduling assistance
+- Same-day priority delivery
+- Weekly analytics + strategy calls
+- Direct messaging support
+
+**Expected Growth:** 70-150% follower increase per month
+**Average Client ROI:** $8,000-$15,000+ new revenue/month
+
+**Retainer Benefits:**
+- 15-20% cost savings vs individual projects
+- Priority scheduling
+- Consistent content flow
+- Relationship building = better results
+- Cancel anytime (30-day notice)
+
+---
+
+## 🌟 SERVICE CATEGORY 3: INTEGRATED SOLUTIONS (THE SWEET SPOT)
+
+### Headline
+"Complete Digital Presence - Platform + Content in One Package"
+
+### The Problem This Solves
+Most businesses hire separately:
+- Developer for website ($$$)
+- Videographer for content ($$$)
+- Marketing person to coordinate ($$$ + headache)
+
+Result: Disjointed brand, miscommunication, delays
+
+### The Integrated Solution
+One point of contact. One cohesive vision. One timeline.
+
+**You Get:**
+✅ Website built specifically for your content
+✅ Content created knowing the platform capabilities
+✅ Cohesive brand experience across all touchpoints
+✅ Strategic integration of video into site design
+✅ One invoice, one relationship, one source of truth
+
+### Example Integrated Packages
+
+**Restaurant Complete Package**
+- Custom website with menu, online ordering, and gallery
+- Menu photography (30-50 items)
+- Social media content (12 reels)
+- Google My Business optimization
+- **Investment:** $3,500-$5,000
+- **Timeline:** 4-6 weeks
+
+**Artist Portfolio + Press Kit**
+- Professional portfolio website
+- Music video production
+- Artist photoshoot (30+ images)
+- Social media content strategy
+- EPK document creation
+- **Investment:** $2,500-$4,000
+- **Timeline:** 4-6 weeks
+
+**E-Commerce + Content Launch**
+- Full e-commerce website
+- Product photography (50+ items)
+- Launch video content (5 reels)
+- Social media templates
+- **Investment:** $5,000-$8,000
+- **Timeline:** 6-8 weeks
+
+**Service Business Digital Presence**
+- Professional landing page
+- Promotional video (90 sec)
+- Social media content (6 reels)
+- Before/after showcase
+- **Investment:** $2,000-$3,500
+- **Timeline:** 3-4 weeks
+
+---
+
+## 💡 HOW TO CHOOSE THE RIGHT SERVICE
+
+### Decision Tree
+
+**Need a platform to showcase your business?**
+→ Full-Stack Web Development
+
+**Need content for existing platforms?**
+→ Video Production Services
+
+**Need both? (Most businesses)**
+→ Integrated Solutions Package
+
+**Want ongoing growth partnership?**
+→ Monthly Retainer (any tier)
+
+**Testing the waters / tight budget?**
+→ Start with Mic Freestyle Promo ($150) or Brand Content Starter ($250)
+
+---
+
+## 📋 GENERAL SERVICE TERMS
+
+### What's Always Included
+- Professional-grade equipment
+- All raw files delivered
+- Usage rights for your business
+- Revisions (1-2 rounds depending on package)
+- File delivery via Google Drive
+- Post-project support (30 days)
+
+### Turnaround Times
+- **Standard:** 48 hours (video), 2-4 weeks (web dev)
+- **Rush Available:** +25-50% fee for same/next day
+- **Retainer:** Priority queue, fastest turnaround
+
+### Payment Terms
+- 50% deposit to book/start
+- Remaining 50% upon delivery
+- Retainers: Monthly auto-payment available
+- Accepted: E-transfer (preferred), credit/debit, PayPal
+
+### Cancellation Policy
+- 48+ hours notice: Full refund minus $25 admin
+- 24-48 hours: 50% refund
+- <24 hours: No refund (reschedule within 30 days)
+
+---
+
+**All services customizable. These are starting frameworks—let's talk about your specific needs.**
+
