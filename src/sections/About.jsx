@@ -74,7 +74,7 @@ Based in Waterloo/Brampton, serving the GTA. Remote-friendly for web dev, will t
         {/* Profile image with clip-path reveal animation */}
         <img
           ref={imgRef}
-          src="images/solomon-profile.jpg"
+          src="images/man.jpg"
           alt="Solomon Olufelo - Captain Solo"
           className="w-md rounded-3xl"
         />
