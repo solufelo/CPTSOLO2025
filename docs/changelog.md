@@ -4,6 +4,29 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed - October 26, 2025
+- **Updated Contact Information**
+  - Email changed: hello@captainsolo.ca → work@captainsolo.ca
+  - Location updated: Waterloo/Brampton → Brampton, ON (primary residence)
+  - Removed phone number from public contact page
+  - Updated service areas: Brampton now first in primary areas
+  - Primary areas: Brampton, Mississauga, Toronto, Vaughan, Etobicoke, Scarborough
+  - Extended areas: Oakville, Burlington, Hamilton, Milton, Markham
+  - **Files Changed:**
+    - `src/sections/Contact.jsx` - Updated email, location, removed phone
+    - `src/sections/About.jsx` - Updated location text
+    - `src/constants/index.js` - Updated contactInfo and serviceAreas
+  - **Commit:** `4802272` - feat: Update contact info - Brampton location, new email, remove phone
+
+### Changed - October 26, 2025
+- **Profile Photo - Temporary Logo**
+  - Changed About section image from man.jpg to android-chrome-512x512.png
+  - Uses existing Captain Solo logo/icon as placeholder
+  - Ready to replace with actual profile photo when available
+  - **Files Changed:**
+    - `src/sections/About.jsx` - Updated image src
+  - **Commit:** `652899c` - feat: Use android-chrome icon as temporary profile photo
+
 ### Added - October 26, 2025
 - **Personalized Contact Section**
   - Replaced placeholder with Solomon's actual contact information
