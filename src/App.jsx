@@ -3,7 +3,7 @@ import Navbar from './sections/Navbar'
 import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
-import Work from './sections/Work'
+import Works from './sections/Works'
 import Contact from './sections/Contact'
 import ServiceSummary from './sections/ServiceSummary'
 
@@ -14,7 +14,7 @@ import ServiceSummary from './sections/ServiceSummary'
  * - ServiceSummary: Animated text marquee of services
  * - Services: Full service cards with sticky scroll
  * - About: Personal bio section
- * - Work: Portfolio projects showcase
+ * - Works: Portfolio projects showcase
  * - Contact: Contact form and info
  */
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <ServiceSummary/>
       <Services/>
       <About/>
-      <Work/>
+      <Works/>
       <Contact/>  
     </>
   )
