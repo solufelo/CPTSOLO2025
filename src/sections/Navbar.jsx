@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import { socials } from '../constants'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
+import { Link } from 'react-scroll'
 
 function Navbar() {
   const navRef = useRef(null)
@@ -13,8 +14,9 @@ function Navbar() {
   const menuButtonRef = useRef(null) // Reference for the hamburger button
   const tl = useRef(null)
   const iconTl = useRef(null)
+  const lastScrollY = useRef(0) // Track last scroll position
   const [isOpen, setIsOpen] = useState(false) // State to control the open/close of the navbar
-  // GSAP animation for navbar slide-in and fade effects
+  const [showButton, setShowButton] = useState(true) // State to show/hide hamburger button on scroll  
   useGSAP(() => {
     // Set initial state: navbar off-screen to the right
     gsap.set(navRef.current, { xPercent: 100 });
@@ -59,7 +61,36 @@ function Navbar() {
       ease: "power2.inOut"
     }, 0); // Start at the same time as top 
   });
+// Effect to hide/show hamburger button on scroll
+useEffect(() => {
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    
+    // Hide button when scrolling down, show when scrolling up
+    if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+      setShowButton(false); // Hide button on scroll down
+    } else if (currentScrollY < lastScrollY.current) {
+      setShowButton(true); // Show button on scroll up
+    }
+    
+    lastScrollY.current = currentScrollY; // Update last scroll position
+  };
+  
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [showButton]);
 
+// Animate button visibility
+useEffect(() => {
+  if (menuButtonRef.current) {
+    gsap.to(menuButtonRef.current, {
+      opacity: showButton ? 1 : 0,
+      y: showButton ? 0 : -20,
+      duration: 0.3,
+      ease: "power2.inOut"
+    });
+  }
+}, [showButton])  
   useEffect(() => { // Effect to play/reverse the timeline animation based on the isOpen state
     if (isOpen) {
       tl.current.play() // Play the timeline animation
@@ -91,9 +122,17 @@ function Navbar() {
           <div className='flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl'>
               {["home", "about", "services", "work", "contact"].map((item, index) => (
                   <div key={index} ref={el => linksRef.current[index] = el}>
-                    <a className='hover:text-gold transition-all duration-300' href={`#${item}`}>
+                    <Link 
+                      to={item}
+                      spy={true}
+                      smooth={true}
+                      offset={0}
+                      duration={800}
+                      onClick={() => setIsOpen(false)}
+                      className='hover:text-gold transition-all duration-300 cursor-pointer'
+                    >
                       {item}
-                    </a>
+                    </Link>
                   </div>
               ))}
           </div>
