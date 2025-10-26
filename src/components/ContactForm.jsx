@@ -1,14 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import emailjs from "@emailjs/browser";
 
 /**
  * ContactForm Component
- * Fully functional contact form with EmailJS backend integration
+ * Fully functional contact form with PHP/cPanel backend integration
  * Features form validation, loading states, and success/error handling
  * 
- * SETUP REQUIRED: See EMAILJS-SETUP-GUIDE.md for 10-minute setup instructions
+ * SETUP: Update PHP_API_URL with your cPanel domain
  */
 const ContactForm = () => {
   const formRef = useRef(null);
@@ -212,42 +211,25 @@ const ContactForm = () => {
     });
 
     try {
-      // EmailJS integration
-      // TODO: Replace with your actual EmailJS credentials (see EMAILJS-SETUP-GUIDE.md)
-      const serviceId = "YOUR_SERVICE_ID"; // ← Replace with your Service ID
-      const templateId = "YOUR_TEMPLATE_ID"; // ← Replace with your Template ID
-      const publicKey = "YOUR_PUBLIC_KEY"; // ← Replace with your Public Key
+      // cPanel PHP backend endpoint
+      // TODO: Replace with your actual domain
+      const PHP_API_URL = "https://captainsolo.ca/api/contact.php";
+      
+      // For local testing, you can use:
+      // const PHP_API_URL = "http://localhost/contact.php";
 
-      // Check if EmailJS is configured
-      const isEmailJSConfigured = 
-        serviceId !== "YOUR_SERVICE_ID" && 
-        templateId !== "YOUR_TEMPLATE_ID" && 
-        publicKey !== "YOUR_PUBLIC_KEY";
+      const response = await fetch(PHP_API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-      if (isEmailJSConfigured) {
-        // PRODUCTION: Send actual email via EmailJS
-        const response = await emailjs.send(
-          serviceId,
-          templateId,
-          {
-            from_name: formData.name,
-            from_email: formData.email,
-            phone: formData.phone || "Not provided",
-            service: formData.service || "Not specified",
-            budget: formData.budget || "Not specified",
-            message: formData.message,
-            to_name: "Solomon Olufelo",
-          },
-          publicKey
-        );
+      const data = await response.json();
 
-        if (response.status !== 200) throw new Error("Failed to send message");
-      } else {
-        // DEVELOPMENT: Simulate send (EmailJS not yet configured)
-        console.log("📧 DEMO MODE: EmailJS not configured yet");
-        console.log("Form would send:", formData);
-        console.log("👉 See EMAILJS-SETUP-GUIDE.md to set up real email sending");
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "Failed to send message");
       }
       
       // Success state
@@ -255,7 +237,7 @@ const ContactForm = () => {
         loading: false,
         success: true,
         error: false,
-        message: "Message sent! I'll get back to you within 24 hours. 🚀",
+        message: data.message || "Message sent! I'll get back to you within 24 hours. 🚀",
       });
 
       // Reset form after 3 seconds
@@ -282,7 +264,7 @@ const ContactForm = () => {
         loading: false,
         success: false,
         error: true,
-        message: "Oops! Something went wrong. Please email me directly at work@captainsolo.ca",
+        message: error.message || "Oops! Something went wrong. Please email me directly at work@captainsolo.ca",
       });
     }
   };
