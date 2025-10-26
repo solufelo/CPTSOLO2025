@@ -1,6 +1,8 @@
 import React from 'react'
 import { useRef } from 'react'
 import { socials } from '../constants'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 
 function Navbar() {
   const navRef = useRef(null)
@@ -9,6 +11,37 @@ function Navbar() {
   const topRef = useRef(null)
   const bottomRef = useRef(null)
 
+  // GSAP animation for navbar slide-in and fade effects
+  useGSAP(() => {
+    // Set initial state: navbar off-screen to the right
+    gsap.set(navRef.current, { xPercent: 100 });
+    
+    // Set initial state: links and contact info invisible and offset
+    gsap.set(linksRef.current, { autoAlpha: 0, x: -20, y: -20 });
+    gsap.set(contactRef.current, { autoAlpha: 0, x: -20, y: -20 });
+
+    // Create timeline animation (paused by default, will be triggered by menu button)
+    gsap.timeline({ paused: true })
+      .to(navRef.current, { 
+        xPercent: 0, 
+        duration: 1, 
+        ease: "power3.inOut" 
+      })
+      .to(linksRef.current, { 
+        autoAlpha: 1, 
+        x: 0, 
+        y: 0, 
+        duration: 0.5, 
+        ease: "power2.inOut" 
+      })
+      .to(contactRef.current, { 
+        autoAlpha: 1, 
+        x: 0, 
+        y: 0, 
+        duration: 0.5, 
+        ease: "power2.inOut" 
+      });
+  });
 
   return (
     <>
@@ -31,7 +64,7 @@ function Navbar() {
         </div>
 
         {/* Contact Information Section */}
-        <div className='flex flex-col flex-wrap gap-4 md:flex-row md:justify-between'> 
+        <div ref={contactRef} className='flex flex-col flex-wrap gap-4 md:flex-row md:justify-between'> 
           {/* Email */}
           <div className='font-light text-pretty'>
             <p className='tracking-wider text-white/50'>E-MAIL</p>
