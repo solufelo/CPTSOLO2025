@@ -161,28 +161,28 @@ const Works = () => {
             {/* mobile preview image */}
             <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
               <img
-                src={project.bgImage}
+                src="android-chrome-512x512.png"
                 alt={`${project.name}-bg-image`}
                 className="object-cover w-full h-full rounded-md brightness-50"
               />
               <img
-                src={project.image}
+                src="android-chrome-512x512.png"
                 alt={`${project.name}-image`}
                 className="absolute bg-center px-14 rounded-xl"
               />
             </div>
           </div>
         ))}
-        {/* desktop Flaoting preview image */}
+        {/* desktop Floating preview image */}
         <div
           ref={previewRef}
           className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
         >
           {currentIndex !== null && (
             <img
-              src={projects[currentIndex].image}
-              alt="preview"
-              className="object-cover w-full h-full"
+              src="android-chrome-512x512.png"
+              alt="Captain Solo - Project Preview"
+              className="object-contain w-full h-full bg-black"
             />
           )}
         </div>
