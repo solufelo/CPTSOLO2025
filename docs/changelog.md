@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 ## [Unreleased]
 
 ### Added - October 26, 2025
+- **Personalized Contact Section**
+  - Replaced placeholder with Solomon's actual contact information
+  - Email: hello@captainsolo.ca (clickable mailto: link with hover effect)
+  - Phone: (289) 233-8317 (clickable tel: link)
+  - Location: Waterloo/Brampton, ON • Serving GTA
+  - Social media links from constants: Instagram, LinkedIn, GitHub, YouTube
+  - Updated CTA: "Need a website AND the content to fill it? Let's build something unforgettable"
+  - Subtitle: "Let's Create Something Legendary"
+  - Brand marquee messages:
+    - "Code it. Film it. Ship it."
+    - "Where creativity meets execution."
+    - "Full-Stack Development + Video Production."
+  - GSAP staggered animations (y: 100, stagger: 0.3s, back.out easing)
+  - All external links open in new tab (target="_blank")
+  - **Files Changed:**
+    - `src/sections/Contact.jsx` - Complete personalization
+  - **Commit:** `92fdcc3` - feat: Personalize Contact section and install @iconify/react
+
+### Added - October 26, 2025
+- **Personalized Works/Portfolio Section**
+  - Updated header text to reflect Solomon's portfolio
+  - "Real projects. Real results. From barbershop promos to full-stack platforms"
+  - "1,400+ projects that combine code with creativity"
+  - Interactive hover previews on desktop
+  - Projects loaded from constants (barbershop, club events, basketball, web dev, integrated)
+  - GSAP animations: entrance (y: 100, stagger: 0.3s), hover effects
+  - Floating preview follows mouse on desktop
+  - Mobile: static image previews
+  - **Files Changed:**
+    - `src/sections/Works.jsx` - Renamed from Work.jsx, updated content
+  - **Commit:** `92fdcc3` - feat: Personalize Contact section and install @iconify/react
+
+### Added - October 26, 2025
+- **Dependencies: @iconify/react Package**
+  - Installed @iconify/react for icon support
+  - Required for Works and Marquee components
+  - Fixes import errors for Icon component
+  - **Commit:** `92fdcc3` - feat: Personalize Contact section and install @iconify/react
+
+### Added - October 26, 2025
 - **Personalized About Section**
   - Implemented full About component with authentic Captain Solo story
   - Highlights dual expertise: Full-Stack Developer + Videographer
