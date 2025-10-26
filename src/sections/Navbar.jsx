@@ -35,13 +35,13 @@ function Navbar() {
       stagger: 0.05, // Faster stagger for quicker sequential animation
       duration: 0.3, // Faster duration
       ease: "power2.Out" 
-    }, "-=0.3") // Start earlier, overlapping with navbar slide
+    }, "-=0.5") // Start much earlier - text appears almost immediately with navbar
     .to(contactRef.current, { 
       autoAlpha: 1, 
       x: 0, 
       duration: 0.3, // Faster duration
       ease: "power2.Out" 
-    }, "-=0.2"); // Start earlier for smoother flow
+    }, "-=0.4"); // Start almost at the same time as links
   });
 
   useEffect(() => { // Effect to play/reverse the timeline animation based on the isOpen state
