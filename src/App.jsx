@@ -4,6 +4,7 @@ import Hero from './sections/Hero'
 import About from './sections/About'
 import Services from './sections/Services'
 import Works from './sections/Works'
+import ContactSummary from './sections/ContactSummary'
 import Contact from './sections/Contact'
 import ServiceSummary from './sections/ServiceSummary'
 
@@ -15,6 +16,7 @@ import ServiceSummary from './sections/ServiceSummary'
  * - Services: Full service cards with sticky scroll
  * - About: Personal bio section
  * - Works: Portfolio projects showcase
+ * - ContactSummary: CTA section with brand values
  * - Contact: Contact form and info
  */
 function App() {
@@ -26,6 +28,7 @@ function App() {
       <Services/>
       <About/>
       <Works/>
+      <ContactSummary/>
       <Contact/>  
     </>
   )
