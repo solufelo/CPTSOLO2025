@@ -107,8 +107,8 @@ export const projects = [
     description:
       "Full-stack MERN application for campaign creation and donation management. Role-based access control, user authentication, real-time analytics, and comprehensive reporting.",
     href: "https://github.com/solufelo/CAPTAIN-FUNDS-MERN",
-    image: "/assets/projects/captainfunds.jpg",
-    bgImage: "/assets/projects/captainfunds.jpg",
+    image: "/images/captainfunds1.png",
+    bgImage: "/images/captainfunds1.png",
     frameworks: [
       { id: 1, name: "React" },
       { id: 2, name: "Node.js" },
