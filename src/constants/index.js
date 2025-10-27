@@ -31,12 +31,12 @@ export const servicesData = [
   {
     title: "Video Production & Content",
     description:
-      "Content that converts. 6 years, 1,400+ projects, 4.8★ rating. Social reels, promos, events, music videos—shot, edited, optimized.",
+      "Content that converts. 6 years experience, 100+ video projects, 4.8★ rating. Social reels, promos, events, music videos—shot, edited, optimized.",
     items: [
       {
         title: "Social Media Content",
         description: "(Reels, TikToks, YouTube Shorts, Algorithm-optimized)",
-        hoverDescription: "1,400+ social videos. Sony A6100, gimbal, color grading. Algorithm-optimized: vertical format, 3-sec hooks, trending audio.",
+        hoverDescription: "100+ social videos. Sony A6100, gimbal, color grading. Algorithm-optimized: vertical format, 3-sec hooks, trending audio.",
       },
       {
         title: "Commercial & Promo",
@@ -292,12 +292,12 @@ export const contactInfo = {
 // STATS FOR HERO SECTION
 // =============================================================================
 export const stats = [
-  { label: "Projects Completed", value: "1,400+" },
+  { label: "Video Projects", value: "100+" },
   { label: "Client Rating", value: "4.8/5.0" },
   { label: "Years Experience", value: "6+" },
   { label: "On-Time Delivery", value: "99%" },
-  { label: "Client Reviews", value: "700+" },
-  { label: "Revenue Generated", value: "$30K+" },
+  { label: "Happy Clients", value: "50+" },
+  { label: "Combined Experience", value: "Dev + Video" },
 ];
 
 // =============================================================================

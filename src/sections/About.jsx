@@ -15,7 +15,7 @@ const About = () => {
 
   // Main about text - Solomon's authentic story (concise version)
   const aboutText = `Captain Solo—full-stack developer by trade, videographer by passion.
-6 years. 1,400+ projects. 4.8★ rating.
+6 years experience. 100+ video projects. 4.8★ rating.
 
 The difference? I don't just build your website—I shoot the content to fill it.
 Restaurant site? Code the menu AND photograph the dishes.

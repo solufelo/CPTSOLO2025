@@ -69,8 +69,8 @@ const Pricing = () => {
         <div className="max-w-5xl mx-auto bg-gold/10 border border-gold/30 rounded-xl p-6">
           <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-white">
             <div className="text-center">
-              <div className="text-3xl font-bold text-gold">1,400+</div>
-              <div className="text-sm text-white/60">Projects Completed</div>
+              <div className="text-3xl font-bold text-gold">100+</div>
+              <div className="text-sm text-white/60">Video Projects</div>
             </div>
             <div className="w-px h-12 bg-white/20 hidden md:block" />
             <div className="text-center">
