@@ -20,8 +20,8 @@ const Works = () => {
   
   // Header text introducing portfolio
   const text = `Real projects. Real results. 
-    From barbershop promos to full-stack platforms—
-    1,400+ projects that combine code with creativity.`;
+    From Captain Funds fundraising platform to Velare's 3D experiences—
+    full-stack applications that merge technical precision with creative vision.`;
 
   // Mouse position tracking for floating preview
   const mouse = useRef({ x: 0, y: 0 });
@@ -30,11 +30,11 @@ const Works = () => {
 
   useGSAP(() => {
     moveX.current = gsap.quickTo(previewRef.current, "x", {
-      duration: 1.5,
+      duration: 1.2,
       ease: "power3.out",
     });
     moveY.current = gsap.quickTo(previewRef.current, "y", {
-      duration: 2,
+      duration: 1.5,
       ease: "power3.out",
     });
 
@@ -72,9 +72,9 @@ const Works = () => {
     );
 
     gsap.to(previewRef.current, {
-      opacity: 1,
+      opacity: 0.95,
       scale: 1,
-      duration: 0.3,
+      duration: 0.4,
       ease: "power2.out",
     });
   };
@@ -123,9 +123,12 @@ const Works = () => {
         onMouseMove={handleMouseMove}
       >
         {projects.map((project, index) => (
-          <div
+          <a
             key={project.id}
             id="project"
+            href={project.href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="relative flex flex-col gap-1 py-5 cursor-pointer group md:gap-0"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={() => handleMouseLeave(index)}
@@ -158,32 +161,59 @@ const Works = () => {
                 </p>
               ))}
             </div>
-            {/* mobile preview image */}
+            {/* mobile preview - video or image */}
             <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
-              <img
-                src="android-chrome-512x512.png"
-                alt={`${project.name}-bg-image`}
-                className="object-cover w-full h-full rounded-md brightness-50"
-              />
-              <img
-                src="android-chrome-512x512.png"
-                alt={`${project.name}-image`}
-                className="absolute bg-center px-14 rounded-xl"
-              />
+              {project.category === 'video' && project.video ? (
+                <video
+                  src={project.video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover w-full h-full rounded-md"
+                />
+              ) : (
+                <>
+                  <img
+                    src={project.bgImage}
+                    alt={`${project.name} background`}
+                    className="object-cover w-full h-full rounded-md brightness-50"
+                  />
+                  <img
+                    src={project.image}
+                    alt={`${project.name} preview`}
+                    className="absolute px-14 object-contain max-h-[80%] rounded-xl"
+                  />
+                </>
+              )}
             </div>
-          </div>
+          </a>
         ))}
-        {/* desktop Floating preview image */}
+        {/* desktop Floating preview - video or image */}
         <div
           ref={previewRef}
-          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-8 border-black pointer-events-none w-[960px] md:block hidden opacity-0"
+          className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-black pointer-events-none w-[480px] md:block hidden opacity-0 rounded-lg shadow-2xl"
         >
-          {currentIndex !== null && (
-            <img
-              src="android-chrome-512x512.png"
-              alt="Captain Solo - Project Preview"
-              className="object-contain w-full h-full bg-black"
-            />
+          {currentIndex !== null && projects[currentIndex] && (
+            <>
+              {/* Show video for video projects, image for dev projects */}
+              {projects[currentIndex].category === 'video' && projects[currentIndex].video ? (
+                <video
+                  src={projects[currentIndex].video}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="object-cover w-full h-full bg-black"
+                />
+              ) : (
+                <img
+                  src={projects[currentIndex].image}
+                  alt={`${projects[currentIndex].name} preview`}
+                  className="object-contain w-full h-full bg-black"
+                />
+              )}
+            </>
           )}
         </div>
       </div>

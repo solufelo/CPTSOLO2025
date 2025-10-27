@@ -97,17 +97,91 @@ export const servicesData = [
 ];
 
 // =============================================================================
-// PORTFOLIO PROJECTS - Replace with actual completed work
+// PORTFOLIO PROJECTS - Real Completed Work
 // =============================================================================
 export const projects = [
+  // === WEB DEVELOPMENT PROJECTS ===
   {
     id: 1,
+    name: "Captain Funds - Fundraising Platform",
+    description:
+      "Full-stack MERN application for campaign creation and donation management. Role-based access control, user authentication, real-time analytics, and comprehensive reporting.",
+    href: "https://github.com/solufelo/CAPTAIN-FUNDS-MERN",
+    image: "/assets/projects/captainfunds.jpg",
+    bgImage: "/assets/projects/captainfunds.jpg",
+    frameworks: [
+      { id: 1, name: "React" },
+      { id: 2, name: "Node.js" },
+      { id: 3, name: "MongoDB" },
+      { id: 4, name: "Express" },
+      { id: 5, name: "TypeScript" },
+    ],
+    category: "development",
+    results: "Complete fundraising system with admin panel",
+  },
+  {
+    id: 2,
+    name: "Velare - 3D Creative Studio",
+    description:
+      "Immersive 3D portfolio website with Three.js and React Three Fiber. Interactive WebGL experiences, smooth scroll animations, and responsive 3D environments.",
+    href: "https://github.com/solufelo/velare-site",
+    image: "/assets/projects/velare.jpg",
+    bgImage: "/assets/projects/velare.jpg",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Three.js" },
+      { id: 3, name: "R3F" },
+      { id: 4, name: "GSAP" },
+      { id: 5, name: "TypeScript" },
+    ],
+    category: "development",
+    results: "Award-worthy 3D interactive experience",
+  },
+  {
+    id: 3,
+    name: "Suburbia - Modern Portfolio",
+    description:
+      "Next.js portfolio with Prismic CMS integration. Dynamic content management, SEO optimization, and modern design system with Tailwind CSS.",
+    href: "https://github.com/solufelo/suburbia-solo",
+    image: "/assets/projects/suburbia.jpg",
+    bgImage: "/assets/projects/suburbia.jpg",
+    frameworks: [
+      { id: 1, name: "Next.js" },
+      { id: 2, name: "Prismic CMS" },
+      { id: 3, name: "TypeScript" },
+      { id: 4, name: "Tailwind CSS" },
+    ],
+    category: "development",
+    results: "Production-ready CMS-powered portfolio",
+  },
+  {
+    id: 4,
+    name: "CinemaVerse - Movie Tracker",
+    description:
+      "Full-stack movie and TV show tracking platform with AI recommendations. Built with Wasp framework, TMDB API integration, and OpenRouter AI for personalized suggestions.",
+    href: "https://github.com/solufelo/CinemaVerse",
+    image: "/assets/projects/cinemaverse.jpg",
+    bgImage: "/assets/projects/cinemaverse.jpg",
+    frameworks: [
+      { id: 1, name: "Wasp" },
+      { id: 2, name: "React" },
+      { id: 3, name: "PostgreSQL" },
+      { id: 4, name: "AI Integration" },
+    ],
+    category: "development",
+    results: "AI-powered content tracking with watchlists",
+  },
+
+  // === VIDEO PRODUCTION PROJECTS ===
+  {
+    id: 5,
     name: "Barbershop Promotional Content",
     description:
       "High-energy social media promo for Haircut House Call. Cinematic shots, smooth transitions, music sync. Direct engagement with service-based business content.",
     href: "https://www.instagram.com/reel/CsCKDtUJGo2/",
-    image: "/assets/projects/barbershop-promo.jpg", // Add actual image
-    bgImage: "/assets/backgrounds/barbershop-bg.jpg",
+    image: "/assets/projects/barbershop-promo.jpg",
+    bgImage: "/assets/projects/barbershop-promo.jpg",
+    video: "/assets/videos/barbershop-promo.mp4", // Add video file for hover preview
     frameworks: [
       { id: 1, name: "Premiere Pro" },
       { id: 2, name: "After Effects" },
@@ -117,13 +191,14 @@ export const projects = [
     results: "Featured content for local business growth",
   },
   {
-    id: 2,
+    id: 6,
     name: "Club Event Coverage",
     description:
       "Dynamic event videography capturing energy, atmosphere, and key moments. Fast-paced editing, color grading, beat-synced cuts for maximum social media impact.",
     href: "https://www.instagram.com/reel/CqQzDikJRQj/",
     image: "/assets/projects/club-event.jpg",
-    bgImage: "/assets/backgrounds/event-bg.jpg",
+    bgImage: "/assets/projects/club-event.jpg",
+    video: "/assets/videos/club-event.mp4", // Add video file for hover preview
     frameworks: [
       { id: 1, name: "Multi-Cam" },
       { id: 2, name: "Gimbal Work" },
@@ -133,13 +208,14 @@ export const projects = [
     results: "50+ shares, client repeat bookings",
   },
   {
-    id: 3,
+    id: 7,
     name: "Women's University Basketball",
     description:
       "Athletic videography showcasing game highlights, player performance, and team energy. Capturing pivotal moments with professional sports coverage quality.",
     href: "https://www.instagram.com/reel/Coi6VfvuGDq/",
     image: "/assets/projects/womens-basketball.jpg",
-    bgImage: "/assets/backgrounds/sports-bg.jpg",
+    bgImage: "/assets/projects/womens-basketball.jpg",
+    video: "/assets/videos/womens-basketball.mp4", // Add video file for hover preview
     frameworks: [
       { id: 1, name: "Sports Videography" },
       { id: 2, name: "Telephoto 55-210mm" },
@@ -149,13 +225,14 @@ export const projects = [
     results: "Bronze medal athletic videography",
   },
   {
-    id: 4,
+    id: 8,
     name: "Men's Basketball Game Recap",
     description:
       "High-energy game recap with quick cuts, dramatic angles, and music sync. Professional athletic content for university sports teams and recruitment.",
     href: "https://www.instagram.com/reel/C0VtaMVM0iF/",
     image: "/assets/projects/mens-basketball.jpg",
-    bgImage: "/assets/backgrounds/basketball-bg.jpg",
+    bgImage: "/assets/projects/mens-basketball.jpg",
+    video: "/assets/videos/mens-basketball.mp4", // Add video file for hover preview
     frameworks: [
       { id: 1, name: "Game Coverage" },
       { id: 2, name: "Highlight Editing" },
@@ -163,40 +240,6 @@ export const projects = [
     ],
     category: "video",
     results: "Official WLU videographer content",
-  },
-  {
-    id: 5,
-    name: "Full-Stack E-commerce Platform",
-    description:
-      "Custom online store with payment integration, inventory management, and responsive design. Built with React, Node.js, and MongoDB for scalability.",
-    href: "", // Add project link when available
-    image: "/assets/projects/ecommerce-dev.jpg",
-    bgImage: "/assets/backgrounds/code-bg.jpg",
-    frameworks: [
-      { id: 1, name: "React" },
-      { id: 2, name: "Node.js" },
-      { id: 3, name: "MongoDB" },
-      { id: 4, name: "Stripe API" },
-    ],
-    category: "development",
-    results: "Scalable platform with payment processing",
-  },
-  {
-    id: 6,
-    name: "Restaurant Landing Page + Content",
-    description:
-      "Integrated solution: responsive website with menu, online ordering, and professional food photography. Complete digital presence package.",
-    href: "", // Add project link when available
-    image: "/assets/projects/restaurant-web.jpg",
-    bgImage: "/assets/backgrounds/restaurant-bg.jpg",
-    frameworks: [
-      { id: 1, name: "Next.js" },
-      { id: 2, name: "Tailwind CSS" },
-      { id: 3, name: "Photography" },
-      { id: 4, name: "Content Strategy" },
-    ],
-    category: "integrated",
-    results: "Website + content driving reservations",
   },
 ];
 
