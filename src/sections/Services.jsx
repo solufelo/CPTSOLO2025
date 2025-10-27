@@ -16,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
  */
 const Services = () => {
   // Hero text introducing services
-  const text = `I build secure, high-performance full-stack apps with smooth UX to drive growth—not headaches. Plus the video content to make it all shine.`;
+  const text = `Secure, high-performance full-stack apps with smooth UX. Plus video content that makes it all shine.`;
   
   // Refs for GSAP scroll animations
   const serviceRefs = useRef([]);

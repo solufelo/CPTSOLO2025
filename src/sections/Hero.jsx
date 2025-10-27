@@ -15,7 +15,7 @@ const Hero = () => {
   
   // Hero text content
   const keywordsText = `Full-Stack Developer • Creative Technologist`;
-  const aboutText = `I help growing brands gain an unfair advantage through premium web development and video production.`;
+  const aboutText = `Premium web development + video production. One developer, complete solutions.`;
 
   return (
     <section id="home" className="flex flex-col justify-end min-h-screen">

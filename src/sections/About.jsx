@@ -11,22 +11,19 @@ import gsap from "gsap";
  */
 const About = () => {
   // Header text - the mission statement
-  const text = `Where code meets creativity.
-    Building digital experiences from database to deployment,
-    with cinematic content to bring it all to life.`;
+  const text = `Code meets creativity. Database to deployment, with cinematic content to bring it all to life.`;
 
-  // Main about text - Solomon's authentic story
-  const aboutText = `Captain Solo—full-stack developer by trade, videographer by passion. 6 years, 1,400+ projects, 4.8★ rating. I turned academic setbacks into code boot camps, gaming sessions into GSAP animations, and a love for storytelling into a career filming everything from mic freestyles to university basketball.
+  // Main about text - Solomon's authentic story (concise version)
+  const aboutText = `Captain Solo—full-stack developer by trade, videographer by passion.
+6 years. 1,400+ projects. 4.8★ rating.
 
-What makes me different? I don't just build your website—I shoot the content to fill it. Restaurant site? I'll code the menu AND photograph the dishes. Artist portfolio? I'll build the platform AND film the music video. That's the Captain Solo advantage.
+The difference? I don't just build your website—I shoot the content to fill it.
+Restaurant site? Code the menu AND photograph the dishes.
+Artist portfolio? Build the platform AND film the music video.
 
-When I'm not coding or behind the camera:
-Turning game mechanics into UI/UX insights (yes, that counts as research)
-Rewatching iconic movie scenes for cinematography notes
-Playing pickup basketball (great for team dynamics... and cardio)
-Blasting music while debugging (volume = productivity, fight me)
+That's the Captain Solo advantage: complete digital solutions, one point of contact.
 
-Based in Brampton, serving the GTA. Remote-friendly for web dev, will travel for video. Let's build something unforgettable.`;
+Based in Brampton, serving the GTA. Remote web dev, will travel for video shoots.`;
 
   // Ref for image animation
   const imgRef = useRef(null);

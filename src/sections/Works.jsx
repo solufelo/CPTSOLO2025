@@ -19,9 +19,7 @@ const Works = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
   
   // Header text introducing portfolio
-  const text = `Real projects. Real results. 
-    From Captain Funds fundraising platform to Velare's 3D experiences—
-    full-stack applications that merge technical precision with creative vision.`;
+  const text = `Real projects. Real results. Full-stack applications merging technical precision with creative vision.`;
 
   // Mouse position tracking for floating preview
   const mouse = useRef({ x: 0, y: 0 });

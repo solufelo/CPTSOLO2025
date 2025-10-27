@@ -9,88 +9,88 @@ export const servicesData = [
   {
     title: "Full-Stack Web Development",
     description:
-      "Build fast, scalable web applications with modern tech. From MVP to production—clean code, optimized databases, seamless user experiences. React, Next.js, Node.js, and everything needed to bring your digital vision to life.",
+      "Fast, scalable web apps with modern tech. MVP to production—clean code, optimized databases, seamless UX.",
     items: [
       {
         title: "Frontend Development",
         description: "(React, Next.js, TypeScript, Tailwind CSS)",
-        hoverDescription: "This portfolio you're viewing right now? Built from scratch with React + Vite, GSAP animations, and Tailwind CSS. Responsive, fast, and optimized for conversions.",
+        hoverDescription: "This portfolio? Built with React + Vite, GSAP animations, Tailwind CSS. Responsive, fast, conversion-optimized.",
       },
       {
         title: "Backend Engineering",
         description: "(Node.js, Express, REST APIs, Authentication)",
-        hoverDescription: "I integrate secure backend systems, user authentication, payment processing (Stripe), and RESTful APIs to power your web apps—like the contact form system on this site.",
+        hoverDescription: "Secure backends, user auth, payment processing (Stripe), RESTful APIs. Like the contact system on this site.",
       },
       {
         title: "Database Design",
         description: "(MongoDB, PostgreSQL, Firebase)",
-        hoverDescription: "I architect scalable database structures for user accounts, e-commerce inventory, booking systems, and content management—ensuring your data is organized and secure.",
+        hoverDescription: "Scalable database structures for user accounts, e-commerce, booking systems, CMS. Organized and secure.",
       },
     ],
   },
   {
     title: "Video Production & Content",
     description:
-      "Content that converts attention into customers. 6 years experience, 1,400+ projects, 4.8★ rating. Social media reels, promotional videos, event coverage, music videos—shot, edited, and optimized for results.",
+      "Content that converts. 6 years, 1,400+ projects, 4.8★ rating. Social reels, promos, events, music videos—shot, edited, optimized.",
     items: [
       {
         title: "Social Media Content",
         description: "(Reels, TikToks, YouTube Shorts, Algorithm-optimized)",
-        hoverDescription: "Shot and edited 1,400+ social media videos with Sony A6100, gimbal work, and color grading. I understand platform algorithms—vertical format, hook in 3 seconds, trending audio.",
+        hoverDescription: "1,400+ social videos. Sony A6100, gimbal, color grading. Algorithm-optimized: vertical format, 3-sec hooks, trending audio.",
       },
       {
         title: "Commercial & Promo",
         description: "(Brand videos, Product demos, Service showcases)",
-        hoverDescription: "Created promo content for barbershops, restaurants, and service businesses. I capture your brand story in 30-60 seconds that actually drives bookings and sales.",
+        hoverDescription: "Promo content for barbershops, restaurants, service businesses. 30-60 second brand stories that drive bookings.",
       },
       {
         title: "Event Coverage",
         description: "(Corporate events, Launches, Performances, Real-time social)",
-        hoverDescription: "Covered 100+ events including university basketball, club nights, and performances. Multi-camera setups, real-time social media delivery, and same-day highlights.",
+        hoverDescription: "100+ events: basketball, club nights, performances. Multi-cam setups, real-time delivery, same-day highlights.",
       },
     ],
   },
   {
     title: "Artist & Music Content",
     description:
-      "Professional visuals for independent artists. Music videos, performance capture, mic freestyle promos, press kits. Industry-quality production that fits independent budgets. Proven results: 2-4x stream increase, booking credibility.",
+      "Professional visuals for independent artists. Music videos, performance capture, press kits. Industry-quality for indie budgets.",
     items: [
       {
         title: "Music Video Production",
         description: "(Single & multi-location, Cinematic, Color grading)",
-        hoverDescription: "Directed and shot music videos for independent artists—cinematic color grading, gimbal work, multi-location shoots. Run & gun or full production—I adapt to your budget and vision.",
+        hoverDescription: "Music videos for indie artists. Cinematic color grading, gimbal, multi-location. Run & gun or full production.",
       },
       {
         title: "Performance Content",
         description: "(Live capture, Mic promos, Behind-the-scenes)",
-        hoverDescription: "Quick-turnaround freestyle captures and performance videos that artists use for social media promo. Professional audio sync, energy editing, delivered within 48 hours.",
+        hoverDescription: "Quick freestyle captures and performance videos. Pro audio sync, energy editing, 48-hour delivery.",
       },
       {
         title: "Artist Branding",
         description: "(Press kits, Social content, Portfolio shoots)",
-        hoverDescription: "I help artists build their visual brand—press kits for booking, portfolio content for pitches, and social media content that grows their following and streams.",
+        hoverDescription: "Visual branding: press kits for booking, portfolio content for pitches, social media that grows streams.",
       },
     ],
   },
   {
     title: "Integrated Digital Solutions",
     description:
-      "The sweet spot—where code meets creativity. Build the website AND create the content to fill it. Cohesive brand experience from platform to posts. One point of contact for complete digital presence.",
+      "Code meets creativity. Website + content to fill it. One point of contact for complete digital presence.",
     items: [
       {
         title: "Website + Content Packages",
         description: "(Restaurant sites + menu photos, Artist portfolios + press kits)",
-        hoverDescription: "I build the website AND shoot the content to fill it—restaurant sites with professional menu photography, artist portfolios with press kit videos. One cohesive brand experience.",
+        hoverDescription: "Website + content together. Restaurant sites with menu photos, artist portfolios with press videos. One brand experience.",
       },
       {
         title: "E-commerce + Media",
         description: "(Online store + product photography + social content)",
-        hoverDescription: "Complete e-commerce solution: I develop the online store, photograph your products, and create social media content to drive traffic. From code to camera—all handled.",
+        hoverDescription: "Complete e-commerce: store development, product photography, social content. Code to camera—all handled.",
       },
       {
         title: "Content Strategy",
         description: "(Platform optimization + posting guides + analytics)",
-        hoverDescription: "I analyze what's working (and what's not), create posting schedules, optimize for each platform's algorithm, and track performance so you know your ROI.",
+        hoverDescription: "Analyze what works, create posting schedules, optimize for algorithms, track ROI.",
       },
     ],
   },
@@ -105,7 +105,7 @@ export const projects = [
     id: 1,
     name: "Captain Funds - Fundraising Platform",
     description:
-      "Full-stack MERN application for campaign creation and donation management. Role-based access control, user authentication, real-time analytics, and comprehensive reporting.",
+      "Full-stack MERN fundraising platform. Campaign creation, donation management, role-based access, real-time analytics.",
     href: "https://github.com/solufelo/CAPTAIN-FUNDS-MERN",
     image: "/images/captainfunds1.png",
     bgImage: "/images/captainfunds1.png",
@@ -121,9 +121,9 @@ export const projects = [
   },
   {
     id: 2,
-    name: "Velare - 3D Creative Studio",
+    name: "Velare - Motorbike Landing Page",
     description:
-      "Immersive 3D portfolio website with Three.js and React Three Fiber. Interactive WebGL experiences, smooth scroll animations, and responsive 3D environments.",
+      "Immersive 3D motorbike landing page with Three.js. Interactive WebGL, smooth scroll, responsive 3D model showcase.",
     href: "https://github.com/solufelo/velare-site",
     image: "/assets/projects/velare.jpg",
     bgImage: "/assets/projects/velare.jpg",
@@ -139,9 +139,9 @@ export const projects = [
   },
   {
     id: 3,
-    name: "Suburbia - Modern Portfolio",
+    name: "Suburbia - Skate Shop",
     description:
-      "Next.js portfolio with Prismic CMS integration. Dynamic content management, SEO optimization, and modern design system with Tailwind CSS.",
+      "E-commerce skate shop with Prismic CMS. Dynamic product management, SEO optimization, modern design with Tailwind CSS.",
     href: "https://github.com/solufelo/suburbia-solo",
     image: "/assets/projects/suburbia.jpg",
     bgImage: "/assets/projects/suburbia.jpg",
@@ -152,13 +152,13 @@ export const projects = [
       { id: 4, name: "Tailwind CSS" },
     ],
     category: "development",
-    results: "Production-ready CMS-powered portfolio",
+    results: "Production-ready e-commerce site",
   },
   {
     id: 4,
     name: "CinemaVerse - Movie Tracker",
     description:
-      "Full-stack movie and TV show tracking platform with AI recommendations. Built with Wasp framework, TMDB API integration, and OpenRouter AI for personalized suggestions.",
+      "Full-stack movie tracker with AI recommendations. Wasp framework, TMDB API, OpenRouter AI for personalized suggestions.",
     href: "https://github.com/solufelo/CinemaVerse",
     image: "/assets/projects/cinemaverse.jpg",
     bgImage: "/assets/projects/cinemaverse.jpg",
@@ -177,7 +177,7 @@ export const projects = [
     id: 5,
     name: "Barbershop Promotional Content",
     description:
-      "High-energy social media promo for Haircut House Call. Cinematic shots, smooth transitions, music sync. Direct engagement with service-based business content.",
+      "High-energy social promo for Haircut House Call. Cinematic shots, smooth transitions, music sync.",
     href: "https://www.instagram.com/reel/CsCKDtUJGo2/",
     image: "/assets/projects/barbershop-promo.jpg",
     bgImage: "/assets/projects/barbershop-promo.jpg",
@@ -194,7 +194,7 @@ export const projects = [
     id: 6,
     name: "Club Event Coverage",
     description:
-      "Dynamic event videography capturing energy, atmosphere, and key moments. Fast-paced editing, color grading, beat-synced cuts for maximum social media impact.",
+      "Dynamic event videography capturing energy and key moments. Fast-paced editing, color grading, beat-synced cuts.",
     href: "https://www.instagram.com/reel/CqQzDikJRQj/",
     image: "/assets/projects/club-event.jpg",
     bgImage: "/assets/projects/club-event.jpg",
@@ -211,7 +211,7 @@ export const projects = [
     id: 7,
     name: "Women's University Basketball",
     description:
-      "Athletic videography showcasing game highlights, player performance, and team energy. Capturing pivotal moments with professional sports coverage quality.",
+      "Athletic videography showcasing highlights, player performance, team energy. Professional sports coverage quality.",
     href: "https://www.instagram.com/reel/Coi6VfvuGDq/",
     image: "/assets/projects/womens-basketball.jpg",
     bgImage: "/assets/projects/womens-basketball.jpg",
@@ -228,7 +228,7 @@ export const projects = [
     id: 8,
     name: "Men's Basketball Game Recap",
     description:
-      "High-energy game recap with quick cuts, dramatic angles, and music sync. Professional athletic content for university sports teams and recruitment.",
+      "High-energy game recap with quick cuts, dramatic angles, music sync. Professional athletic content for teams and recruitment.",
     href: "https://www.instagram.com/reel/C0VtaMVM0iF/",
     image: "/assets/projects/mens-basketball.jpg",
     bgImage: "/assets/projects/mens-basketball.jpg",
@@ -374,7 +374,7 @@ export const pricingPackages = [
     id: 1,
     name: "Landing Page",
     category: "Web Development",
-    description: "Perfect for businesses that need a professional online presence fast",
+    description: "Professional online presence, fast",
     features: [
       "Single page responsive site",
       "Mobile-optimized design",
@@ -393,7 +393,7 @@ export const pricingPackages = [
     id: 2,
     name: "Business Website",
     category: "Web Development",
-    description: "Multi-page site with custom design for established businesses",
+    description: "Multi-page custom site for established businesses",
     features: [
       "5-8 page custom site",
       "Advanced animations",
@@ -412,7 +412,7 @@ export const pricingPackages = [
     id: 3,
     name: "Video Content Package",
     category: "Video Production",
-    description: "Professional video content for social media and marketing",
+    description: "Professional video for social media & marketing",
     features: [
       "2-3 edited videos (30-60s each)",
       "Location filming session",
@@ -431,7 +431,7 @@ export const pricingPackages = [
     id: 4,
     name: "Website + Video Combo",
     category: "Integrated Solution",
-    description: "The complete package - website AND professional content to fill it",
+    description: "Complete package—website + content to fill it",
     features: [
       "Multi-page responsive website",
       "3-5 professional videos",
@@ -442,7 +442,7 @@ export const pricingPackages = [
     ],
     priceRange: "$1,500 - $2,500",
     priceNote: "Starting at",
-    ideal: "Service businesses ready to scale digital presence",
+    ideal: "Service businesses ready to scale",
     turnaround: "3-4 weeks",
     color: "gold",
     badge: "Most Popular",
@@ -451,7 +451,7 @@ export const pricingPackages = [
     id: 5,
     name: "Full Web App",
     category: "Web Development",
-    description: "Custom web application with backend, database, and user features",
+    description: "Custom web app with backend & database",
     features: [
       "Custom frontend & backend",
       "User authentication",
@@ -470,7 +470,7 @@ export const pricingPackages = [
     id: 6,
     name: "Music Video Production",
     category: "Video Production",
-    description: "Professional music video for independent artists",
+    description: "Professional music video for indie artists",
     features: [
       "Pre-production planning",
       "Multi-location filming",
@@ -489,7 +489,7 @@ export const pricingPackages = [
     id: 7,
     name: "Run & Gun Music Video",
     category: "Video Production",
-    description: "Quick, single-location music video for artists on a budget",
+    description: "Quick single-location music video",
     features: [
       "Single location shoot (2-3 hours)",
       "Run & gun style filming",
@@ -500,7 +500,7 @@ export const pricingPackages = [
     ],
     priceRange: "$300",
     priceNote: "Fixed price",
-    ideal: "Independent artists, content creators, quick releases",
+    ideal: "Indie artists, creators, quick releases",
     turnaround: "3-5 days",
     color: "blue",
     badge: "Budget Friendly",
@@ -509,7 +509,7 @@ export const pricingPackages = [
     id: 8,
     name: "Freestyle Mic Promo",
     category: "Video Production",
-    description: "Quick mic freestyle capture for social media promo",
+    description: "Quick freestyle capture for social promo",
     features: [
       "30-90 second freestyle capture",
       "Professional audio recording",
@@ -520,7 +520,7 @@ export const pricingPackages = [
     ],
     priceRange: "$150",
     priceNote: "Fixed price",
-    ideal: "Rappers, artists, social media content",
+    ideal: "Rappers, artists, social content",
     turnaround: "1-2 days",
     color: "blue",
     badge: "Quick Turnaround",

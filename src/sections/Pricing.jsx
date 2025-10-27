@@ -22,8 +22,7 @@ const Pricing = () => {
   const [showAllPackages, setShowAllPackages] = useState(false);
   
   // Header text - more conversion-focused
-  const text = `Transparent, value-driven pricing. No hidden fees. No surprises. 
-    First 3 clients get priority booking + 15% portfolio discount.`;
+  const text = `Transparent pricing. No hidden fees. First 3 clients get priority booking + 15% discount.`;
 
   // Filter packages based on selection
   const featuredPackages = [
@@ -375,11 +374,10 @@ const Pricing = () => {
                 Custom Solutions
               </div>
               <h3 className="text-3xl font-medium text-white mb-4">
-                Need something completely custom?
+                Need something custom?
               </h3>
               <p className="text-white/70 mb-6 max-w-2xl mx-auto text-lg">
-                Monthly retainers, enterprise solutions, ongoing maintenance, content creation packages, 
-                or something unique to your business. Let's build a custom package that fits your exact needs.
+                Monthly retainers, enterprise solutions, ongoing maintenance, or something unique. Let's build a custom package for your exact needs.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
                 <a
