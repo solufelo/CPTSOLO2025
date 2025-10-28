@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
 import { servicesData } from "../constants";
 import { useMediaQuery } from "react-responsive";
@@ -20,12 +20,32 @@ const Services = () => {
   
   // Refs for GSAP scroll animations
   const serviceRefs = useRef([]);
+  const previewRef = useRef(null);
+  
+  // Track which service item is currently being hovered
+  const [currentHoveredItem, setCurrentHoveredItem] = useState(null);
   
   // Desktop breakpoint for sticky scroll effect
   const isDesktop = useMediaQuery({ minWidth: "48rem" }); // 768px
 
-  // GSAP scroll animations for service cards
+  // Mouse position tracking for floating preview
+  const mouse = useRef({ x: 0, y: 0 });
+  const moveX = useRef(null);
+  const moveY = useRef(null);
+
+  // GSAP scroll animations for service cards and preview setup
   useGSAP(() => {
+    // Setup quick mouse tracking for preview
+    moveX.current = gsap.quickTo(previewRef.current, "x", {
+      duration: 1.2,
+      ease: "power3.out",
+    });
+    moveY.current = gsap.quickTo(previewRef.current, "y", {
+      duration: 1.5,
+      ease: "power3.out",
+    });
+
+    // Animate service cards on scroll
     serviceRefs.current.forEach((el) => {
       if (!el) return;
 
@@ -41,6 +61,41 @@ const Services = () => {
     });
   }, []);
 
+  // Handle mouse enter on service item
+  const handleMouseEnter = (serviceIndex, itemIndex) => {
+    if (window.innerWidth < 768) return;
+    setCurrentHoveredItem({ serviceIndex, itemIndex });
+
+    gsap.to(previewRef.current, {
+      opacity: 0.95,
+      scale: 1,
+      duration: 0.4,
+      ease: "power2.out",
+    });
+  };
+
+  // Handle mouse leave on service item
+  const handleMouseLeave = () => {
+    if (window.innerWidth < 768) return;
+    setCurrentHoveredItem(null);
+
+    gsap.to(previewRef.current, {
+      opacity: 0,
+      scale: 0.95,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  };
+
+  // Handle mouse move to update preview position
+  const handleMouseMove = (e) => {
+    if (window.innerWidth < 768) return;
+    mouse.current.x = e.clientX + 24;
+    mouse.current.y = e.clientY + 24;
+    moveX.current(mouse.current.x);
+    moveY.current(mouse.current.y);
+  };
+
   return (
     <section id="services" className="min-h-screen bg-black rounded-t-4xl">
       {/* Animated header section */}
@@ -53,6 +108,7 @@ const Services = () => {
       />
 
       {/* Service cards with sticky scroll on desktop */}
+      <div onMouseMove={handleMouseMove}>
       {servicesData.map((service, index) => {
         const isLastCard = index === servicesData.length - 1;
         
@@ -85,7 +141,12 @@ const Services = () => {
               {/* Service items list with numbered dividers and hover descriptions */}
               <div className="flex flex-col gap-2 text-2xl sm:gap-4 lg:text-3xl text-white/80">
                 {service.items.map((item, itemIndex) => (
-                  <div key={`item-${index}-${itemIndex}`} className="group/item relative">
+                  <div 
+                    key={`item-${index}-${itemIndex}`} 
+                    className="group/item relative"
+                    onMouseEnter={() => handleMouseEnter(index, itemIndex)}
+                    onMouseLeave={handleMouseLeave}
+                  >
                     <h3 className="flex cursor-help transition-colors group-hover/item:text-gold">
                       <span className="mr-12 text-lg text-white/30 group-hover/item:text-gold/50">
                         0{itemIndex + 1}
@@ -117,6 +178,28 @@ const Services = () => {
         </div>
         );
       })}
+      </div>
+
+      {/* Desktop Floating preview - video */}
+      <div
+        ref={previewRef}
+        className="fixed -top-2/6 left-0 z-50 overflow-hidden border-4 border-gold pointer-events-none w-[480px] md:block hidden opacity-0 rounded-lg shadow-2xl"
+      >
+        {currentHoveredItem !== null && (
+          <>
+            {servicesData[currentHoveredItem.serviceIndex]?.items[currentHoveredItem.itemIndex]?.video && (
+              <video
+                src={servicesData[currentHoveredItem.serviceIndex].items[currentHoveredItem.itemIndex].video}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="object-cover w-full h-full bg-black"
+              />
+            )}
+          </>
+        )}
+      </div>
     </section>
   );
 };
