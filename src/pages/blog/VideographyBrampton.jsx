@@ -11,41 +11,200 @@ const VideographyBrampton = () => {
   return (
     <>
       <Helmet>
+        {/* Primary Meta Tags */}
         <title>Professional Videographer in Brampton, ON | CaptainSolo Media</title>
-        <meta name="description" content="Looking for a videographer in Brampton? CaptainSolo offers professional video production for events, corporate, music videos, and more. Serving Brampton, Mississauga, and GTA." />
-        <meta name="keywords" content="videographer brampton, video production brampton, brampton videography, videographer gta, video services brampton ontario, brampton video production company" />
+        <meta name="title" content="Professional Videographer in Brampton, ON | CaptainSolo Media" />
+        <meta name="description" content="Looking for a videographer in Brampton? CaptainSolo offers professional video production for events, corporate, music videos, and more. Serving Brampton, Mississauga, and GTA. Get a free quote today!" />
+        <meta name="keywords" content="videographer brampton, video production brampton, brampton videography, videographer gta, video services brampton ontario, brampton video production company, event videographer brampton, corporate video brampton, music video brampton, wedding videographer brampton, videographer near me, brampton film production, drone videography brampton, professional videographer gta" />
+        <meta name="author" content="Solomon Olufelo - CaptainSolo" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://captainsolo.ca/blog/videography-brampton" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Professional Videographer in Brampton, ON | CaptainSolo" />
-        <meta property="og:description" content="Professional video production services in Brampton & GTA. Events, corporate videos, music videos, and more." />
-        <meta property="og:url" content="https://captainsolo.ca/blog/videography-brampton" />
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="CaptainSolo" />
+        <meta property="og:title" content="Professional Videographer in Brampton, ON | Events, Corporate & Music Videos" />
+        <meta property="og:description" content="Professional video production services in Brampton & GTA. Events, corporate videos, music videos, and more. $200-$3500. Free consultation." />
+        <meta property="og:url" content="https://captainsolo.ca/blog/videography-brampton" />
+        <meta property="og:image" content="https://captainsolo.ca/og-videography.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_CA" />
+        <meta property="article:published_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:modified_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:author" content="Solomon Olufelo" />
+        <meta property="article:section" content="Local Business" />
+        <meta property="article:tag" content="Videography" />
+        <meta property="article:tag" content="Brampton" />
+        <meta property="article:tag" content="Video Production" />
         
-        {/* Local Business Schema */}
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Professional Videographer in Brampton, ON | CaptainSolo Media" />
+        <meta name="twitter:description" content="Professional video production in Brampton & GTA. Events, corporate, music videos. Get a free quote!" />
+        <meta name="twitter:image" content="https://captainsolo.ca/og-videography.jpg" />
+        <meta name="twitter:creator" content="@caaptainsolo" />
+        
+        {/* Additional SEO */}
+        <meta name="geo.region" content="CA-ON" />
+        <meta name="geo.placename" content="Brampton" />
+        <meta name="geo.position" content="43.7315;-79.7624" />
+        <meta name="ICBM" content="43.7315, -79.7624" />
+        
+        {/* Comprehensive Schema Markup */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "CaptainSolo Media - Videography Brampton",
-            "image": "https://captainsolo.ca/og-image.jpg",
-            "description": "Professional videography and video production services in Brampton, Ontario",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Brampton",
-              "addressRegion": "ON",
-              "addressCountry": "CA"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "43.7315",
-              "longitude": "-79.7624"
-            },
-            "url": "https://captainsolo.ca",
-            "telephone": "+1-289-XXX-XXXX",
-            "priceRange": "$$",
-            "areaServed": ["Brampton", "Mississauga", "Toronto", "GTA", "Ontario"],
-            "serviceType": ["Videography", "Video Production", "Event Videography", "Corporate Videos", "Music Videos"]
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": "https://captainsolo.ca/blog/videography-brampton#article",
+                "headline": "Professional Videographer in Brampton, ON: Your Complete Guide",
+                "description": "Complete guide to finding and hiring professional videography services in Brampton, Ontario. Pricing, services, and what to expect.",
+                "image": "https://captainsolo.ca/og-videography.jpg",
+                "author": {
+                  "@type": "Person",
+                  "@id": "https://captainsolo.ca/#person",
+                  "name": "Solomon Olufelo",
+                  "url": "https://captainsolo.ca",
+                  "jobTitle": "Videographer & Web Developer",
+                  "sameAs": [
+                    "https://instagram.com/caaptainsolo",
+                    "https://linkedin.com/in/solomon-olufelo",
+                    "https://github.com/solufelo"
+                  ]
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "@id": "https://captainsolo.ca/#organization",
+                  "name": "CaptainSolo Media",
+                  "url": "https://captainsolo.ca",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://captainsolo.ca/logo.png"
+                  }
+                },
+                "datePublished": "2025-01-07",
+                "dateModified": "2025-01-07",
+                "mainEntityOfPage": "https://captainsolo.ca/blog/videography-brampton",
+                "articleSection": "Local Business",
+                "keywords": "videographer brampton, video production brampton, brampton videography, event videographer, corporate video",
+                "inLanguage": "en-CA"
+              },
+              {
+                "@type": "LocalBusiness",
+                "@id": "https://captainsolo.ca/#localbusiness",
+                "name": "CaptainSolo Media - Videography Brampton",
+                "image": "https://captainsolo.ca/og-image.jpg",
+                "description": "Professional videography and video production services in Brampton, Ontario. Events, corporate videos, music videos, and promotional content.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Brampton",
+                  "addressRegion": "ON",
+                  "postalCode": "L6T",
+                  "addressCountry": "CA"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "43.7315",
+                  "longitude": "-79.7624"
+                },
+                "url": "https://captainsolo.ca",
+                "email": "work@captainsolo.ca",
+                "telephone": "+1-289-XXX-XXXX",
+                "priceRange": "$$",
+                "paymentAccepted": "Cash, Credit Card, E-Transfer, PayPal",
+                "currenciesAccepted": "CAD",
+                "openingHours": "Mo-Su 09:00-21:00",
+                "areaServed": [
+                  {
+                    "@type": "City",
+                    "name": "Brampton",
+                    "containedInPlace": {
+                      "@type": "State",
+                      "name": "Ontario"
+                    }
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Mississauga"
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Toronto"
+                  }
+                ],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Videography Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Event Videography",
+                        "description": "Professional coverage of weddings, corporate events, birthday parties, and cultural ceremonies"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Music Video Production",
+                        "description": "Hip-hop, R&B, Punjabi, and Bollywood music video production"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Corporate Video",
+                        "description": "Company culture videos, training videos, and promotional content"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Commercial Video Production",
+                        "description": "Business promotional videos, product demos, and real estate tours"
+                      }
+                    }
+                  ]
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "reviewCount": "50",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://captainsolo.ca/blog/videography-brampton#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://captainsolo.ca"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://captainsolo.ca/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Videographer Brampton",
+                    "item": "https://captainsolo.ca/blog/videography-brampton"
+                  }
+                ]
+              }
+            ]
           })}
         </script>
       </Helmet>

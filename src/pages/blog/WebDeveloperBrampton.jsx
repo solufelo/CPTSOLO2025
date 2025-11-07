@@ -11,41 +11,267 @@ const WebDeveloperBrampton = () => {
   return (
     <>
       <Helmet>
+        {/* Primary Meta Tags */}
         <title>Web Developer in Brampton | Custom Websites & Web Design | CaptainSolo</title>
-        <meta name="description" content="Professional web developer in Brampton, ON. Custom website design, development, and SEO services for local businesses. Serving Brampton, Mississauga, and GTA." />
-        <meta name="keywords" content="web developer brampton, website design brampton, brampton web development, web designer brampton ontario, brampton website developer, web design gta" />
+        <meta name="title" content="Web Developer in Brampton, ON | Custom Website Design & Development" />
+        <meta name="description" content="Professional web developer in Brampton, ON. Custom website design, development, and SEO services for local businesses. $500-$15k. Free consultation. Serving Brampton, Mississauga, and GTA." />
+        <meta name="keywords" content="web developer brampton, website design brampton, brampton web development, web designer brampton ontario, brampton website developer, web design gta, custom website brampton, ecommerce brampton, small business website brampton, react developer brampton, full stack developer brampton, freelance web developer brampton, affordable web design brampton, responsive web design gta" />
+        <meta name="author" content="Solomon Olufelo - CaptainSolo" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://captainsolo.ca/blog/web-developer-brampton" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Web Developer in Brampton | CaptainSolo" />
-        <meta property="og:description" content="Professional web development and design services in Brampton & GTA. Modern, fast, mobile-friendly websites." />
-        <meta property="og:url" content="https://captainsolo.ca/blog/web-developer-brampton" />
+        {/* Open Graph / Facebook */}
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="CaptainSolo" />
+        <meta property="og:title" content="Web Developer in Brampton | Modern, Fast, Mobile-Friendly Websites" />
+        <meta property="og:description" content="Professional web development in Brampton & GTA. Custom websites, e-commerce, web apps. React, Next.js, modern tech. $500-$15k. Free consultation." />
+        <meta property="og:url" content="https://captainsolo.ca/blog/web-developer-brampton" />
+        <meta property="og:image" content="https://captainsolo.ca/og-webdev.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_CA" />
+        <meta property="article:published_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:modified_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:author" content="Solomon Olufelo" />
+        <meta property="article:section" content="Local Business" />
+        <meta property="article:tag" content="Web Development" />
+        <meta property="article:tag" content="Brampton" />
+        <meta property="article:tag" content="Website Design" />
         
-        {/* Local Business Schema */}
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Web Developer in Brampton | Custom Websites & Web Design" />
+        <meta name="twitter:description" content="Professional web development in Brampton. Custom sites, e-commerce, modern tech. Free consultation!" />
+        <meta name="twitter:image" content="https://captainsolo.ca/og-webdev.jpg" />
+        <meta name="twitter:creator" content="@caaptainsolo" />
+        
+        {/* Additional SEO */}
+        <meta name="geo.region" content="CA-ON" />
+        <meta name="geo.placename" content="Brampton" />
+        <meta name="geo.position" content="43.7315;-79.7624" />
+        <meta name="ICBM" content="43.7315, -79.7624" />
+        
+        {/* Comprehensive Schema Markup */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            "name": "CaptainSolo - Web Developer Brampton",
-            "image": "https://captainsolo.ca/og-image.jpg",
-            "description": "Professional web development and design services in Brampton, Ontario",
-            "address": {
-              "@type": "PostalAddress",
-              "addressLocality": "Brampton",
-              "addressRegion": "ON",
-              "addressCountry": "CA"
-            },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": "43.7315",
-              "longitude": "-79.7624"
-            },
-            "url": "https://captainsolo.ca",
-            "email": "work@captainsolo.ca",
-            "priceRange": "$$",
-            "areaServed": ["Brampton", "Mississauga", "Toronto", "GTA", "Ontario"],
-            "serviceType": ["Web Development", "Website Design", "SEO", "Web Applications", "E-commerce"]
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": "https://captainsolo.ca/blog/web-developer-brampton#article",
+                "headline": "Looking for a Web Developer in Brampton? Here's What You Need to Know",
+                "description": "Complete guide to hiring a web developer in Brampton. Services, pricing, tech stack, questions to ask, and the development process.",
+                "image": "https://captainsolo.ca/og-webdev.jpg",
+                "author": {
+                  "@type": "Person",
+                  "@id": "https://captainsolo.ca/#person",
+                  "name": "Solomon Olufelo",
+                  "url": "https://captainsolo.ca",
+                  "jobTitle": "Full Stack Web Developer & Videographer",
+                  "sameAs": [
+                    "https://instagram.com/caaptainsolo",
+                    "https://linkedin.com/in/solomon-olufelo",
+                    "https://github.com/solufelo"
+                  ],
+                  "knowsAbout": ["Web Development", "React", "Next.js", "Node.js", "JavaScript", "Python", "SEO", "UI/UX Design"]
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "@id": "https://captainsolo.ca/#organization",
+                  "name": "CaptainSolo",
+                  "url": "https://captainsolo.ca",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://captainsolo.ca/logo.png"
+                  }
+                },
+                "datePublished": "2025-01-07",
+                "dateModified": "2025-01-07",
+                "mainEntityOfPage": "https://captainsolo.ca/blog/web-developer-brampton",
+                "articleSection": "Local Business",
+                "keywords": "web developer brampton, website design brampton, web development cost, hiring web developer, brampton tech",
+                "inLanguage": "en-CA",
+                "wordCount": 4000
+              },
+              {
+                "@type": "LocalBusiness",
+                "@id": "https://captainsolo.ca/#webdev",
+                "name": "CaptainSolo - Web Developer Brampton",
+                "image": "https://captainsolo.ca/og-image.jpg",
+                "description": "Professional web development and design services in Brampton, Ontario. Custom websites, e-commerce, web applications, and SEO optimization.",
+                "address": {
+                  "@type": "PostalAddress",
+                  "addressLocality": "Brampton",
+                  "addressRegion": "ON",
+                  "postalCode": "L6T",
+                  "addressCountry": "CA"
+                },
+                "geo": {
+                  "@type": "GeoCoordinates",
+                  "latitude": "43.7315",
+                  "longitude": "-79.7624"
+                },
+                "url": "https://captainsolo.ca",
+                "email": "work@captainsolo.ca",
+                "telephone": "+1-289-XXX-XXXX",
+                "priceRange": "$$-$$$",
+                "paymentAccepted": "Cash, Credit Card, E-Transfer, PayPal",
+                "currenciesAccepted": "CAD, USD",
+                "openingHours": "Mo-Su 09:00-21:00",
+                "areaServed": [
+                  {
+                    "@type": "City",
+                    "name": "Brampton",
+                    "containedInPlace": {
+                      "@type": "State",
+                      "name": "Ontario"
+                    }
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Mississauga"
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Toronto"
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Vaughan"
+                  },
+                  {
+                    "@type": "City",
+                    "name": "Caledon"
+                  }
+                ],
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Web Development Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Business Website Development",
+                        "description": "Professional websites for local businesses, restaurants, retail stores, and service providers",
+                        "provider": {
+                          "@type": "Person",
+                          "name": "Solomon Olufelo"
+                        }
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "E-Commerce Development",
+                        "description": "Custom Shopify stores and e-commerce platforms with payment processing and inventory management"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Web Application Development",
+                        "description": "Custom web apps, booking systems, dashboards, and SaaS products"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "Website Redesign",
+                        "description": "Modernization and optimization of existing websites"
+                      }
+                    },
+                    {
+                      "@type": "Offer",
+                      "itemOffered": {
+                        "@type": "Service",
+                        "name": "SEO Optimization",
+                        "description": "Search engine optimization to improve Google rankings"
+                      }
+                    }
+                  ]
+                },
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "5.0",
+                  "reviewCount": "30",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://captainsolo.ca/blog/web-developer-brampton#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://captainsolo.ca"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://captainsolo.ca/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Web Developer Brampton",
+                    "item": "https://captainsolo.ca/blog/web-developer-brampton"
+                  }
+                ]
+              },
+              {
+                "@type": "ProfessionalService",
+                "@id": "https://captainsolo.ca/#professionalservice",
+                "name": "Web Development Services",
+                "description": "Professional web development and design for Brampton businesses",
+                "provider": {
+                  "@type": "Person",
+                  "name": "Solomon Olufelo"
+                },
+                "areaServed": "Brampton, ON",
+                "hasOfferCatalog": {
+                  "@type": "OfferCatalog",
+                  "name": "Web Services",
+                  "itemListElement": [
+                    {
+                      "@type": "Offer",
+                      "price": "500-1500",
+                      "priceCurrency": "CAD",
+                      "name": "Landing Page",
+                      "description": "Single page website"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "2000-5000",
+                      "priceCurrency": "CAD",
+                      "name": "Small Business Website",
+                      "description": "5-7 page professional website"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "3000-8000",
+                      "priceCurrency": "CAD",
+                      "name": "E-Commerce Store",
+                      "description": "Online store with product catalog"
+                    },
+                    {
+                      "@type": "Offer",
+                      "price": "5000-15000",
+                      "priceCurrency": "CAD",
+                      "name": "Custom Web Application",
+                      "description": "Full-featured web application"
+                    }
+                  ]
+                }
+              }
+            ]
           })}
         </script>
       </Helmet>

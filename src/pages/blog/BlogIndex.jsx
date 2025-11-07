@@ -1,13 +1,16 @@
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Navbar from '../../sections/Navbar';
 import Contact from '../../sections/Contact';
 
 /**
- * Blog Index Page - SEO Hub for All Voice Tag Content
- * Target Keywords: "voice tag blog", "producer tag guides", "voice tag tips"
+ * Blog Index Page - SEO Hub for All Content
+ * Target Keywords: "voice tag blog", "producer tag guides", "web development brampton", "videographer brampton"
  */
 const BlogIndex = () => {
+  const [selectedCategory, setSelectedCategory] = useState('All Articles');
+
   const articles = [
     {
       slug: 'what-is-a-voice-tag',
@@ -59,12 +62,24 @@ const BlogIndex = () => {
     }
   ];
 
+  // Filter articles based on selected category
+  const filteredArticles = selectedCategory === 'All Articles' 
+    ? articles 
+    : articles.filter(article => article.category === selectedCategory);
+
+  // Get category counts
+  const categoryCounts = {
+    'All Articles': articles.length,
+    'Music Production': articles.filter(a => a.category === 'Music Production').length,
+    'Local Business': articles.filter(a => a.category === 'Local Business').length,
+  };
+
   return (
     <>
       <Helmet>
-        <title>Voice Tag Blog: Producer Tag Guides, Tips & Tricks | CaptainSolo</title>
-        <meta name="description" content="Expert guides on voice tags, producer tags, and beat branding. Learn from industry examples, get mixing tips, and level up your production." />
-        <meta name="keywords" content="voice tag blog, producer tag guides, beat branding tips, voice tag tutorials, producer tag examples" />
+        <title>CaptainSolo Blog | Web Dev, Videography & Music Production Tips</title>
+        <meta name="description" content="Expert guides on web development, videography, and music production. Local Brampton/GTA services, voice tag tutorials, and professional tips." />
+        <meta name="keywords" content="web development blog, videography tips, voice tag guides, brampton business, producer tag tutorials, local seo" />
         <link rel="canonical" href="https://captainsolo.ca/blog" />
       </Helmet>
 
@@ -76,35 +91,50 @@ const BlogIndex = () => {
           {/* Hero */}
           <div className="text-center mb-16">
             <h1 className="font-amiamie-round text-5xl sm:text-6xl md:text-7xl font-black text-primary mb-6">
-              Voice Tag <span className="text-gold">Knowledge Hub</span>
+              <span className="text-gold">Knowledge</span> Hub
             </h1>
             <p className="font-amiamie text-lg text-SageGray max-w-2xl mx-auto">
-              Expert guides, producer breakdowns, and actionable tips to help you create the perfect voice tag for your beats.
+              Expert guides on web development, videography, music production, and local business tips for Brampton & GTA.
             </p>
           </div>
 
           {/* Filter Tags */}
           <div className="flex flex-wrap gap-3 justify-center mb-12">
-            <button className="px-4 py-2 bg-gold text-DarkLava font-amiamie-round font-bold rounded hover:bg-gold/90 transition">
-              All Articles
+            <button 
+              onClick={() => setSelectedCategory('All Articles')}
+              className={`px-4 py-2 font-amiamie-round font-bold rounded transition ${
+                selectedCategory === 'All Articles' 
+                  ? 'bg-gold text-DarkLava' 
+                  : 'bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20'
+              }`}
+            >
+              All Articles ({categoryCounts['All Articles']})
             </button>
-            <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Music Production
+            <button 
+              onClick={() => setSelectedCategory('Music Production')}
+              className={`px-4 py-2 font-amiamie-round font-bold rounded transition ${
+                selectedCategory === 'Music Production' 
+                  ? 'bg-gold text-DarkLava' 
+                  : 'bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20'
+              }`}
+            >
+              Music Production ({categoryCounts['Music Production']})
             </button>
-            <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Local Business (Brampton/GTA)
-            </button>
-            <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Web Development
-            </button>
-            <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Videography
+            <button 
+              onClick={() => setSelectedCategory('Local Business')}
+              className={`px-4 py-2 font-amiamie-round font-bold rounded transition ${
+                selectedCategory === 'Local Business' 
+                  ? 'bg-gold text-DarkLava' 
+                  : 'bg-primary/10 border border-primary/30 text-primary hover:bg-primary/20'
+              }`}
+            >
+              Local Business ({categoryCounts['Local Business']})
             </button>
           </div>
 
           {/* Articles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-            {articles.map((article, index) => (
+            {filteredArticles.map((article, index) => (
               <Link 
                 key={index}
                 to={`/blog/${article.slug}`}
