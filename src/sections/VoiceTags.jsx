@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import VoiceTagPlayer from '../components/VoiceTagPlayer';
 
 // Data constants - Must be defined before component
 const features = [
@@ -184,6 +185,66 @@ const faqs = [
   },
 ];
 
+// Voice Tag Demo Tracks (curated from uploaded files)
+const voiceTagDemos = [
+  {
+    name: 'Aggressive Trap Style',
+    file: '/assets/voicetags/TAG 1 140BPM.mp3',
+    description: 'High-energy, chesty delivery perfect for trap bangers',
+    style: 'Aggressive',
+    type: 'Wet (FX)'
+  },
+  {
+    name: 'Smooth Metro-Style',
+    file: '/assets/voicetags/TAG 2 140BPM.mp3',
+    description: 'Confident, breathy, laid-back — Metro Boomin vibes',
+    style: 'Smooth',
+    type: 'Wet (FX)'
+  },
+  {
+    name: 'Clean Versatile',
+    file: '/assets/voicetags/TAG 3 140BPM.mp3',
+    description: 'Professional, neutral energy — works with any genre',
+    style: 'Versatile',
+    type: 'Wet (FX)'
+  },
+  {
+    name: 'Female Seductive R&B',
+    file: '/assets/voicetags/ElevenLabs_2025-10-23T20_43_42_Natasha - Whispery ASMR _pvc_sp115_s50_sb16_se95_b_m2.mp3',
+    description: 'Smooth, breathy Natasha voice for soulful vibes',
+    style: 'Seductive',
+    type: 'Female Voice'
+  },
+  {
+    name: 'Dry Stem Example 1',
+    file: '/assets/voicetags/dry audiowave 140BPM.mp3',
+    description: 'Clean vocal stem with no FX — ready for your mix',
+    style: 'Clean/Dry',
+    type: 'Dry Stem'
+  },
+  {
+    name: 'Dry Stem Example 2',
+    file: '/assets/voicetags/dry slv tag 128bpm.mp3',
+    description: 'Another dry stem — perfect for custom processing',
+    style: 'Clean/Dry',
+    type: 'Dry Stem'
+  },
+  {
+    name: 'Playful Pi\'erre Style',
+    file: '/assets/voicetags/TAG 4 140BPM.mp3',
+    description: 'Bouncy, energetic, staccato delivery',
+    style: 'Playful',
+    type: 'Wet (FX)'
+  },
+  {
+    name: 'Professional Radio Drop',
+    file: '/assets/voicetags/TAG 5 140BPM.mp3',
+    description: 'Announcer voice perfect for DJ sets and podcasts',
+    style: 'Radio/DJ',
+    type: 'Wet (FX)'
+  },
+];
+
 /**
  * Voice Tags Landing Page Component
  * SEO-optimized section for professional voice tag services
@@ -258,6 +319,20 @@ const VoiceTags = () => {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* Live Audio Demos Section */}
+        <div className="mb-20">
+          <h2 className="font-amiamie-round text-4xl sm:text-5xl font-black text-gold text-center mb-4">
+            🎧 Listen to Real Demos
+          </h2>
+          <p className="font-amiamie text-lg text-primary/70 text-center max-w-3xl mx-auto mb-12">
+            Hear the quality for yourself. These are real voice tags delivered to clients. Click play to listen!
+          </p>
+
+          <div className="max-w-2xl mx-auto">
+            <VoiceTagPlayer demos={voiceTagDemos} />
+          </div>
         </div>
 
         {/* Voice Styles Section */}
