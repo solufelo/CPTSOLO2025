@@ -91,7 +91,7 @@ const VoiceTags = () => {
           {/* CTA Buttons */}
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://www.fiverr.com/captainsolo"
+              href="https://www.fiverr.com/solufelo/"
               target="_blank"
               rel="noopener noreferrer"
               className="px-8 py-4 bg-gold text-DarkLava font-amiamie-round font-black text-lg rounded hover:bg-gold/90 transition-all hover:scale-105"
@@ -203,7 +203,7 @@ const VoiceTags = () => {
                 </ul>
                 
                 <a
-                  href="https://www.fiverr.com/captainsolo"
+                  href="https://www.fiverr.com/solufelo/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className={`block text-center py-3 rounded font-amiamie-round font-bold transition-all ${
@@ -283,7 +283,7 @@ const VoiceTags = () => {
             Join 500+ producers who trust CaptainSolo for studio-quality voice tags
           </p>
           <a
-            href="https://www.fiverr.com/captainsolo"
+            href="https://www.fiverr.com/solufelo/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-10 py-4 bg-gold text-DarkLava font-amiamie-round font-black text-xl rounded hover:bg-gold/90 transition-all hover:scale-105"

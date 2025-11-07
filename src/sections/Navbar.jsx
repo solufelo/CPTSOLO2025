@@ -4,6 +4,7 @@ import { socials } from '../constants'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { Link } from 'react-scroll'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 function Navbar() {
   const navRef = useRef(null)
@@ -16,7 +17,9 @@ function Navbar() {
   const iconTl = useRef(null)
   const lastScrollY = useRef(0) // Track last scroll position
   const [isOpen, setIsOpen] = useState(false) // State to control the open/close of the navbar
-  const [showButton, setShowButton] = useState(true) // State to show/hide hamburger button on scroll  
+  const [showButton, setShowButton] = useState(true) // State to show/hide hamburger button on scroll
+  const location = useLocation() // Get current route location
+  const isVoiceTagsPage = location.pathname === '/voice-tags' // Check if on voice tags page  
   useGSAP(() => {
     // Set initial state: navbar off-screen to the right
     gsap.set(navRef.current, { xPercent: 100 });
@@ -122,19 +125,57 @@ useEffect(() => {
           <div className='flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl'>
               {["home", "about", "services", "work", "contact"].map((item, index) => (
                   <div key={index} ref={el => linksRef.current[index] = el}>
-                    <Link 
-                      to={item}
-                      spy={true}
-                      smooth='easeInOutCubic'
-                      offset={0}
-                      duration={1000}
-                      onClick={() => setIsOpen(false)}
-                      className='hover:text-gold transition-all duration-300 cursor-pointer'
-                    >
-                      {item}
-                    </Link>
+                    {isVoiceTagsPage ? (
+                      // If on voice tags page, use RouterLink to go back to main page sections
+                      <RouterLink 
+                        to={`/#${item}`}
+                        onClick={() => setIsOpen(false)}
+                        className='hover:text-gold transition-all duration-300 cursor-pointer'
+                      >
+                        {item}
+                      </RouterLink>
+                    ) : (
+                      // If on main page, use smooth scroll
+                      <Link 
+                        to={item}
+                        spy={true}
+                        smooth='easeInOutCubic'
+                        offset={0}
+                        duration={1000}
+                        onClick={() => setIsOpen(false)}
+                        className='hover:text-gold transition-all duration-300 cursor-pointer'
+                      >
+                        {item}
+                      </Link>
+                    )}
                   </div>
               ))}
+              
+              {/* Voice Tags Link */}
+              <div ref={el => linksRef.current[5] = el}>
+                {isVoiceTagsPage ? (
+                  // If already on voice tags page, smooth scroll to top
+                  <a
+                    href="#voice-tags"
+                    onClick={() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                      setIsOpen(false);
+                    }}
+                    className='hover:text-gold transition-all duration-300 cursor-pointer text-gold'
+                  >
+                    voice tags
+                  </a>
+                ) : (
+                  // If on main page, navigate to voice tags page
+                  <RouterLink 
+                    to="/voice-tags"
+                    onClick={() => setIsOpen(false)}
+                    className='hover:text-gold transition-all duration-300 cursor-pointer'
+                  >
+                    voice tags
+                  </RouterLink>
+                )}
+              </div>
           </div>
         </div>
 
