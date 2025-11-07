@@ -1,10 +1,4 @@
-import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
 
 // Data constants - Must be defined before component
 const features = [
@@ -196,61 +190,17 @@ const faqs = [
  * Matches CaptainSolo portfolio theme with Amiamie font and custom colors
  */
 const VoiceTags = () => {
-  const sectionRef = useRef(null);
-  const headingRef = useRef(null);
-  const cardsRef = useRef([]);
-  const testimonialsRef = useRef([]);
-
-  // GSAP animations for scroll-triggered reveals
-  useGSAP(() => {
-    // Heading fade-in animation
-    gsap.from(headingRef.current, {
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      scrollTrigger: {
-        trigger: headingRef.current,
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-
-    // Stagger animation for feature cards
-    gsap.from(cardsRef.current, {
-      opacity: 0,
-      y: 30,
-      stagger: 0.15,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: cardsRef.current[0],
-        start: 'top 85%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-
-    // Testimonials fade-in
-    gsap.from(testimonialsRef.current, {
-      opacity: 0,
-      x: -30,
-      stagger: 0.2,
-      duration: 0.8,
-      scrollTrigger: {
-        trigger: testimonialsRef.current[0],
-        start: 'top 85%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-  }, []);
+  // Disabled animations temporarily to ensure all content is visible
+  // If animations are needed later, they can be re-enabled with proper fixes
 
   return (
     <section
       id="voice-tags"
-      ref={sectionRef}
       className="min-h-screen bg-DarkLava py-20 px-4 sm:px-8"
     >
       <div className="max-w-7xl mx-auto">
         {/* Hero Section */}
-        <div ref={headingRef} className="text-center mb-16">
+        <div className="text-center mb-16">
           <h1 className="font-amiamie-round text-5xl sm:text-6xl md:text-7xl font-black text-primary mb-6">
             Professional Voice Tags & Producer Tags
           </h1>
@@ -297,7 +247,6 @@ const VoiceTags = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              ref={(el) => (cardsRef.current[index] = el)}
               className="bg-primary/5 border border-SageGray/30 rounded-lg p-6 hover:border-gold/50 transition-all duration-300 hover:transform hover:-translate-y-2"
             >
               <div className="text-4xl mb-4">{feature.icon}</div>
@@ -414,7 +363,6 @@ const VoiceTags = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                ref={(el) => (testimonialsRef.current[index] = el)}
                 className="bg-primary/5 border-l-4 border-gold rounded-lg p-6"
               >
                 <div className="text-gold mb-3">★★★★★</div>
