@@ -11,10 +11,183 @@ const SmallBusinessWebsiteBrampton = () => {
   return (
     <>
       <Helmet>
-        <title>Small Business Website Guide for Brampton Entrepreneurs | CaptainSolo</title>
-        <meta name="description" content="Starting a business in Brampton? Learn why you need a website, what it costs, and how to get online fast. Complete guide for Brampton small business owners." />
-        <meta name="keywords" content="small business website brampton, brampton entrepreneur, business website cost, small business web design, brampton startup" />
+        {/* Primary Meta Tags */}
+        <title>Do I Need a Website for My Brampton Small Business? | Complete Guide</title>
+        <meta name="title" content="Do I Need a Website for My Brampton Small Business? ROI, Costs & Examples" />
+        <meta name="description" content="Starting a business in Brampton? Learn why you NEED a website in 2025, what it costs ($500-$10k), real ROI examples, and how to get online fast. Free consultation available." />
+        <meta name="keywords" content="small business website brampton, brampton entrepreneur, business website cost, small business web design, brampton startup, do i need a website, website for small business, brampton small business online, affordable website brampton, website roi brampton" />
+        <meta name="author" content="Solomon Olufelo - CaptainSolo" />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <link rel="canonical" href="https://captainsolo.ca/blog/small-business-website-brampton" />
+        
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="CaptainSolo" />
+        <meta property="og:title" content="Do I Really Need a Website for My Brampton Small Business?" />
+        <meta property="og:description" content="5 reasons why Brampton businesses need websites in 2025. Real costs, ROI examples, and success stories." />
+        <meta property="og:url" content="https://captainsolo.ca/blog/small-business-website-brampton" />
+        <meta property="og:image" content="https://captainsolo.ca/og-smallbiz.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:locale" content="en_CA" />
+        <meta property="article:published_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:modified_time" content="2025-01-07T00:00:00-05:00" />
+        <meta property="article:author" content="Solomon Olufelo" />
+        <meta property="article:section" content="Small Business" />
+        <meta property="article:tag" content="Small Business" />
+        <meta property="article:tag" content="Brampton" />
+        <meta property="article:tag" content="Website" />
+        <meta property="article:tag" content="ROI" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Do I Need a Website for My Brampton Small Business?" />
+        <meta name="twitter:description" content="Why Brampton businesses need websites, real costs, and ROI examples. Free consultation!" />
+        <meta name="twitter:image" content="https://captainsolo.ca/og-smallbiz.jpg" />
+        <meta name="twitter:creator" content="@caaptainsolo" />
+        
+        {/* Additional SEO */}
+        <meta name="geo.region" content="CA-ON" />
+        <meta name="geo.placename" content="Brampton" />
+        <meta name="geo.position" content="43.7315;-79.7624" />
+        <meta name="ICBM" content="43.7315, -79.7624" />
+        
+        {/* Comprehensive Schema Markup */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "Article",
+                "@id": "https://captainsolo.ca/blog/small-business-website-brampton#article",
+                "headline": "Do I Really Need a Website for My Brampton Small Business?",
+                "description": "Complete guide explaining why Brampton small businesses need websites, what to include, real costs, and ROI examples.",
+                "image": "https://captainsolo.ca/og-smallbiz.jpg",
+                "author": {
+                  "@type": "Person",
+                  "@id": "https://captainsolo.ca/#person",
+                  "name": "Solomon Olufelo",
+                  "url": "https://captainsolo.ca",
+                  "jobTitle": "Web Developer & Digital Marketing Consultant"
+                },
+                "publisher": {
+                  "@type": "Organization",
+                  "@id": "https://captainsolo.ca/#organization",
+                  "name": "CaptainSolo",
+                  "url": "https://captainsolo.ca",
+                  "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://captainsolo.ca/logo.png"
+                  }
+                },
+                "datePublished": "2025-01-07",
+                "dateModified": "2025-01-07",
+                "mainEntityOfPage": "https://captainsolo.ca/blog/small-business-website-brampton",
+                "articleSection": "Small Business",
+                "keywords": "small business website, website cost, business online, brampton entrepreneur, website roi",
+                "inLanguage": "en-CA",
+                "wordCount": 2200,
+                "about": {
+                  "@type": "Thing",
+                  "name": "Small Business Websites",
+                  "description": "Websites for small businesses"
+                }
+              },
+              {
+                "@type": "FAQPage",
+                "@id": "https://captainsolo.ca/blog/small-business-website-brampton#faq",
+                "mainEntity": [
+                  {
+                    "@type": "Question",
+                    "name": "Do I really need a website for my small business?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Yes! In 2025, customers search for businesses online before visiting or calling. If you don't have a website, you're invisible. Your competitors with websites show up first on Google and get the customers."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "How much does a website cost for a small business in Brampton?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Costs range from $500-$1,500 for basic sites, $2,000-$5,000 for professional business sites, and $5,000-$10,000+ for e-commerce or custom web applications. The investment typically pays for itself through increased business within 3-6 months."
+                    }
+                  },
+                  {
+                    "@type": "Question",
+                    "name": "What should my small business website include?",
+                    "acceptedAnswer": {
+                      "@type": "Answer",
+                      "text": "Essential pages include: Home (clear headline and call-to-action), About (your story), Services/Products (with prices if possible), Testimonials/Reviews (social proof), and Contact (phone, email, address, hours, map). Optional: Blog, FAQ, Gallery, Online Booking."
+                    }
+                  }
+                ]
+              },
+              {
+                "@type": "HowTo",
+                "@id": "https://captainsolo.ca/blog/small-business-website-brampton#howto",
+                "name": "How to Get Your Small Business Website Online",
+                "description": "Step-by-step guide to getting your Brampton small business online",
+                "step": [
+                  {
+                    "@type": "HowToStep",
+                    "position": 1,
+                    "name": "Decide what you need",
+                    "text": "Determine if you need a basic site, e-commerce, or booking system"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "position": 2,
+                    "name": "Find a web developer",
+                    "text": "Hire a local Brampton web developer for better support and understanding of local market"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "position": 3,
+                    "name": "Get a quote",
+                    "text": "Request quotes from 2-3 developers, compare pricing and portfolios"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "position": 4,
+                    "name": "Build the site",
+                    "text": "Work with developer through design, content, and development phases"
+                  },
+                  {
+                    "@type": "HowToStep",
+                    "position": 5,
+                    "name": "Launch and promote",
+                    "text": "Go live, add to Google Business Profile, and promote on social media"
+                  }
+                ]
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": "https://captainsolo.ca/blog/small-business-website-brampton#breadcrumb",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://captainsolo.ca"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://captainsolo.ca/blog"
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Small Business Website Brampton",
+                    "item": "https://captainsolo.ca/blog/small-business-website-brampton"
+                  }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Navbar />
