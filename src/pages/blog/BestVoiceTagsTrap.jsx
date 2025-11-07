@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Navbar from '../../sections/Navbar';
 import Contact from '../../sections/Contact';
+import LogoHeader from '../../components/LogoHeader';
 
 /**
  * SEO Blog Post: Best Voice Tags for Trap Music
@@ -17,6 +18,7 @@ const BestVoiceTagsTrap = () => {
         <link rel="canonical" href="https://captainsolo.ca/blog/best-voice-tags-trap" />
       </Helmet>
 
+      <LogoHeader />
       <Navbar />
 
       <article className="min-h-screen bg-DarkLava py-20 px-4 sm:px-8">

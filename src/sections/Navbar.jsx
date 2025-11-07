@@ -108,6 +108,32 @@ useEffect(() => {
     }
   }, [tl, isOpen])
 
+  // Click outside to close menu
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Only close if menu is open and click is outside the nav and not on the hamburger button
+      if (
+        isOpen && 
+        navRef.current && 
+        !navRef.current.contains(event.target) &&
+        menuButtonRef.current &&
+        !menuButtonRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    // Add event listener when menu is open
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    // Cleanup
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
+
   // Toggle menu function
   const toggleMenu = () => {
     setIsOpen(!isOpen);

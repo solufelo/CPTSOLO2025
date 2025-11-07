@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Navbar from '../../sections/Navbar';
 import Contact from '../../sections/Contact';
+import LogoHeader from '../../components/LogoHeader';
 
 /**
  * Local SEO Blog: Web Development Services in Brampton
@@ -276,6 +277,7 @@ const WebDeveloperBrampton = () => {
         </script>
       </Helmet>
 
+      <LogoHeader />
       <Navbar />
 
       <article className="min-h-screen bg-DarkLava py-20 px-4 sm:px-8">

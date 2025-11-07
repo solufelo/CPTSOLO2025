@@ -2,6 +2,7 @@ import Navbar from '../sections/Navbar';
 import VoiceTags from '../sections/VoiceTags';
 import Contact from '../sections/Contact';
 import VoiceTagsSEO from '../components/VoiceTagsSEO';
+import LogoHeader from '../components/LogoHeader';
 
 /**
  * Voice Tags Landing Page
@@ -13,6 +14,9 @@ const VoiceTagsPage = () => {
     <>
       {/* SEO Head Management */}
       <VoiceTagsSEO />
+      
+      {/* Logo - Returns to Home */}
+      <LogoHeader />
       
       {/* Navigation */}
       <Navbar />

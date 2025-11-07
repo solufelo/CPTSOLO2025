@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Navbar from '../../sections/Navbar';
 import Contact from '../../sections/Contact';
+import LogoHeader from '../../components/LogoHeader';
 
 /**
  * Blog Index Page - SEO Hub for All Content
@@ -83,6 +84,7 @@ const BlogIndex = () => {
         <link rel="canonical" href="https://captainsolo.ca/blog" />
       </Helmet>
 
+      <LogoHeader />
       <Navbar />
 
       <section className="min-h-screen bg-DarkLava py-20 px-4 sm:px-8">
