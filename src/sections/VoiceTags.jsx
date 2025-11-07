@@ -6,6 +6,190 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Data constants - Must be defined before component
+const features = [
+  {
+    icon: '⚡',
+    title: 'Fast 24-Hour Delivery',
+    description: 'Get your custom voice tag delivered in 24 hours or less. Rush delivery available for urgent projects.',
+  },
+  {
+    icon: '🎤',
+    title: 'Multiple Voice Styles',
+    description: 'Choose from aggressive trap, smooth Metro Boomin-style, clean versatile, or seductive R&B voices (male & female).',
+  },
+  {
+    icon: '🎛️',
+    title: 'Professional Studio Quality',
+    description: 'Recorded with professional equipment, mixed, mastered, and ready to drop into your beats.',
+  },
+  {
+    icon: '🔄',
+    title: 'Unlimited Revisions',
+    description: 'Premium package includes unlimited revisions until you\'re 100% satisfied with your tag.',
+  },
+  {
+    icon: '📁',
+    title: 'Wet + Dry Versions',
+    description: 'Receive both dry stems (clean vocal) for custom mixing and wet versions (fully produced with FX).',
+  },
+  {
+    icon: '✅',
+    title: 'Full Commercial Rights',
+    description: 'Use your voice tag on beats you sell, YouTube (monetized), Spotify, Apple Music, DJ sets — anywhere.',
+  },
+];
+
+const voiceStyles = [
+  {
+    emoji: '🔥',
+    name: 'Aggressive / Trap',
+    description: 'High-energy, chesty, powerful delivery. Perfect for trap bangers, drill beats, and hard-hitting production.',
+    details: [
+      'Best for: Trap, drill, hard-hitting beats',
+      'Energy level: 9-10/10',
+      'Example: "[NAME] made this heat!"',
+    ],
+  },
+  {
+    emoji: '🎵',
+    name: 'Smooth / Metro-Style',
+    description: 'Confident, breathy, laid-back. Ideal for R&B, melodic hip-hop, and smooth production.',
+    details: [
+      'Best for: R&B, melodic hip-hop, chill beats',
+      'Energy level: 6-7/10',
+      'Example: "You know it\'s [NAME]..."',
+    ],
+  },
+  {
+    emoji: '🎤',
+    name: 'Clean / Versatile',
+    description: 'Professional, neutral energy. Works across all genres and beat styles.',
+    details: [
+      'Best for: Any genre, YouTube beats',
+      'Energy level: 7-8/10',
+      'Example: "[NAME] on the beat"',
+    ],
+  },
+  {
+    emoji: '🌹',
+    name: 'Seductive / R&B (Female)',
+    description: 'Smooth, breathy, intimate. Perfect for soulful R&B and late-night vibes.',
+    details: [
+      'Best for: R&B, soul, intimate productions',
+      'Energy level: 5-6/10',
+      'Example: "It\'s Natasha... you know the vibe"',
+    ],
+  },
+  {
+    emoji: '🎮',
+    name: 'Playful / Pi\'erre-Style',
+    description: 'Staccato, bouncy, energetic. Fun and hype, Pi\'erre Bourne-inspired.',
+    details: [
+      'Best for: Playful trap, bouncy beats',
+      'Energy level: 9-10/10',
+      'Example: "[NAME]! Let\'s go!"',
+    ],
+  },
+  {
+    emoji: '📻',
+    name: 'Radio / DJ Drop',
+    description: 'Professional announcer voice. Perfect for DJ sets, podcasts, and radio shows.',
+    details: [
+      'Best for: DJ sets, mixtapes, radio',
+      'Energy level: 7-8/10',
+      'Example: "DJ [NAME] in the mix"',
+    ],
+  },
+];
+
+const pricingPackages = [
+  {
+    name: 'Basic',
+    price: 10,
+    popular: false,
+    features: [
+      '1 Dry Tag (clean vocal stem)',
+      '10-second max length',
+      '1 revision included',
+      '2-day delivery',
+      'WAV + MP3 formats',
+      'Commercial rights included',
+    ],
+  },
+  {
+    name: 'Standard',
+    price: 20,
+    popular: true,
+    features: [
+      '2 Tags (1 wet + 1 dry)',
+      'Multiple delivery styles',
+      '2 revisions included',
+      '24-hour delivery',
+      'WAV + MP3 formats',
+      'Commercial rights included',
+    ],
+  },
+  {
+    name: 'Premium',
+    price: 35,
+    popular: false,
+    features: [
+      '3 Tags (wet + dry + FX)',
+      'FX variations (stutter, tape-stop)',
+      'Unlimited revisions',
+      '24-hour priority delivery',
+      'Vocal tuning & radio polish',
+      'DAW-ready exports',
+    ],
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'Bro\'s tag sounds crazy — fits perfectly with my beats. Fast delivery and exactly what I needed.',
+    author: '@TrillBeats',
+    role: 'Trap Producer',
+  },
+  {
+    quote: 'Fast, loud, clean — exactly what I needed. The Metro Boomin style tag is fire!',
+    author: 'Producer_Jay',
+    role: 'Hip-Hop Producer',
+  },
+  {
+    quote: 'Best tag I\'ve used. Natasha voice is fire for R&B. Highly recommend for smooth vibes.',
+    author: 'BeatsBy_Marcus',
+    role: 'R&B Producer',
+  },
+];
+
+const faqs = [
+  {
+    question: 'What is a voice tag (producer tag)?',
+    answer: 'A voice tag (also called a producer tag or beat tag) is a short vocal recording of your name or catchphrase that identifies you as the creator of a beat. It\'s your sonic business card that makes your work instantly recognizable.',
+  },
+  {
+    question: 'How long does delivery take?',
+    answer: 'Standard and Premium packages include 24-hour delivery. Basic package delivers in 2 days. Rush delivery (12 hours) is available for +$10.',
+  },
+  {
+    question: 'Can you match Metro Boomin / Pi\'erre Bourne style?',
+    answer: 'Yes! I\'ll match the style and energy of any producer you reference. Send me examples and I\'ll capture the vibe while keeping it original.',
+  },
+  {
+    question: 'Do you offer female voices?',
+    answer: 'Yes! Natasha (female voice) is available for seductive, smooth, R&B-style tags. Perfect for soulful and intimate productions.',
+  },
+  {
+    question: 'Can I use this on YouTube and Spotify?',
+    answer: 'Yes! Full commercial rights are included with every order. Use your voice tag on beats you sell, YouTube (monetized), Spotify, Apple Music, DJ sets — anywhere.',
+  },
+  {
+    question: 'What if I don\'t like the first version?',
+    answer: 'I\'ll revise until you\'re satisfied! Basic includes 1 revision, Standard includes 2 revisions, Premium includes unlimited revisions.',
+  },
+];
+
 /**
  * Voice Tags Landing Page Component
  * SEO-optimized section for professional voice tag services
@@ -365,190 +549,6 @@ const VoiceTags = () => {
     </section>
   );
 };
-
-// Data constants
-const features = [
-  {
-    icon: '⚡',
-    title: 'Fast 24-Hour Delivery',
-    description: 'Get your custom voice tag delivered in 24 hours or less. Rush delivery available for urgent projects.',
-  },
-  {
-    icon: '🎤',
-    title: 'Multiple Voice Styles',
-    description: 'Choose from aggressive trap, smooth Metro Boomin-style, clean versatile, or seductive R&B voices (male & female).',
-  },
-  {
-    icon: '🎛️',
-    title: 'Professional Studio Quality',
-    description: 'Recorded with professional equipment, mixed, mastered, and ready to drop into your beats.',
-  },
-  {
-    icon: '🔄',
-    title: 'Unlimited Revisions',
-    description: 'Premium package includes unlimited revisions until you\'re 100% satisfied with your tag.',
-  },
-  {
-    icon: '📁',
-    title: 'Wet + Dry Versions',
-    description: 'Receive both dry stems (clean vocal) for custom mixing and wet versions (fully produced with FX).',
-  },
-  {
-    icon: '✅',
-    title: 'Full Commercial Rights',
-    description: 'Use your voice tag on beats you sell, YouTube (monetized), Spotify, Apple Music, DJ sets — anywhere.',
-  },
-];
-
-const voiceStyles = [
-  {
-    emoji: '🔥',
-    name: 'Aggressive / Trap',
-    description: 'High-energy, chesty, powerful delivery. Perfect for trap bangers, drill beats, and hard-hitting production.',
-    details: [
-      'Best for: Trap, drill, hard-hitting beats',
-      'Energy level: 9-10/10',
-      'Example: "[NAME] made this heat!"',
-    ],
-  },
-  {
-    emoji: '🎵',
-    name: 'Smooth / Metro-Style',
-    description: 'Confident, breathy, laid-back. Ideal for R&B, melodic hip-hop, and smooth production.',
-    details: [
-      'Best for: R&B, melodic hip-hop, chill beats',
-      'Energy level: 6-7/10',
-      'Example: "You know it\'s [NAME]..."',
-    ],
-  },
-  {
-    emoji: '🎤',
-    name: 'Clean / Versatile',
-    description: 'Professional, neutral energy. Works across all genres and beat styles.',
-    details: [
-      'Best for: Any genre, YouTube beats',
-      'Energy level: 7-8/10',
-      'Example: "[NAME] on the beat"',
-    ],
-  },
-  {
-    emoji: '🌹',
-    name: 'Seductive / R&B (Female)',
-    description: 'Smooth, breathy, intimate. Perfect for soulful R&B and late-night vibes.',
-    details: [
-      'Best for: R&B, soul, intimate productions',
-      'Energy level: 5-6/10',
-      'Example: "It\'s Natasha... you know the vibe"',
-    ],
-  },
-  {
-    emoji: '🎮',
-    name: 'Playful / Pi\'erre-Style',
-    description: 'Staccato, bouncy, energetic. Fun and hype, Pi\'erre Bourne-inspired.',
-    details: [
-      'Best for: Playful trap, bouncy beats',
-      'Energy level: 9-10/10',
-      'Example: "[NAME]! Let\'s go!"',
-    ],
-  },
-  {
-    emoji: '📻',
-    name: 'Radio / DJ Drop',
-    description: 'Professional announcer voice. Perfect for DJ sets, podcasts, and radio shows.',
-    details: [
-      'Best for: DJ sets, mixtapes, radio',
-      'Energy level: 7-8/10',
-      'Example: "DJ [NAME] in the mix"',
-    ],
-  },
-];
-
-const pricingPackages = [
-  {
-    name: 'Basic',
-    price: 10,
-    popular: false,
-    features: [
-      '1 Dry Tag (clean vocal stem)',
-      '10-second max length',
-      '1 revision included',
-      '2-day delivery',
-      'WAV + MP3 formats',
-      'Commercial rights included',
-    ],
-  },
-  {
-    name: 'Standard',
-    price: 20,
-    popular: true,
-    features: [
-      '2 Tags (1 wet + 1 dry)',
-      'Multiple delivery styles',
-      '2 revisions included',
-      '24-hour delivery',
-      'WAV + MP3 formats',
-      'Commercial rights included',
-    ],
-  },
-  {
-    name: 'Premium',
-    price: 35,
-    popular: false,
-    features: [
-      '3 Tags (wet + dry + FX)',
-      'FX variations (stutter, tape-stop)',
-      'Unlimited revisions',
-      '24-hour priority delivery',
-      'Vocal tuning & radio polish',
-      'DAW-ready exports',
-    ],
-  },
-];
-
-const testimonials = [
-  {
-    quote: 'Bro\'s tag sounds crazy — fits perfectly with my beats. Fast delivery and exactly what I needed.',
-    author: '@TrillBeats',
-    role: 'Trap Producer',
-  },
-  {
-    quote: 'Fast, loud, clean — exactly what I needed. The Metro Boomin style tag is fire!',
-    author: 'Producer_Jay',
-    role: 'Hip-Hop Producer',
-  },
-  {
-    quote: 'Best tag I\'ve used. Natasha voice is fire for R&B. Highly recommend for smooth vibes.',
-    author: 'BeatsBy_Marcus',
-    role: 'R&B Producer',
-  },
-];
-
-const faqs = [
-  {
-    question: 'What is a voice tag (producer tag)?',
-    answer: 'A voice tag (also called a producer tag or beat tag) is a short vocal recording of your name or catchphrase that identifies you as the creator of a beat. It\'s your sonic business card that makes your work instantly recognizable.',
-  },
-  {
-    question: 'How long does delivery take?',
-    answer: 'Standard and Premium packages include 24-hour delivery. Basic package delivers in 2 days. Rush delivery (12 hours) is available for +$10.',
-  },
-  {
-    question: 'Can you match Metro Boomin / Pi\'erre Bourne style?',
-    answer: 'Yes! I\'ll match the style and energy of any producer you reference. Send me examples and I\'ll capture the vibe while keeping it original.',
-  },
-  {
-    question: 'Do you offer female voices?',
-    answer: 'Yes! Natasha (female voice) is available for seductive, smooth, R&B-style tags. Perfect for soulful and intimate productions.',
-  },
-  {
-    question: 'Can I use this on YouTube and Spotify?',
-    answer: 'Yes! Full commercial rights are included with every order. Use your voice tag on beats you sell, YouTube (monetized), Spotify, Apple Music, DJ sets — anywhere.',
-  },
-  {
-    question: 'What if I don\'t like the first version?',
-    answer: 'I\'ll revise until you\'re satisfied! Basic includes 1 revision, Standard includes 2 revisions, Premium includes unlimited revisions.',
-  },
-];
 
 export default VoiceTags;
 

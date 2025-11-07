@@ -176,6 +176,17 @@ useEffect(() => {
                   </RouterLink>
                 )}
               </div>
+
+              {/* Blog Link */}
+              <div ref={el => linksRef.current[6] = el}>
+                <RouterLink 
+                  to="/blog"
+                  onClick={() => setIsOpen(false)}
+                  className='hover:text-gold transition-all duration-300 cursor-pointer'
+                >
+                  blog
+                </RouterLink>
+              </div>
           </div>
         </div>
 
