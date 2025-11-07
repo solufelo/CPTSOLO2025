@@ -185,63 +185,103 @@ const faqs = [
   },
 ];
 
-// Voice Tag Demo Tracks (curated from uploaded files)
+// Voice Tag Demo Tracks — REAL CLIENT DELIVERIES with actual phrases
 const voiceTagDemos = [
   {
-    name: 'Aggressive Trap Style',
-    file: '/assets/voicetags/TAG 1 140BPM.mp3',
-    description: 'High-energy, chesty delivery perfect for trap bangers',
-    style: 'Aggressive',
-    type: 'Wet (FX)'
-  },
-  {
-    name: 'Smooth Metro-Style',
-    file: '/assets/voicetags/TAG 2 140BPM.mp3',
-    description: 'Confident, breathy, laid-back — Metro Boomin vibes',
+    name: 'Doxy',
+    file: '/assets/voicetags/doxy tag 1 95bpm.mp3',
+    description: '"Doxy" — Smooth, laid-back 95 BPM vibe',
     style: 'Smooth',
-    type: 'Wet (FX)'
+    type: 'Wet (FX)',
+    phrase: 'Doxy'
   },
   {
-    name: 'Clean Versatile',
-    file: '/assets/voicetags/TAG 3 140BPM.mp3',
-    description: 'Professional, neutral energy — works with any genre',
-    style: 'Versatile',
-    type: 'Wet (FX)'
+    name: 'Callout',
+    file: '/assets/voicetags/callout tag 1 130bpm.mp3',
+    description: '"What? Callout!" — Hype trap energy at 130 BPM',
+    style: 'Aggressive',
+    type: 'Wet (FX)',
+    phrase: 'What? Callout'
   },
   {
-    name: 'Female Seductive R&B',
+    name: 'Bizzy Beats',
+    file: '/assets/voicetags/bizzy 1 130bpm.mp3',
+    description: '"Lil Bizzy Beats" — Energetic 130 BPM trap tag',
+    style: 'Aggressive',
+    type: 'Wet (FX)',
+    phrase: 'Lil Bizzy Beats'
+  },
+  {
+    name: 'CJ',
+    file: '/assets/voicetags/cj tag 1 110bpm.mp3',
+    description: '"CJ, turn off the aux" — Confident 110 BPM drill vibe',
+    style: 'Smooth',
+    type: 'Wet (FX)',
+    phrase: 'CJ, turn off the aux'
+  },
+  {
+    name: 'Base',
+    file: '/assets/voicetags/base tag 1 130bpm.mp3',
+    description: '"Running back Base" — Hard-hitting 130 BPM trap',
+    style: 'Aggressive',
+    type: 'Wet (FX)',
+    phrase: 'Running back Base'
+  },
+  {
+    name: 'Badman',
+    file: '/assets/voicetags/badman tag 1 110bpm.mp3',
+    description: '"Hey yo, Badman" — UK drill style at 110 BPM',
+    style: 'Aggressive',
+    type: 'Wet (FX)',
+    phrase: 'Hey yo, Badman'
+  },
+  {
+    name: 'Maisie (Female)',
     file: '/assets/voicetags/ElevenLabs_2025-10-23T20_43_42_Natasha - Whispery ASMR _pvc_sp115_s50_sb16_se95_b_m2.mp3',
-    description: 'Smooth, breathy Natasha voice for soulful vibes',
+    description: '"Only hits Maisie" — Seductive female R&B tag',
     style: 'Seductive',
-    type: 'Female Voice'
+    type: 'Female Voice',
+    phrase: 'Only hits Maisie'
   },
   {
-    name: 'Dry Stem Example 1',
-    file: '/assets/voicetags/dry audiowave 140BPM.mp3',
-    description: 'Clean vocal stem with no FX — ready for your mix',
-    style: 'Clean/Dry',
-    type: 'Dry Stem'
+    name: 'Maki',
+    file: '/assets/voicetags/all dry manic tag 140bpm.mp3',
+    description: '"Maki made it" — Clean versatile dry stem at 140 BPM',
+    style: 'Versatile',
+    type: 'Dry Stem',
+    phrase: 'Maki made it'
   },
   {
-    name: 'Dry Stem Example 2',
-    file: '/assets/voicetags/dry slv tag 128bpm.mp3',
-    description: 'Another dry stem — perfect for custom processing',
-    style: 'Clean/Dry',
-    type: 'Dry Stem'
+    name: 'T Lou (Lew)',
+    file: '/assets/voicetags/dry Lew what it do tag 1 140bpm.mp3',
+    description: '"They ready for this, T Lou?" — Smooth dry stem 140 BPM',
+    style: 'Smooth',
+    type: 'Dry Stem',
+    phrase: 'They ready for this, T Lou?'
   },
   {
-    name: 'Playful Pi\'erre Style',
-    file: '/assets/voicetags/TAG 4 140BPM.mp3',
-    description: 'Bouncy, energetic, staccato delivery',
-    style: 'Playful',
-    type: 'Wet (FX)'
+    name: 'Drackz (DRX)',
+    file: '/assets/voicetags/drackz tag 1 110bpm.mp3',
+    description: '"DRX" — Professional versatile tag at 110 BPM',
+    style: 'Versatile',
+    type: 'Wet (FX)',
+    phrase: 'DRX'
   },
   {
-    name: 'Professional Radio Drop',
-    file: '/assets/voicetags/TAG 5 140BPM.mp3',
-    description: 'Announcer voice perfect for DJ sets and podcasts',
-    style: 'Radio/DJ',
-    type: 'Wet (FX)'
+    name: 'Naari/Napalm',
+    file: '/assets/voicetags/dry Naari TAG 1 140BPM.mp3',
+    description: '"Damn Napalm, you going crazy" — Aggressive dry stem 140 BPM',
+    style: 'Aggressive',
+    type: 'Dry Stem',
+    phrase: 'Damn Napalm, you going crazy'
+  },
+  {
+    name: 'Molly/Manic',
+    file: '/assets/voicetags/dry snoo tag 1 140bpm.mp3',
+    description: '"Molly" / "This has to be 9-5" — High-energy dry stem 140 BPM',
+    style: 'Aggressive',
+    type: 'Dry Stem',
+    phrase: 'Molly / 9-5'
   },
 ];
 
