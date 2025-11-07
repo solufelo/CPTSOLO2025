@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -271,6 +272,75 @@ const VoiceTags = () => {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* Blog / Resources Section (for SEO internal linking) */}
+        <div className="mb-20">
+          <h2 className="font-amiamie-round text-4xl sm:text-5xl font-black text-gold text-center mb-6">
+            Learn More About Voice Tags
+          </h2>
+          <p className="font-amiamie text-lg text-primary/70 text-center mb-12 max-w-2xl mx-auto">
+            Expert guides, producer breakdowns, and tips to help you make the perfect voice tag
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <Link
+              to="/blog/what-is-a-voice-tag"
+              className="bg-primary/5 border border-SageGray/30 rounded-lg p-6 hover:border-gold transition-all hover:shadow-lg hover:shadow-gold/10 group"
+            >
+              <div className="mb-4 text-4xl">📖</div>
+              <h3 className="font-amiamie-round text-xl font-bold text-primary mb-3 group-hover:text-gold transition">
+                What is a Voice Tag?
+              </h3>
+              <p className="font-amiamie text-sm text-SageGray mb-4">
+                Complete beginner's guide to voice tags, why you need one, and how to use them.
+              </p>
+              <span className="text-gold font-amiamie-round font-bold group-hover:translate-x-1 inline-block transition">
+                Read Article →
+              </span>
+            </Link>
+
+            <Link
+              to="/blog/metro-boomin-producer-tag"
+              className="bg-primary/5 border border-SageGray/30 rounded-lg p-6 hover:border-gold transition-all hover:shadow-lg hover:shadow-gold/10 group"
+            >
+              <div className="mb-4 text-4xl">🎤</div>
+              <h3 className="font-amiamie-round text-xl font-bold text-primary mb-3 group-hover:text-gold transition">
+                Metro Boomin Tag Breakdown
+              </h3>
+              <p className="font-amiamie text-sm text-SageGray mb-4">
+                Learn the secrets behind Metro's iconic producer tag and how to get a similar style.
+              </p>
+              <span className="text-gold font-amiamie-round font-bold group-hover:translate-x-1 inline-block transition">
+                Read Article →
+              </span>
+            </Link>
+
+            <Link
+              to="/blog/best-voice-tags-trap"
+              className="bg-primary/5 border border-SageGray/30 rounded-lg p-6 hover:border-gold transition-all hover:shadow-lg hover:shadow-gold/10 group"
+            >
+              <div className="mb-4 text-4xl">🔥</div>
+              <h3 className="font-amiamie-round text-xl font-bold text-primary mb-3 group-hover:text-gold transition">
+                Best Tags for Trap Music
+              </h3>
+              <p className="font-amiamie text-sm text-SageGray mb-4">
+                10 voice tag styles that hit hard in trap and drill beats with real examples.
+              </p>
+              <span className="text-gold font-amiamie-round font-bold group-hover:translate-x-1 inline-block transition">
+                Read Article →
+              </span>
+            </Link>
+          </div>
+
+          <div className="text-center mt-8">
+            <Link
+              to="/blog"
+              className="inline-block px-8 py-3 border-2 border-gold text-gold font-amiamie-round font-bold rounded hover:bg-gold hover:text-DarkLava transition-all"
+            >
+              View All Articles
+            </Link>
           </div>
         </div>
 
