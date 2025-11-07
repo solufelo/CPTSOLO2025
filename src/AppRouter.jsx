@@ -8,6 +8,9 @@ import BlogIndex from './pages/blog/BlogIndex';
 import WhatIsVoiceTag from './pages/blog/WhatIsVoiceTag';
 import MetroBooninTag from './pages/blog/MetroBooninTag';
 import BestVoiceTagsTrap from './pages/blog/BestVoiceTagsTrap';
+import VideographyBrampton from './pages/blog/VideographyBrampton';
+import WebDeveloperBrampton from './pages/blog/WebDeveloperBrampton';
+import SmallBusinessWebsiteBrampton from './pages/blog/SmallBusinessWebsiteBrampton';
 
 /**
  * Main Application Router
@@ -29,6 +32,9 @@ const AppRouter = () => {
           <Route path="/blog/what-is-a-voice-tag" element={<WhatIsVoiceTag />} />
           <Route path="/blog/metro-boomin-producer-tag" element={<MetroBooninTag />} />
           <Route path="/blog/best-voice-tags-trap" element={<BestVoiceTagsTrap />} />
+          <Route path="/blog/videography-brampton" element={<VideographyBrampton />} />
+          <Route path="/blog/web-developer-brampton" element={<WebDeveloperBrampton />} />
+          <Route path="/blog/small-business-website-brampton" element={<SmallBusinessWebsiteBrampton />} />
         </Routes>
       </Router>
     </HelmetProvider>

@@ -13,7 +13,7 @@ const BlogIndex = () => {
       slug: 'what-is-a-voice-tag',
       title: 'What is a Voice Tag? Complete Guide for Producers',
       description: 'Learn everything about voice tags (producer tags). What they are, why you need one, and how to use them effectively.',
-      category: 'Beginner Guide',
+      category: 'Music Production',
       readTime: '8 min',
       date: '2025-01-01'
     },
@@ -21,7 +21,7 @@ const BlogIndex = () => {
       slug: 'metro-boomin-producer-tag',
       title: 'Metro Boomin Producer Tag: How He Made the Most Iconic Tag',
       description: 'Deep dive into Metro Boomin\'s legendary producer tag and learn how to get a similar style for your beats.',
-      category: 'Producer Spotlight',
+      category: 'Music Production',
       readTime: '6 min',
       date: '2025-01-01'
     },
@@ -29,9 +29,33 @@ const BlogIndex = () => {
       slug: 'best-voice-tags-trap',
       title: 'Best Voice Tags for Trap Music: 10 Styles That Hit Hard',
       description: 'Discover the best voice tag styles for trap and drill beats with real examples from top producers.',
-      category: 'Style Guide',
+      category: 'Music Production',
       readTime: '7 min',
       date: '2025-01-01'
+    },
+    {
+      slug: 'videography-brampton',
+      title: 'Professional Videographer in Brampton: Your Complete Guide',
+      description: 'Find videography services in Brampton. Pricing, services, portfolio tips, and what to expect when hiring a local videographer.',
+      category: 'Local Business',
+      readTime: '12 min',
+      date: '2025-01-07'
+    },
+    {
+      slug: 'web-developer-brampton',
+      title: 'Web Developer in Brampton: What You Need to Know',
+      description: 'Hiring a web developer in Brampton? Learn about costs, tech stack, questions to ask, and the development process.',
+      category: 'Local Business',
+      readTime: '15 min',
+      date: '2025-01-07'
+    },
+    {
+      slug: 'small-business-website-brampton',
+      title: 'Do I Need a Website for My Brampton Small Business?',
+      description: 'Why Brampton small businesses need websites in 2025, what to include, real costs, and ROI examples.',
+      category: 'Local Business',
+      readTime: '8 min',
+      date: '2025-01-07'
     }
   ];
 
@@ -65,13 +89,16 @@ const BlogIndex = () => {
               All Articles
             </button>
             <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Beginner Guides
+              Music Production
             </button>
             <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Producer Spotlights
+              Local Business (Brampton/GTA)
             </button>
             <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
-              Style Guides
+              Web Development
+            </button>
+            <button className="px-4 py-2 bg-primary/10 border border-primary/30 text-primary font-amiamie-round font-bold rounded hover:bg-primary/20 transition">
+              Videography
             </button>
           </div>
 
