@@ -46,7 +46,7 @@ const VoiceTagsSEO = () => {
             "url": "https://captainsolo.ca",
             "sameAs": [
               "https://instagram.com/caaptainsolo",
-              "https://www.fiverr.com/captainsolo"
+              "https://www.fiverr.com/solufelo/"
             ]
           },
           "serviceType": "Voice Over Services",
