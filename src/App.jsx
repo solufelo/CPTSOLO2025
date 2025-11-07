@@ -8,6 +8,7 @@ import Works from './sections/Works'
 import ContactSummary from './sections/ContactSummary'
 import Contact from './sections/Contact'
 import ServiceSummary from './sections/ServiceSummary'
+import LogoHeader from './components/LogoHeader'
 
 /**
  * Main App Component
@@ -24,6 +25,7 @@ import ServiceSummary from './sections/ServiceSummary'
 function App() {
   return (  
     <>
+      <LogoHeader/>
       <Navbar/>
       <Hero/>
       <ServiceSummary/>
