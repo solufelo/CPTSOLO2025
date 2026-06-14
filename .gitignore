@@ -1,0 +1,21 @@
+# Obsidian workspace state (updates constantly and causes git noise)
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+
+# Local system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build artifacts (C/C++, Raylib, WASM, etc.)
+build/
+bin/
+obj/
+*.exe
+*.o
+*.obj
+*.pdb
+*.suo
+*.user
+node_modules/
+dist/
