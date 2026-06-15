@@ -19,3 +19,10 @@ obj/
 *.user
 node_modules/
 dist/
+*.aux
+*.log
+*.out
+
+# Standalone public FindYou tool repository
+tools/find-you/
+

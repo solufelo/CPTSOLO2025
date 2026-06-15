@@ -2,15 +2,15 @@
 \usepackage{latexsym}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage[margin=0.6in]{geometry}
+\usepackage[top=0.4in, bottom=0.4in, left=0.5in, right=0.5in]{geometry}
 \usepackage[hidelinks]{hyperref}
 \usepackage{tabularx}
 
 \pagenumbering{gobble}
 
 \titleformat{\section}{\large\bfseries}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{8pt}{3pt}
-\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.5em}
+\titlespacing{\section}{0pt}{4pt}{2pt}
+\setlist[itemize]{noitemsep, topsep=1pt, leftmargin=1.2em, parsep=0pt, partopsep=0pt}
 
 \begin{document}
 
@@ -21,70 +21,70 @@
 
 \section*{Technical Skills}
 \begin{tabularx}{\textwidth}{@{}lX@{}}
-\textbf{Languages:} & C/C++ (C++17/20), Java, Python, JavaScript, TypeScript, GLSL, SQL \\
-\textbf{Web Development:} & React, Next.js, Node.js, Express.js, MongoDB, PostgreSQL, Prisma, TailwindCSS \\
-\textbf{Graphics \& 3D:} & OpenGL, SFML, Box2D, Three.js, Blender API, GLM (3D Math) \\
-\textbf{Developer Tools:} & Git, Docker, CMake, GDB, VS Code \\
+\textbf{Systems \& Languages:} & C/C++ (C++17/20), Java, Python, JavaScript, TypeScript, GLSL, Bash, POSIX API, SQL \\
+\textbf{Web \& Graphics:} & React, Next.js, Node.js, Express, MongoDB, PostgreSQL, OpenGL, Three.js, TailwindCSS \\
+\textbf{Security \& Tools:} & Git, Docker, CMake, GDB, Linux, Virtualization, threat modeling, credential isolation \\
 \end{tabularx}
 
 \section*{Experience}
-\textbf{Athletics \& Recreation Videographer} \hfill Aug.\ 2023 -- Present \\
+\textbf{Athletics \& Recreation Videographer} \hfill Aug. 2023 - Present \\
 \textit{Wilfrid Laurier University, Waterloo, ON}
 \begin{itemize}
-    \item Capture and produce high-quality video content for university athletic events and recreational activities.
+    \item Capture and produce high quality video content for university athletic events and recreational activities.
     \item Operate professional video recording equipment, ensuring optimal framing, focus, and audio quality.
-    \item Edit and post-produce footage to create engaging highlight reels and promotional videos.
+    \item Edit and post produce footage to create engaging highlight reels and promotional videos.
 \end{itemize}
 
-\vspace{4pt}
-\textbf{Freelance Developer \& Creative Producer} \hfill 2020 -- Jan.\ 2026 \\
+\vspace{3pt}
+\textbf{Freelance Developer \& Creative Producer} \hfill 2020 - Jan. 2026 \\
 \textit{Independent Contractor}
 \begin{itemize}
-    \item Achieved top-tier freelancer status with a 4.8-star rating across 1,400+ completed orders and 700+ client reviews.
-    \item Scaled an independent business to over \$30K in revenue, serving a global clientele with high-quality deliverables.
-    \item Managed and executed a diverse portfolio of client projects, combining custom web development commissions with multimedia production (audio, graphic design, and video editing).
+    \item Achieved top tier freelancer status with a 4.8 star rating across 1,400+ completed orders and 700+ client reviews.
+    \item Scaled an independent business to over \$30K in revenue, serving a global client base with custom web applications.
+    \item Developed and deployed custom full stack architectures for global clients, enforcing secure data storage, credential isolation, and environment reproducibility.
 \end{itemize}
 
 \section*{Projects}
 \textbf{Real-Time 3D OpenGL Engine} \enspace\textbar\enspace \textit{C++, OpenGL 3.3, GLSL, GLFW, GLAD} \hfill 2025 \\
 \begin{itemize}
-    \item Developed a real-time 3D rendering engine implementing a custom programmable shader pipeline and camera system.
-    \item Implemented classic illumination models including Phong lighting, directional lights, and ambient, diffuse, and specular shading.
-    \item Integrated the Assimp (Open Asset Import Library) to parse and render complex 3D OBJ models with texture coordinate mapping.
+    \item Developed a real-time 3D rendering engine implementing custom programmable shader pipelines and camera systems.
+    \item Optimized rendering performance using vertex buffer objects (VBO) and index buffer objects (EBO) in Modern OpenGL.
+    \item Integrated the Assimp library to parse and render complex 3D assets with real-time Phong illumination model shading.
 \end{itemize}
 
-\vspace{4pt}
-\textbf{Physically-Based CPU Raytracer} \enspace\textbar\enspace \textit{C++17, STL, Vector Math} \hfill 2025 \\
+\vspace{3pt}
+\textbf{Light Years - C++20 Space Shooter Engine} \enspace\textbar\enspace \textit{C++20, SFML, CMake, Box2D, vcpkg} \hfill 2025 \\
 \begin{itemize}
-    \item Built a CPU-based path tracer from scratch, implementing ray-object intersection algorithms for sphere geometries.
-    \item Programmed realistic material shaders including Lambertian diffusion, specular metal reflections, and dielectric glass refraction.
-    \item Implemented anti-aliasing, global illumination light transport, and depth-of-field defocus blur effects.
+    \item Engineered a 2D space shooter game engine in C++20, utilizing a fixed-timestep application loop for synchronized physics and rendering updates.
+    \item Configured cross-platform native compilation pipelines using CMake Presets and managed dependencies via vcpkg integration.
+    \item Implemented object pooling design patterns for high-frequency entity spawning to reduce runtime heap allocation overhead.
 \end{itemize}
 
-\vspace{4pt}
-\textbf{StudyOS -- AI-Powered Learning Platform} \enspace\textbar\enspace \textit{Wasp, React 18, TypeScript, OpenAI API} \hfill 2025 \\
+
+\vspace{3pt}
+\textbf{findYOU - Cybersec and Systems Productivity OS} \enspace\textbar\enspace \textit{Python, React, Docker, Playwright} \hfill 2026 \\
 \begin{itemize}
-    \item Developed a full-stack study application with spaced-repetition (Leitner system) for flashcard learning.
-    \item Integrated the OpenAI API for automated PDF-to-flashcard generation with quality controls.
-    \item Built a Pomodoro timer, task management, and focus training games with progress tracking.
+    \item Developed a local productivity engine featuring a Python http backend, an Eisenhower matrix planner, and a Pomodoro timer.
+    \item Built a security-isolated crawling script using Playwright and Python-JobSpy to scrape and aggregate active job data.
+    \item Implemented local vault write-backs to Markdown files and containerized the entire ecosystem with Docker for deployment.
 \end{itemize}
 
-\vspace{4pt}
-\textbf{Laurier Football Shell Game -- Blender Add-on} \enspace\textbar\enspace \textit{Python, Blender API, 3D Geometry Math} \hfill 2025 \\
+\vspace{3pt}
+\textbf{Laurier Football Shell Game - Blender Add-on} \enspace\textbar\enspace \textit{Python, Blender API, 3D Geometry Math} \hfill 2025 \\
 \begin{itemize}
-    \item Developed a production-ready 3D animation automation tool in Python to streamline asset creation for athletic presentations.
+    \item Developed a production ready 3D animation automation tool in Python to streamline asset creation for athletic presentations.
     \item Engineered smart animation algorithms using sine wave functions for natural, non-linear movement.
     \item Built an auto-scaling system to detect object dimensions and adjust animation parameters dynamically, complete with a custom UI panel.
 \end{itemize}
 
 \section*{Education}
-\textbf{Bachelor of Computer Science} \hfill Sep.\ 2021 -- Spring 2027 (Expected) \\
-Wilfrid Laurier University, Waterloo, ON \\
+\textbf{Bachelor of Computer Science} \hfill Sep. 2021 - Spring 2027 (Expected) \\
+\textit{Wilfrid Laurier University, Waterloo, ON} \\
 \textit{Relevant Coursework:} Data Structures \& Algorithms, Object-Oriented Programming, Operating Systems, Computer Graphics, Linear Algebra
 
 \section*{Awards}
 \begin{itemize}
-    \item Bronze \& Silver Medalist --- Skills Ontario Competition (3D Animation, Blender), 2018
+    \item Bronze \& Silver Medalist - Skills Ontario Competition (3D Animation, Blender), 2018
 \end{itemize}
 
 \end{document}
