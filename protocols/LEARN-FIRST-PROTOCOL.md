@@ -1,6 +1,6 @@
 # Learn-First Protocol
 
-No vibe coding. You build knowledge, not just repos.
+No vibe coding. NEVER ALLOW VIBE CODING. IT REINFORCES DOOMING. You build knowledge, not just repos.
 
 **Rule:** If you cannot explain a line without looking, you do not own it yet.
 
