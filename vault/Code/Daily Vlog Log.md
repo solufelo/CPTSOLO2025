@@ -10,4 +10,5 @@ The rules:
 | Date | Ep | Storyboard Focus / Title | Filmed? | Edited? | Posted? | Key Lesson / Growth |
 |---|---|---|---|---|---|---|
 | 2026-06-13 | 01 | Day 1: Rebooting the CNS (Jump rope + Cold shower) | | | | |
-| | | | | | | |
+| 2026-06-14 | 02 | Day 2: Re-immersing (First Swim in 6 Years & 24h Awake CNS Shock) | | | | |
+

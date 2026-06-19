@@ -1,56 +1,92 @@
-# captainsoloHQ
+# Captain Solo - Portfolio & Digital Agency
 
-Home base for all CaptainSolo endeavors. Everything starts here; everything reports back here.
+The official portfolio and digital agency platform for **Captain Solo** (Solomon Olufelo). A full-stack immersive web experience showcasing web development and video production services.
 
-## The Mission
+![Project Status](https://img.shields.io/badge/status-active-success.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-Get unchopped: rebuild cognition, ship a portfolio, land a job, pay off loans, become fully human again.
+## 🚀 Overview
 
-## The Hub
+This project is a high-performance, theme-aware portfolio built with the latest modern web technologies. It features:
+- **Immersive 3D Experience**: Interactive planet model using React Three Fiber.
+- **Advanced Animations**: Complex scroll triggers and UI transitions powered by GSAP.
+- **Theme System**: Dynamic switching between Dark, Light, and "Liquid Glass" themes.
+- **Content Management**: Integrated blog system, portfolio showcase, and service packages.
+- **Business Integration**: Contact forms (EmailJS), booking system (Calendly), and payment processing (Stripe).
 
-| File | What it is |
-|---|---|
-| [ANTIGRAVITY-SETUP.md](protocols/ANTIGRAVITY-SETUP.md) | **Antigravity IDE** — project setup, rules, slash commands |
-| [LEARN-FIRST-PROTOCOL.md](protocols/LEARN-FIRST-PROTOCOL.md) | **How you build** — no vibe code, predict→type→explain→review |
-| [CODE-REVIEW-CHECKLIST.md](CODE-REVIEW-CHECKLIST.md) | Pre-commit attention-to-detail checklist |
-| [BETTER-ALTERNATIVES-MASTER-PLAN.md](tracks/BETTER-ALTERNATIVES-MASTER-PLAN.md) | **Canonical optimized paths** — all domains, all better alts, daily execution stack |
-| [S-TIER-ACTION-PLAN.md](tracks/S-TIER-ACTION-PLAN.md) | **Master strategy** — WASM, StudyOS, French B2, neuro calibration |
-| [REDEMPTION-ARC.md](tracks/REDEMPTION-ARC.md) | Math/cognition rebuild — runs under everything |
-| [FLOW.md](protocols/FLOW.md) | **Master flow** — night→wake→build→close, Antigravity session steps, weekly |
-| [DAILY-PROTOCOL.md](protocols/DAILY-PROTOCOL.md) | The day, in order. The keystone doc. Read every morning until it's automatic |
-| [GROUNDING-ROUTINE.md](protocols/GROUNDING-ROUTINE.md) | **CNS & Wellness** — box breathing, eating protocol, room cleaning, student debt |
-| [LIBRARY-CATALOG.md](tracks/LIBRARY-CATALOG.md) | Every book owned (rounds 1+2), free queue, reading slots, anti-hoarding rule |
-| [MEDIA-PROTOCOL.md](protocols/MEDIA-PROTOCOL.md) | Intentional consumption only — games with intention, slop filter, zen block |
-| [LIGHTYEARS-ROADMAP.md](roadmaps/LIGHTYEARS-ROADMAP.md) | Raylib + Emscripten WASM shooter (SFML Phase 1 done) |
-| [ZEN-WASM-ROADMAP.md](roadmaps/ZEN-WASM-ROADMAP.md) | **Zen Mode C-WASM** — C/Raylib timer, compiled to WebAssembly for Three.js |
-| [STUDYOS-ROADMAP.md](roadmaps/STUDYOS-ROADMAP.md) | ASP.NET Core agency case study (Blazor Hybrid alt) |
-| [FRENCH-TRACK.md](tracks/FRENCH-TRACK.md) | B2 cert → federal contract revenue unlock |
-| [NEURO-CALIBRATION.md](protocols/NEURO-CALIBRATION.md) | Morning CNS + aim curve mapping (Godot trainer alt) |
-| [COOL-CONSISTENT.md](protocols/COOL-CONSISTENT.md) | Temp over FPS: cool power plan + BIOS PPT steps |
-| [OBSIDIAN-WORKFLOW.md](protocols/OBSIDIAN-WORKFLOW.md) | Tablet + handwriting second-brain system |
-| [JOB-PIPELINE.md](tracks/JOB-PIPELINE.md) | Employment funnel + JobScanner-Pro revival |
-| [LEETCODE-LEARNING-PATH.md](tracks/LEETCODE-LEARNING-PATH.md) | **LeetCode roadmap** — vertical slices from array to tree recursion |
-| [READING-LIST.md](tracks/READING-LIST.md) | Full CS/math/science book progression (beyond the 14 weeks) |
-| [PROFILE.md](protocols/PROFILE.md) | Who you are: comms style, gaming, PC, WLU, agency, audio, Brampton |
-| [FITNESS-SETUP.md](protocols/FITNESS-SETUP.md) | Home gym inventory, gear tier list, starter circuit |
-| [TONIGHT.md](protocols/TONIGHT.md) | First non-cog night checklist (use once, then DAILY-PROTOCOL) |
-| `vault/` | **Ready-made Obsidian vault** — open this folder as vault, see `00 - START HERE.md` |
+## 🛠️ Tech Stack
 
-## Ground Rules
+- **Frontend Core**: [React 19](https://react.dev/), [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **3D & Graphics**: [Three.js](https://threejs.org/), [React Three Fiber](https://docs.pmnd.rs/react-three-fiber), [Drei](https://github.com/pmndrs/drei)
+- **Animation**: [GSAP](https://gsap.com/) (ScrollTrigger, Observer)
+- **Routing**: [React Router v7](https://reactrouter.com/)
+- **Backend/Services**: 
+  - [Supabase](https://supabase.com/) (Database & Auth)
+  - [EmailJS](https://www.emailjs.com/) (Transactional Emails)
+  - [Stripe](https://stripe.com/) (Payments)
 
-1. The order of the day: **neuro/cali → math → french → build → job → games**
-2. Pen on tablet, not keyboard, for all learning. Generation effect or it didn't happen
-3. Never end a day without writing tomorrow's first move
-4. **Understand > ship.** Finished only counts if you can explain it (LEARN-FIRST-PROTOCOL)
-5. Ship > perfect. Finished > massive
-6. Biweekly SAT-book checkpoint = the MMR of the redemption arc
+## 📂 Project Structure
 
-## Status
+The project filesystem is organized for scalability and maintainability:
 
-- Strategy: **S-Tier Action Plan** live (June 2026 upgrade)
-- Cognition: Act 0/I — math + handwriting arc
-- French: not started daily yet (Vocabulaire Progressif)
-- Light Years: SFML Phase 1 built → **next: Raylib + Emscripten pivot**
-- StudyOS: roadmap written, build not started
-- Neuro calibration: protocol written, morning block not habit yet
-- Employment: pipeline not live | federal track = post-B2
+```
+/
+├── dist/               # Production build artifacts
+├── docs/               # Comprehensive project documentation
+│   ├── strategy/       # Business & SEO strategies
+│   ├── setup/          # Technical setup guides (Stripe, EmailJS, etc.)
+│   ├── content/        # Content plans and package details
+│   ├── database/       # SQL schemas and initialization scripts
+│   └── changelogs/     # Development history and updates
+├── public/             # Static assets
+├── src/
+│   ├── components/     # Reusable UI components
+│   ├── sections/       # Page sections (Hero, About, Works, etc.)
+│   ├── pages/          # Route components (Blog, Admin, etc.)
+│   ├── context/        # React Context (Theme, etc.)
+│   ├── lib/            # Utilities and helper functions
+│   ├── data/           # Static data and constants
+│   └── assets/         # Source assets
+├── .prettierrc         # Code formatting rules
+├── eslint.config.js    # Linting configuration
+└── vite.config.js      # Build configuration (with @ alias)
+```
+
+## 🚀 Getting Started
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/solufelo/CPTSOLO2025.git
+    cd awwwards-portfolio
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start development server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Build for production:**
+    ```bash
+    npm run build
+    ```
+
+## 📚 Documentation
+
+For detailed setup guides and strategy documents, please refer to the `docs/` directory.
+
+- [Setup Guides](docs/setup/)
+- [Business Strategy](docs/strategy/)
+- [Database Schema](docs/database/)
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+**Captain Solo** - *Where Code Meets Creativity*

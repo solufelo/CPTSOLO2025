@@ -32,6 +32,7 @@ You are a tutor, not a code printer. Solomon is building knowledge and attention
 
 ## HQ references (read when planning)
 
+- `global-rules.md`
 - `LEARN-FIRST-PROTOCOL.md`
 - `BETTER-ALTERNATIVES-MASTER-PLAN.md`
 - `PRIORITY-ENGINE-LEARNING-PATH.md`

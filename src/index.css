@@ -1,0 +1,424 @@
+@import "tailwindcss";
+
+/* Amiamie Regular - Using correct font paths */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amiamie Regular Italic */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amiamie Light */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amiamie Light Italic */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amiamie Black */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Amiamie Black Italic */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/ttf/Amiamie-BlackItalic.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Amiamie-Round Variants (if needed separately) */
+@font-face {
+  font-family: "Amiamie-Round";
+  src: url("/fonts/amiamie/ttf/Amiamie-RegularRound.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amiamie-Round";
+  src: url("/fonts/amiamie/ttf/Amiamie-BlackRound.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Amiamie-Round";
+  src: url("/fonts/amiamie/ttf/Amiamie-BlackItalicRound.ttf") format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+@theme {
+  --color-primary: #e5e5e0;
+  --color-DarkLava: #393632;
+  --color-SageGray: #8b8b73;
+  --color-gold: #cfa355;
+  --font-amiamie: "Amiamie", sans-serif;
+  --font-amiamie-round: "Amiamie-Round", sans-serif;
+
+  --animate-marquee: marquee 40s infinite linear;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+/* =============================================================================
+   THEME SYSTEM - CSS Custom Properties for theme switching
+   ============================================================================= */
+
+:root {
+  /* Theme-aware CSS variables - Default is Dark theme */
+  --theme-bg-primary: #e5e5e0;
+  --theme-bg-secondary: #393632;
+  --theme-bg-dark: #1a1a1a;
+  --theme-text-primary: #1a1a1a;
+  --theme-text-secondary: #393632;
+  --theme-text-light: #ffffff;
+  --theme-text-muted: #8b8b73;
+  --theme-accent: #cfa355;
+  --theme-accent-hover: #d4ab5f;
+  --theme-accent-rgb: 207, 163, 85;
+  --theme-surface: rgba(57, 54, 50, 0.95);
+  --theme-surface-light: rgba(229, 229, 224, 0.95);
+  --theme-border: rgba(207, 163, 85, 0.3);
+  --theme-border-light: rgba(255, 255, 255, 0.2);
+  --theme-shadow: rgba(0, 0, 0, 0.25);
+  --theme-overlay: rgba(0, 0, 0, 0.8);
+  --theme-navbar-bg: #000000;
+  --theme-navbar-text: rgba(255, 255, 255, 0.8);
+}
+
+/* Dark Theme (Default) - Current gold/black aesthetic */
+.theme-dark {
+  --theme-bg-primary: #e5e5e0;
+  --theme-bg-secondary: #393632;
+  --theme-bg-dark: #1a1a1a;
+  --theme-text-primary: #1a1a1a;
+  --theme-text-secondary: #393632;
+  --theme-text-light: #ffffff;
+  --theme-text-muted: #8b8b73;
+  --theme-accent: #cfa355;
+  --theme-accent-hover: #d4ab5f;
+  --theme-accent-rgb: 207, 163, 85;
+  --theme-surface: rgba(57, 54, 50, 0.95);
+  --theme-surface-light: rgba(229, 229, 224, 0.95);
+  --theme-border: rgba(207, 163, 85, 0.3);
+  --theme-border-light: rgba(255, 255, 255, 0.2);
+  --theme-shadow: rgba(0, 0, 0, 0.25);
+  --theme-overlay: rgba(0, 0, 0, 0.8);
+  --theme-navbar-bg: #000000;
+  --theme-navbar-text: rgba(255, 255, 255, 0.8);
+}
+
+/* Liquid Glass Theme - Apple-inspired frosted glass */
+.theme-glass {
+  --theme-bg-primary: #0f0f1a;
+  --theme-bg-secondary: rgba(255, 255, 255, 0.08);
+  --theme-bg-dark: #0a0a14;
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: rgba(255, 255, 255, 0.9);
+  --theme-text-light: #ffffff;
+  --theme-text-muted: rgba(255, 255, 255, 0.6);
+  --theme-accent: #00d4ff;
+  --theme-accent-hover: #00e5ff;
+  --theme-accent-rgb: 0, 212, 255;
+  --theme-surface: rgba(255, 255, 255, 0.1);
+  --theme-surface-light: rgba(255, 255, 255, 0.15);
+  --theme-border: rgba(255, 255, 255, 0.15);
+  --theme-border-light: rgba(255, 255, 255, 0.25);
+  --theme-shadow: rgba(0, 0, 0, 0.3);
+  --theme-overlay: rgba(15, 15, 26, 0.9);
+  --theme-navbar-bg: rgba(15, 15, 26, 0.8);
+  --theme-navbar-text: rgba(255, 255, 255, 0.9);
+}
+
+.theme-glass body {
+  background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #1a1a2e 100%);
+  background-attachment: fixed;
+  color: #ffffff;
+}
+
+.theme-glass ::-webkit-scrollbar-track {
+  background: #0f0f1a;
+}
+
+.theme-glass ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00d4ff 0%, #0099cc 100%);
+  border: 2px solid #0f0f1a;
+}
+
+/* Light Theme - Inverse/clean light mode */
+.theme-light {
+  --theme-bg-primary: #fafafa;
+  --theme-bg-secondary: #ffffff;
+  --theme-bg-dark: #f0f0f0;
+  --theme-text-primary: #1a1a1a;
+  --theme-text-secondary: #333333;
+  --theme-text-light: #1a1a1a;
+  --theme-text-muted: #666666;
+  --theme-accent: #2563eb;
+  --theme-accent-hover: #1d4ed8;
+  --theme-accent-rgb: 37, 99, 235;
+  --theme-surface: rgba(255, 255, 255, 0.95);
+  --theme-surface-light: rgba(250, 250, 250, 0.95);
+  --theme-border: rgba(0, 0, 0, 0.1);
+  --theme-border-light: rgba(0, 0, 0, 0.05);
+  --theme-shadow: rgba(0, 0, 0, 0.1);
+  --theme-overlay: rgba(255, 255, 255, 0.9);
+  --theme-navbar-bg: #ffffff;
+  --theme-navbar-text: #1a1a1a;
+}
+
+.theme-light body {
+  background: #fafafa;
+  color: #1a1a1a;
+}
+
+.theme-light ::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.theme-light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #2563eb 0%, #1d4ed8 100%);
+  border: 2px solid #f0f0f0;
+}
+
+/* =============================================================================
+   THEME-AWARE SECTION BACKGROUNDS
+   ============================================================================= */
+
+/* Hero/Home sections - uses primary background */
+.theme-glass #home,
+.theme-glass .hero-section {
+  background: transparent;
+}
+
+.theme-light #home,
+.theme-light .hero-section {
+  background: #fafafa;
+}
+
+/* Services section - dark background - NO backdrop-filter for stacking */
+.theme-glass #services {
+  background: rgba(15, 15, 30, 0.98);
+  border-radius: 2rem 2rem 0 0;
+}
+
+.theme-light #services {
+  background: #1a1a1a;
+  color: #ffffff;
+}
+
+/* About section - solid background for glass theme */
+.theme-glass #about {
+  background: rgba(10, 15, 25, 0.98);
+}
+
+/* Pricing section - solid background for glass theme */
+.theme-glass #pricing {
+  background: rgba(15, 20, 35, 0.98);
+}
+
+/* Works section */
+.theme-glass #work {
+  background: transparent;
+}
+
+.theme-light #work {
+  background: #fafafa;
+}
+
+/* Contact section - solid background for glass theme */
+.theme-glass #contact {
+  background: rgba(12, 18, 30, 0.98);
+}
+
+.theme-light #contact {
+  background: #ffffff;
+}
+
+/* =============================================================================
+   THEME UTILITY CLASSES
+   ============================================================================= */
+
+/* Background utilities */
+.bg-theme-primary { background-color: var(--theme-bg-primary); }
+.bg-theme-secondary { background-color: var(--theme-bg-secondary); }
+.bg-theme-dark { background-color: var(--theme-bg-dark); }
+.bg-theme-surface { background: var(--theme-surface); }
+.bg-theme-accent { background-color: var(--theme-accent); }
+.bg-theme-navbar { background-color: var(--theme-navbar-bg); }
+
+/* Text utilities */
+.text-theme-primary { color: var(--theme-text-primary); }
+.text-theme-secondary { color: var(--theme-text-secondary); }
+.text-theme-light { color: var(--theme-text-light); }
+.text-theme-muted { color: var(--theme-text-muted); }
+.text-theme-accent { color: var(--theme-accent); }
+.text-theme-navbar { color: var(--theme-navbar-text); }
+
+/* Border utilities */
+.border-theme { border-color: var(--theme-border); }
+.border-theme-light { border-color: var(--theme-border-light); }
+.border-theme-accent { border-color: var(--theme-accent); }
+
+/* Hover utilities */
+.hover\:text-theme-accent:hover { color: var(--theme-accent); }
+.hover\:bg-theme-accent:hover { background-color: var(--theme-accent); }
+.hover\:border-theme-accent:hover { border-color: var(--theme-accent); }
+
+/* Glass effect for glass theme */
+.glass-panel {
+  background: var(--theme-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--theme-border-light);
+  box-shadow: 0 8px 32px var(--theme-shadow);
+}
+
+.theme-glass .glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Smooth theme transitions */
+body,
+#root,
+section,
+nav,
+header,
+footer,
+div,
+a,
+button,
+p,
+h1, h2, h3, h4, h5, h6,
+span {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Animations */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+/* =============================================================================
+   NAVBAR THEME OVERRIDES
+   ============================================================================= */
+
+.theme-glass nav.fixed {
+  background: var(--theme-navbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.theme-light nav.fixed {
+  background: var(--theme-navbar-bg);
+  border-left: 1px solid var(--theme-border);
+}
+
+/* Menu button theme overrides */
+.theme-glass .menu-button,
+.theme-glass [class*="bg-black"][class*="rounded-full"] {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.theme-light .menu-button,
+.theme-light [class*="bg-black"][class*="rounded-full"][class*="cursor-pointer"] {
+  background: var(--theme-navbar-bg);
+  border: 1px solid var(--theme-border);
+}
+
+.theme-light [class*="bg-black"][class*="rounded-full"][class*="cursor-pointer"] span {
+  background: var(--theme-text-primary);
+}
+
+body {
+  background: #e5e5e0;
+  color: black;
+  overflow-x: hidden;
+  font-family: var(--font-amiamie);
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #cfa355 0%, #a67d3a 100%);
+  border-radius: 6px;
+  border: 2px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #d4ab5f 0%, #b08840 100%);
+}
+
+@utility clip-path {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+@utility banner-text-responsive {
+  @apply text-[68px] sm:text-[118px] md:text-[126px] lg:text-[152px] leading-9 sm:leading-16 lg:leading-20;
+}
+
+@utility value-text-responsive {
+  @apply text-2xl md:text-[26px] lg:text-[32px];
+}
+
+@utility marquee-text-responsive {
+  @apply text-[28px] sm:text-[36px] lg:text-[42px];
+}
+
+@utility contact-text-responsive {
+  @apply text-[42px] sm:text-[52px] md:text-[62px] lg:text-[100px];
+}

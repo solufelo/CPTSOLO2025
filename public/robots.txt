@@ -1,0 +1,19 @@
+# robots.txt for CaptainSolo Portfolio & Voice Tags
+
+User-agent: *
+Allow: /
+Allow: /voice-tags
+Allow: /blog
+Allow: /blog/*
+
+# Sitemap
+Sitemap: https://captainsolo.ca/sitemap.xml
+
+# Disallow admin/test pages if any exist
+Disallow: /admin
+Disallow: /test
+Disallow: /_*
+
+# Crawl-delay (optional, adjust if needed)
+Crawl-delay: 1
+

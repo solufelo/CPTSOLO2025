@@ -1,0 +1,13 @@
+# Global Rules & Priorities
+
+## Core Priorities
+The main priorities for the `captainsoloHQ` workspace and all portfolio projects are to establish and maintain complete prototypes and working demos for all case studies. The priority sequence is:
+1. **Light Years Game Engine** (Raylib + Emscripten WASM 2D/3D engine & space shooter)
+2. **captainsolo.ca** (Portfolio & Creative Technologist agency site showcasing these case studies)
+3. **findYOU** (Spaced productivity dashboard & cybersecurity/systems job scanner)
+
+## Repository Cleanup
+Solomon is actively cleaning up his GitHub repositories. Ensure that all projects are structured as clean, public, showcase-ready working demos:
+- Focus on fast initial load times, input latency optimization, and zero friction.
+- Code should be clean, highly readable, and easily explainable (in accordance with the Learn-First protocol).
+- Ensure that the search tool (findYOU) sorts job listings by relevancy based on target brands (e.g., Razer, AMD, Nvidia, Corsair) and stack matches (C++, OpenGL, WebAssembly, React, etc.) to showcase product depth.

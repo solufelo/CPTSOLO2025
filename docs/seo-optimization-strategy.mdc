@@ -1,0 +1,903 @@
+# SEO Optimization Strategy
+**Captain Solo Portfolio - Search Engine & Client Acquisition Optimization**
+
+---
+
+## 🎯 CORE SEO STRATEGY
+
+### Primary Identity (Keep Both Strong):
+✅ **Full-Stack Web Developer** + **Videographer/Video Producer**
+
+### Secondary Skills (Competitive Advantages):
+- 3D Design & Animation
+- Motion Graphics
+- Adobe Creative Suite Mastery
+- Content Strategy
+- Social Media Optimization
+
+---
+
+## 🔍 TARGET KEYWORDS BY AUDIENCE
+
+### FOR CLIENT WORK (Local SEO Priority)
+
+#### Primary Keywords - Web Development:
+1. **"web developer Waterloo"** - High intent, local
+2. **"React developer Brampton"** - Tech specific, local
+3. **"website developer GTA"** - Service area
+4. **"full-stack developer Ontario"** - Regional
+5. **"e-commerce developer Waterloo"** - Niche + local
+6. **"restaurant website developer"** - Industry specific
+7. **"custom web development Waterloo"** - Service + local
+
+#### Primary Keywords - Video Production:
+1. **"videographer Waterloo"** - High intent, local
+2. **"video production Brampton"** - Service + local
+3. **"commercial videographer GTA"** - Business focused
+4. **"social media content creator Waterloo"** - Modern niche
+5. **"event videographer Brampton"** - Service specific
+6. **"music video production Waterloo"** - Niche market
+7. **"product photography Waterloo"** - Related service
+
+#### Hybrid/Integrated Keywords (YOUR UNIQUE ADVANTAGE):
+1. **"web developer and videographer"** - Unique combo
+2. **"website and video package"** - Solution focused
+3. **"complete digital presence Waterloo"** - Outcome based
+4. **"website with video content"** - Integrated solution
+5. **"digital marketing Waterloo"** - Broader appeal
+
+#### Long-Tail Keywords (Lower competition, high conversion):
+1. "freelance web developer for small business Waterloo"
+2. "affordable videographer near Brampton"
+3. "React developer for e-commerce GTA"
+4. "social media video content creator Waterloo"
+5. "music video production independent artists Ontario"
+6. "restaurant website and menu photography"
+7. "portfolio website developer for artists"
+
+---
+
+### FOR AGENCY/JOB POSITIONING
+
+#### Technical Skills Keywords:
+- React developer
+- Next.js developer
+- Full-stack JavaScript developer
+- TypeScript developer
+- Node.js developer
+- Three.js developer (3D web)
+- MERN stack developer
+- Front-end developer with motion design
+
+#### Creative Skills Keywords:
+- Motion graphics designer
+- Video editor
+- Adobe After Effects specialist
+- 3D animator
+- Content creator
+- Videographer with editing skills
+- Cinematographer
+
+#### Hybrid Role Keywords (Your Advantage):
+- Creative developer
+- Creative technologist
+- Full-stack developer with video production
+- Developer with motion design skills
+- Technical creative director
+
+---
+
+## 📝 SEO-OPTIMIZED CONTENT STRUCTURE
+
+### Homepage Meta Tags:
+
+```html
+<title>Solomon Olufelo - Web Developer & Videographer | Waterloo, Brampton, GTA</title>
+
+<meta name="description" content="Full-stack web developer and professional videographer in Waterloo, ON. React development, video production, 3D design, and motion graphics for businesses across the GTA. 1,400+ projects, 4.8★ rating.">
+
+<meta name="keywords" content="web developer Waterloo, videographer Brampton, React developer, video production GTA, e-commerce developer, social media content creator, full-stack developer Ontario, commercial videographer">
+
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Solomon Olufelo - Web Developer & Videographer">
+<meta property="og:description" content="React web development, video production, and 3D design for businesses in Waterloo and the GTA. 1,400+ projects completed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.captainsolo.ca/">
+<meta property="og:image" content="https://www.captainsolo.ca/og-image.jpg">
+
+<!-- Local Business Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Captain Solo - Solomon Olufelo",
+  "description": "Full-stack web development and professional video production services",
+  "url": "https://www.captainsolo.ca",
+  "logo": "https://www.captainsolo.ca/logo.png",
+  "image": "https://www.captainsolo.ca/solomon-headshot.jpg",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Waterloo",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "43.4643",
+    "longitude": "-80.5204"
+  },
+  "areaServed": [
+    "Waterloo",
+    "Kitchener",
+    "Cambridge",
+    "Brampton",
+    "Mississauga",
+    "Toronto",
+    "Greater Toronto Area"
+  ],
+  "telephone": "+1-289-233-8317",
+  "email": "contact@captainsolo.ca",
+  "sameAs": [
+    "https://www.linkedin.com/in/solomon-olufeo-854360241/",
+    "https://www.instagram.com/caaptainsolo",
+    "https://github.com/solufelo"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "700"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Full-Stack Web Development",
+          "description": "Custom website and web application development using React, Next.js, and Node.js"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Video Production",
+          "description": "Professional video production for social media, commercials, events, and music videos"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "3D Design & Motion Graphics",
+          "description": "3D modeling, animation, and motion graphics for web and video content"
+        }
+      }
+    ]
+  }
+}
+</script>
+
+<!-- Person Schema for Personal Branding -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Solomon Olufelo",
+  "alternateName": "Captain Solo",
+  "url": "https://www.captainsolo.ca",
+  "image": "https://www.captainsolo.ca/solomon-headshot.jpg",
+  "jobTitle": "Full-Stack Developer & Videographer",
+  "worksFor": {
+    "@type": "EducationalOrganization",
+    "name": "Wilfrid Laurier University"
+  },
+  "alumniOf": {
+    "@type": "EducationalOrganization",
+    "name": "Wilfrid Laurier University"
+  },
+  "knowsAbout": [
+    "Web Development",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Video Production",
+    "Cinematography",
+    "3D Design",
+    "Motion Graphics",
+    "Adobe Creative Suite"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/in/solomon-olufeo-854360241/",
+    "https://www.instagram.com/caaptainsolo",
+    "https://github.com/solufelo",
+    "https://www.youtube.com/@solufeloBEATS"
+  ]
+}
+</script>
+```
+
+---
+
+## 📄 PAGE-BY-PAGE SEO OPTIMIZATION
+
+### Homepage (/)
+
+**H1:** Solomon Olufelo - Web Developer & Videographer Waterloo  
+**Primary Focus:** Brand introduction, dual expertise, location
+
+**Content Structure:**
+1. Hero: Name + dual title + location + stats
+2. About: Story emphasizing BOTH skills + WLU connection
+3. Services Preview: Web dev + Video + Integrated
+4. Portfolio Showcase: Mix of both
+5. Testimonials: From both types of clients
+6. CTA: Multiple entry points
+
+**SEO Keywords to Include Naturally:**
+- Web developer Waterloo
+- Videographer Brampton
+- React development
+- Video production GTA
+- Full-stack developer
+- Professional videographer
+- 3D design
+- Motion graphics
+
+---
+
+### Services Page (/services)
+
+**H1:** Web Development & Video Production Services - Waterloo & GTA  
+**Primary Focus:** Service details, pricing guidance, process
+
+**Section Structure:**
+
+#### Service 1: Full-Stack Web Development
+**H2:** Custom Web Development Services in Waterloo, ON  
+**Keywords:** React developer, Next.js, e-commerce development, custom websites
+
+**Content to Include:**
+- Tech stack (React, Next.js, Node.js, TypeScript)
+- Project types (e-commerce, portfolios, business sites, apps)
+- Process and timeline
+- Pricing ranges
+- Industries served
+
+#### Service 2: Video Production & Content Creation
+**H2:** Professional Video Production Services - Waterloo, Brampton, GTA  
+**Keywords:** Commercial videographer, social media content, event coverage, music videos
+
+**Content to Include:**
+- Service types (social content, commercial, events, music videos)
+- Equipment and capabilities
+- Turnaround times
+- Pricing packages
+- Portfolio examples
+
+#### Service 3: 3D Design & Motion Graphics
+**H2:** 3D Animation & Motion Graphics for Web and Video  
+**Keywords:** 3D design, motion graphics, After Effects, Three.js, animation
+
+**Content to Include:**
+- 3D modeling and animation
+- Motion graphics for video
+- Web-based 3D (Three.js)
+- Adobe After Effects work
+- Examples and applications
+
+#### Service 4: Integrated Solutions (Competitive Advantage)
+**H2:** Complete Digital Presence: Website + Video Content Packages  
+**Keywords:** website and video package, digital transformation, complete branding
+
+**Content to Include:**
+- Why integration matters
+- Example packages
+- Cost savings vs separate vendors
+- Case studies
+- Industries that benefit most
+
+---
+
+### Portfolio Page (/work or /portfolio)
+
+**H1:** Portfolio - Web Development & Video Production Projects  
+**Primary Focus:** Project showcase, results, diversity
+
+**Organization:**
+
+#### Filter Categories (SEO-friendly URLs):
+- /portfolio/web-development
+- /portfolio/video-production
+- /portfolio/3d-motion-graphics
+- /portfolio/integrated-projects
+- /portfolio/e-commerce
+- /portfolio/restaurants
+- /portfolio/artists-musicians
+- /portfolio/events
+
+**Individual Project Pages:**
+Each project should have:
+- **H1:** [Project Name] - [Service Type] for [Client Industry]
+- Challenge/Solution/Results format
+- Tech stack or equipment used
+- Testimonial if available
+- Related projects
+- CTA to similar service
+
+**Example:**
+**H1:** "Barbershop Promo Video - Social Media Content for Local Business"  
+**Keywords:** social media videographer, business promo video, Instagram reel production
+
+---
+
+### About Page (/about)
+
+**H1:** About Solomon Olufelo - Developer, Videographer, Creator  
+**Primary Focus:** Personal story, credentials, why both skills matter
+
+**Content Structure:**
+1. Introduction: Dual expertise journey
+2. Background: WLU student, 6 years video, 2 years dev
+3. Why Both Skills: Unique value proposition
+4. Stats and Achievements: 1,400+ projects, 4.8★, medals
+5. Education & Certifications
+6. Equipment and Tools
+7. Personal Values and Approach
+
+**SEO Keywords:**
+- Computer Science student Waterloo
+- WLU videographer
+- Freelance developer Ontario
+- Video production experience
+- React developer portfolio
+- Full-stack developer journey
+
+---
+
+### Contact Page (/contact)
+
+**H1:** Contact - Get a Quote for Web Development or Video Production  
+**Primary Focus:** Conversion, clear CTAs, service areas
+
+**Content to Include:**
+- Contact form with service dropdown
+- Phone: 289-233-8317
+- Email: contact@captainsolo.ca
+- Service areas listed
+- Availability calendar/hours
+- Response time expectations
+- Social media links
+
+**SEO Elements:**
+- Service area map
+- "Serving Waterloo, Brampton, Kitchener, GTA"
+- Availability information
+- Booking CTA
+
+---
+
+### Blog (Optional but POWERFUL for SEO)
+
+**URL Structure:** /blog/[post-slug]
+
+**Content Ideas (Target Long-Tail Keywords):**
+
+**Web Development Topics:**
+1. "How to Choose a Web Developer in Waterloo, Ontario" - Local SEO
+2. "React vs WordPress: Which is Better for Your Business?" - Educational
+3. "E-Commerce Website Cost Breakdown for Small Businesses" - Client education
+4. "Why Your Restaurant Needs a Custom Website (Not a Template)" - Industry specific
+5. "Three.js: Adding 3D to Your Website" - Technical showcase
+
+**Video Production Topics:**
+1. "How Much Should Video Production Cost in the GTA?" - Local SEO
+2. "Social Media Video Best Practices for 2025" - Evergreen content
+3. "Behind the Scenes: Filming a Music Video in Waterloo" - Process showcase
+4. "Why Your Business Needs Professional Video Content" - Client education
+5. "Instagram Reels vs TikTok: What's Best for Your Business?" - Trend topics
+
+**Hybrid Topics (YOUR ADVANTAGE):**
+1. "Why Your Website Needs Professional Video Content" - Integration
+2. "Complete Digital Presence: Website + Video Package Guide" - Service explainer
+3. "Case Study: How We Transformed [Client]'s Digital Presence" - Results showcase
+4. "The Developer-Videographer Advantage for Small Businesses" - Unique value
+5. "Building a Restaurant Website: Photos, Videos, and Code" - Industry deep-dive
+
+**SEO Benefits:**
+- Target long-tail keywords
+- Build topical authority
+- Increase site pages for indexing
+- Answer common questions
+- Demonstrate expertise
+- Generate backlink opportunities
+
+---
+
+## 🗺️ LOCAL SEO OPTIMIZATION
+
+### Google Business Profile (CRITICAL)
+
+**Primary Category:** Web Designer  
+**Secondary Categories:** 
+- Video Production Service
+- Marketing Agency
+- Graphic Designer
+
+**Business Description:**
+> Full-stack web developer and professional videographer serving Waterloo, Brampton, Kitchener, Cambridge, and the Greater Toronto Area. Specializing in React web development, e-commerce platforms, video production for social media and commercials, 3D design, and motion graphics. 1,400+ projects completed with 4.8-star rating. Available for freelance projects, agency partnerships, and full-time opportunities.
+
+**Services to List:**
+- Web Development
+- React Development
+- E-Commerce Development
+- Video Production
+- Commercial Videography
+- Event Coverage
+- Social Media Content Creation
+- Music Video Production
+- 3D Design & Animation
+- Motion Graphics
+- Product Photography
+- Brand Content Creation
+
+**Service Areas:**
+- Waterloo, ON (primary)
+- Kitchener, ON
+- Cambridge, ON
+- Brampton, ON
+- Mississauga, ON
+- Toronto, ON
+- Guelph, ON
+- Greater Toronto Area
+
+**Posts Schedule:**
+- Weekly portfolio updates
+- Behind-the-scenes content
+- Project completions
+- Tips and insights
+- Special offers
+
+---
+
+### Local Directory Listings (NAP Consistency)
+
+**Ensure consistent Name, Address, Phone across:**
+- Google Business Profile
+- Bing Places
+- LinkedIn
+- Facebook Business Page
+- Instagram Business Profile
+- Yelp (if applicable)
+- Clutch.co (for developers)
+- ProductionHub (for videographers)
+- Local Waterloo business directories
+- Waterloo Chamber of Commerce (if member)
+
+**Consistent Format:**
+**Name:** Solomon Olufelo / Captain Solo  
+**Address:** Waterloo, ON (or full address if have business location)  
+**Phone:** 289-233-8317  
+**Website:** https://www.captainsolo.ca  
+**Email:** contact@captainsolo.ca
+
+---
+
+### Location Pages (If Serving Multiple Cities)
+
+Create dedicated landing pages:
+
+**URLs:**
+- /web-developer-waterloo
+- /videographer-brampton
+- /video-production-gta
+- /react-developer-kitchener
+
+**Each page includes:**
+- H1 with location keyword
+- Description of services in that area
+- Local project examples
+- Testimonials from local clients
+- Service area map
+- Local landmarks/references
+- CTA specific to that city
+
+---
+
+## 🎨 CONTENT OPTIMIZATION FOR DUAL AUDIENCE
+
+### Structure Content to Serve Both Identities:
+
+#### Homepage Sections (in order):
+
+1. **Hero:** Immediate clarity on dual services
+2. **Services Overview:** 3 columns (Web Dev | Video | Integrated)
+3. **About:** Story of how both skills complement
+4. **Portfolio:** Tabbed or filtered (Show both, filter by interest)
+5. **Process:** How projects work (discovery → delivery)
+6. **Stats/Achievements:** Numbers that prove expertise
+7. **Testimonials:** Mix of web and video clients
+8. **Tools/Skills:** Visual display of tech + creative tools
+9. **CTA:** Multiple options based on need
+
+---
+
+### Service Page Organization:
+
+**Keep them EQUAL** in prominence:
+
+#### Left Column / First:
+**Full-Stack Web Development**
+- React, Next.js, Node.js
+- E-commerce platforms
+- Custom applications
+- Portfolio sites
+- Responsive design
+- Database development
+
+#### Middle Column / Second:
+**Video Production & Content**
+- Social media content
+- Commercial videos
+- Event coverage
+- Music videos
+- Product photography
+- Motion graphics
+
+#### Right Column / Third:
+**Integrated Solutions** (Your Unique Value)
+- Website + Video packages
+- Complete digital presence
+- Platform + content strategy
+- E-commerce + product content
+- Artist portfolio + press kit
+
+**Each service includes:**
+- Clear description
+- Who it's for
+- What's included
+- Starting investment
+- Timeline
+- Portfolio examples
+- CTA button
+
+---
+
+### Portfolio Organization Options:
+
+**OPTION 1: Unified Grid with Filters**
+```
+[All] [Web Dev] [Video] [3D/Motion] [Integrated]
+[Project Grid - all types mixed]
+```
+
+**OPTION 2: Separate Sections**
+```
+Web Development Projects
+[Grid of 6-8 web projects]
+
+Video Production Projects
+[Grid of 6-8 video projects]
+
+Integrated Projects
+[Grid of 4-6 complete packages]
+```
+
+**OPTION 3: Industry-Based** (BEST FOR SEO)
+```
+[Restaurants] [Artists/Musicians] [E-Commerce] [Events] [Businesses]
+[Each shows BOTH web and video work for that industry]
+```
+
+**Recommended:** Option 3 - Shows integration naturally and targets industry-specific keywords
+
+---
+
+## 📱 SOCIAL MEDIA SEO OPTIMIZATION
+
+### LinkedIn (Critical for Agency/Job Positioning)
+
+**Headline (220 characters max):**
+"Full-Stack Developer & Videographer | React, Next.js, Node.js | Video Production & Motion Graphics | 1,400+ Projects | Waterloo, ON"
+
+**About Section (2,600 characters - use them all):**
+
+> Full-Stack Web Developer and Professional Videographer combining technical precision with creative storytelling.
+> 
+> 🎯 WHAT I DO
+> 
+> WEB DEVELOPMENT:
+> • Custom web applications with React, Next.js, and TypeScript
+> • E-commerce platforms with payment integration and admin dashboards
+> • Database design and optimization (MongoDB, PostgreSQL)
+> • RESTful API development with Node.js and Express
+> • Responsive UI/UX design with Tailwind CSS
+> • Performance optimization and SEO implementation
+> 
+> VIDEO PRODUCTION & CONTENT:
+> • Social media content (Instagram Reels, TikTok, YouTube Shorts)
+> • Commercial and promotional videos for businesses
+> • Event coverage and highlight reels
+> • Music video production for independent artists
+> • Product and menu photography
+> • Motion graphics and video editing with Adobe Creative Suite
+> 
+> 3D & MOTION DESIGN:
+> • Three.js web experiences
+> • 3D modeling and animation
+> • Adobe After Effects motion graphics
+> • Interactive animations with GSAP and Framer Motion
+> 
+> 📊 TRACK RECORD
+> • 1,400+ completed projects across web development and video production
+> • 4.8/5.0 average rating from 700+ client reviews
+> • 99% on-time delivery rate
+> • 60% repeat client rate
+> • $30K+ in client revenue generated
+> • Bronze & Silver medals for athletic videography
+> 
+> 🎓 BACKGROUND
+> Computer Science student at Wilfrid Laurier University, currently serving as the university's official videographer. 6 years professional videography experience combined with 2 years full-stack development expertise.
+> 
+> 💼 SERVICES
+> • Full-stack web development for startups and businesses
+> • Video production and content creation for brands and artists
+> • Complete digital presence packages (website + video content)
+> • 3D web experiences and motion graphics
+> • Available for freelance projects, agency partnerships, and full-time opportunities
+> 
+> 📍 LOCATION & SERVICE AREA
+> Based in Waterloo, Ontario. Serving Waterloo, Kitchener, Cambridge, Brampton, Mississauga, Toronto, and the Greater Toronto Area.
+> 
+> 🔧 TECH STACK
+> Frontend: React, Next.js, TypeScript, Tailwind CSS, Three.js, GSAP, Framer Motion
+> Backend: Node.js, Express, Python, REST APIs
+> Database: MongoDB, PostgreSQL, Firebase
+> Creative: Adobe Premiere Pro, After Effects, Photoshop, Blender, Figma
+> 
+> Let's build something that works technically and performs visually.
+
+**Skills Section (Add 50 skills, top 3 highlighted):**
+1. React.js ⭐
+2. Video Production ⭐
+3. Full-Stack Development ⭐
+4. Next.js
+5. Node.js
+6. TypeScript
+7. Adobe Premiere Pro
+8. Adobe After Effects
+9. Videography
+10. Motion Graphics
+(continue to 50...)
+
+**Featured Section:**
+- Link to portfolio website
+- Best project posts
+- Articles/blog posts
+- Media (video reel, project showcase)
+
+---
+
+### Instagram (@caaptainsolo)
+
+**Bio (150 characters):**
+```
+Full-Stack Dev + Videographer 🎥💻
+React • Video • 3D • Motion
+1,400+ projects | 4.8★ | Waterloo, ON
+↓ Portfolio
+```
+
+**Link:** captainsolo.ca
+
+**Content Strategy:**
+- Mix web development posts with video posts (50/50)
+- Behind-the-scenes of both
+- Before/after transformations
+- Client results and testimonials
+- Code snippets and tips
+- Video tips and techniques
+- Portfolio showcase
+- Story highlights for each service
+
+**Hashtag Strategy:**
+Development: #ReactDeveloper #WebDeveloper #FullStackDev #WaterlooTech #NextJS
+Video: #Videographer #VideoProduction #WaterlooVideographer #GTAVideographer #ContentCreator
+Local: #WaterlooOntario #BramptonOntario #GTA #OntarioBusiness
+Service: #FreelanceDeveloper #VideoMarketing #SocialMediaVideo
+
+---
+
+### GitHub (github.com/solufelo)
+
+**Bio:**
+"Full-stack developer specializing in React, Next.js, and Node.js. Also a videographer. Building web experiences and creating content."
+
+**README Profile (Create a profile README):**
+```markdown
+# Hi, I'm Solomon 👋
+
+Full-Stack Developer and Videographer combining code and creativity.
+
+## 🛠️ Tech Stack
+- Frontend: React, Next.js, TypeScript, Tailwind CSS
+- Backend: Node.js, Express, Python
+- Database: MongoDB, PostgreSQL
+- 3D/Animation: Three.js, GSAP, Framer Motion
+- Creative: Adobe Creative Suite, Blender
+
+## 📊 Stats
+- 1,400+ projects completed
+- 4.8★ client rating
+- 99% on-time delivery
+
+## 🎥 Also
+Professional videographer for 6 years. Check out my work at [captainsolo.ca](https://captainsolo.ca)
+
+## 📫 Contact
+- Website: [captainsolo.ca](https://captainsolo.ca)
+- LinkedIn: [solomon-olufeo](https://linkedin.com/in/solomon-olufeo-854360241/)
+- Email: contact@captainsolo.ca
+```
+
+**Pin Your Best Repos:**
+1. Portfolio website (if public)
+2. Best React project
+3. Full-stack application
+4. Three.js demo
+5. Open source contribution
+6. Tutorial/educational repo
+
+---
+
+## 🔗 BACKLINK STRATEGY
+
+### Get Listed On:
+
+**Developer Directories:**
+- Clutch.co (get verified, gather reviews)
+- GoodFirms
+- The Manifest
+- UpCity
+- SortList
+- Dev.to (write articles)
+
+**Video Production Directories:**
+- ProductionHub
+- Vimeo (upgrade for visibility)
+- Behance (showcase projects)
+- Mandy.com
+- Thumbtack
+- Bark
+
+**General Freelance:**
+- Contra
+- Toptal (if accepted)
+- LinkedIn ProFinder
+- We Work Remotely
+
+**Local:**
+- Waterloo Region businesses directory
+- Waterloo Tech community listings
+- Local Chamber of Commerce
+- WLU alumni network
+
+---
+
+## 📈 TRACKING & OPTIMIZATION
+
+### Install Analytics:
+
+**Google Analytics 4:**
+- Track page views
+- Monitor service page visits
+- Track contact form submissions
+- Monitor portfolio interactions
+- Geographic data
+
+**Google Search Console:**
+- Monitor search queries bringing traffic
+- Track ranking positions
+- Identify indexing issues
+- Submit sitemap
+
+**Hotjar or Microsoft Clarity:**
+- Heatmaps of user behavior
+- Session recordings
+- Identify drop-off points
+
+### Monthly SEO Tasks:
+
+**Week 1:**
+- [ ] Review Google Analytics data
+- [ ] Check Search Console for new keywords
+- [ ] Update Google Business Profile with new project post
+- [ ] Respond to any reviews/messages
+
+**Week 2:**
+- [ ] Publish blog post (if doing content marketing)
+- [ ] Update portfolio with recent project
+- [ ] Share recent work on social media
+- [ ] Check backlink profile
+
+**Week 3:**
+- [ ] Review and update meta descriptions if needed
+- [ ] Check for broken links
+- [ ] Optimize slow-loading pages
+- [ ] Update schema markup if services changed
+
+**Week 4:**
+- [ ] Analyze competitor websites
+- [ ] Identify new keyword opportunities
+- [ ] Plan next month's content
+- [ ] Review and respond to all inquiries
+
+---
+
+## 🎯 QUICK WINS (Implement Immediately)
+
+### Technical SEO:
+- [ ] Add proper meta titles and descriptions to all pages
+- [ ] Implement schema markup (LocalBusiness, Person, Service)
+- [ ] Create XML sitemap and submit to Google
+- [ ] Add alt text to all images
+- [ ] Optimize image file sizes
+- [ ] Ensure mobile responsiveness
+- [ ] Check page load speed (aim for <3 seconds)
+- [ ] Set up SSL certificate (HTTPS)
+- [ ] Create robots.txt file
+- [ ] Implement Open Graph tags for social sharing
+
+### Content SEO:
+- [ ] Update homepage with location keywords
+- [ ] Add "Waterloo" and "GTA" naturally throughout site
+- [ ] Create dedicated Services page with keyword-rich headings
+- [ ] Add FAQ section answering common questions
+- [ ] Include stats and numbers prominently
+- [ ] Add client testimonials with location mentions
+- [ ] Create case studies with results
+
+### Local SEO:
+- [ ] Claim Google Business Profile
+- [ ] Add consistent NAP across web
+- [ ] Get 5-10 initial reviews from past clients
+- [ ] Post weekly updates to Google Business
+- [ ] Create location-specific landing pages
+- [ ] Add service area map to contact page
+
+---
+
+## 📋 RECOMMENDED SITE STRUCTURE (SEO-Friendly URLs)
+
+```
+captainsolo.ca/
+├── / (Homepage)
+├── /about
+├── /services
+│   ├── /services/web-development
+│   ├── /services/video-production
+│   ├── /services/3d-motion-graphics
+│   └── /services/integrated-packages
+├── /portfolio
+│   ├── /portfolio/web-development
+│   ├── /portfolio/video-production
+│   ├── /portfolio/3d-motion
+│   └── /portfolio/[project-slug]
+├── /process
+├── /contact
+├── /blog
+│   └── /blog/[post-slug]
+└── /thank-you (post-contact confirmation)
+
+OPTIONAL Location Pages:
+├── /web-developer-waterloo
+├── /videographer-brampton
+└── /video-production-gta
+```
+
+---
+
+**This SEO strategy keeps your dual identity strong while making you findable for clients, agencies, and employers. Focus on local SEO first (Google Business Profile + location keywords), then expand to broader keywords and content marketing.**

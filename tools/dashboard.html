@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaptainSolo HQ - Recovery & Career Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Main Shell -->
+    <div id="app-container" class="dashboard-shell">
+        
+        <!-- Header Banner -->
+        <header id="dashboard-header" class="header-panel">
+            <div class="header-logo">
+                <span class="logo-accent">CAPTAIN</span>SOLO <span class="logo-sub">HQ</span>
+            </div>
+            <div class="header-status">
+                <span id="overall-progress-label">System Progress:</span>
+                <div class="progress-bar-container">
+                    <div id="overall-progress-bar" class="progress-bar" style="width: 0%;"></div>
+                </div>
+                <span id="overall-progress-percentage" class="progress-text">0%</span>
+            </div>
+        </header>
+
+        <!-- Main Workspace Grid -->
+        <div id="dashboard-grid" class="main-grid">
+            
+            <!-- Sidebar Navigation -->
+            <nav id="dashboard-nav" class="sidebar-panel">
+                <div class="nav-section">
+                    <span class="nav-section-title">Navigation</span>
+                    <button id="nav-btn-action-plan" class="nav-button active" onclick="switchTab('action-plan')">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2zm0 8H7v-2h10v2z"/></svg>
+                        Action Plan & Grounding
+                    </button>
+                    <button id="nav-btn-resume-tech" class="nav-button" onclick="switchTab('resume-tech')">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                        Resume A: Developer
+                    </button>
+                    <button id="nav-btn-resume-general" class="nav-button" onclick="switchTab('resume-general')">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                        Resume B: General (ASAP)
+                    </button>
+                    <button id="nav-btn-jobs" class="nav-button" onclick="switchTab('jobs')">
+                        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"/></svg>
+                        Job Applications Tracker
+                    </button>
+                </div>
+
+                <div class="nav-section spacer"></div>
+
+                <div class="nav-section cns-anchor-card">
+                    <span class="nav-section-title">CNS Grounding Anchor</span>
+                    <div class="box-breathing-box">
+                        <div id="bb-timer-display" class="bb-circle">Ready</div>
+                        <button id="btn-start-breathing" class="action-btn-sm" onclick="startBoxBreathing()">Start Box Breath</button>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Main Content Container -->
+            <main id="dashboard-content" class="content-panel">
+                
+                <!-- Tab 1: Action Plan & Grounding -->
+                <section id="tab-action-plan" class="tab-pane active">
+                    <h1 class="pane-title">Action Plan: Restoring Sovereignty</h1>
+                    
+                    <div class="plan-cards-grid">
+                        
+                        <!-- Phase 1 Card -->
+                        <div class="plan-card" id="card-phase-1">
+                            <div class="card-header">
+                                <span class="phase-number">PHASE 1</span>
+                                <h2 class="card-title">Clear the Physical Space</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-desc">Messy space = messy mind. Start with small, timed physical anchors.</p>
+                                <div class="checklist-items">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p1-timer" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Set a strict 15-minute timer</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p1-floor" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Clear the room floor (dirty laundry & trash bags)</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p1-desk" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Clear & wipe down the desk surface</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p1-bed" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Make the bed (sets the baseline visual anchor)</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 2 Card -->
+                        <div class="plan-card" id="card-phase-2">
+                            <div class="card-header">
+                                <span class="phase-number">PHASE 2</span>
+                                <h2 class="card-title">Digital Sovereignty</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-desc">Lock down compromised accounts and plug the leaks.</p>
+                                <div class="checklist-items">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p2-email" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Change primary Outlook password & enable app 2FA</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p2-manager" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Setup Bitwarden / KeePassXC password manager</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p2-purge" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Purge all active sessions (Google, GitHub, Discord)</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p2-pwned" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Audit leak status on HaveIBeenPwned.com</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 3 Card -->
+                        <div class="plan-card" id="card-phase-3">
+                            <div class="card-header">
+                                <span class="phase-number">PHASE 3</span>
+                                <h2 class="card-title">Financial Containment (WLU)</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-desc">Stabilize WLU collections (CA$3,483.03) and readmission probation status.</p>
+                                <div class="checklist-items">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p3-teresa" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Email Teresa Seale to request CA$100/mo payment arrangement</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p3-sas" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Confirm readmission probation terms with Crystal Shadwell</span>
+                                    </label>
+                                </div>
+                                <div class="card-actions">
+                                    <button id="btn-copy-email" class="action-btn-sm" onclick="copyEmailTemplate()">Copy Email Template</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase 4 Card -->
+                        <div class="plan-card" id="card-phase-4">
+                            <div class="card-header">
+                                <span class="phase-number">PHASE 4</span>
+                                <h2 class="card-title">ASAP Job Pipeline</h2>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-desc">Prepare dual resumes and apply targeting quick-hire industries.</p>
+                                <div class="checklist-items">
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p4-resumes" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Clean and finalize Resume A (Tech) and Resume B (General)</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p4-pipe" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Map non-profit & healthcare support job opportunities</span>
+                                    </label>
+                                    <label class="checklist-item">
+                                        <input type="checkbox" id="chk-p4-daily" onchange="updateProgress()">
+                                        <span class="checkbox-custom"></span>
+                                        <span class="item-text">Commit to a daily 1-hour Job Search / Application block</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Tab 2: Resume A - Developer -->
+                <section id="tab-resume-tech" class="tab-pane">
+                    <div class="resume-controls">
+                        <h2>Developer Resume (Resume A)</h2>
+                        <button id="btn-print-tech" class="action-btn" onclick="window.print()">Print / Export PDF</button>
+                    </div>
+                    
+                    <!-- Paper Resume Container -->
+                    <div id="resume-a-paper" class="paper-resume">
+                        <header class="resume-header">
+                            <h1>Solomon Olufelo</h1>
+                            <div class="contact-line">
+                                <span>solomonolufelo@outlook.com</span> | 
+                                <span>(289) 233-8317</span> | 
+                                <span>github.com/solufelo</span> | 
+                                <span>captainsolo.ca</span>
+                            </div>
+                        </header>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Technical Skills</h2>
+                            <div class="skills-grid">
+                                <div><strong>Systems & Languages:</strong> C/C++ (C++17/20), Java, Python, JavaScript, TypeScript, GLSL, Bash, POSIX API, SQL</div>
+                                <div><strong>Web & Graphics:</strong> React, Next.js, Node.js, Express, MongoDB, PostgreSQL, OpenGL, Three.js, TailwindCSS</div>
+                                <div><strong>Security & Tools:</strong> Git, Docker, CMake, GDB, Linux, Virtualization, threat modeling, credential isolation</div>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Experience</h2>
+                            
+                            <div class="job-item">
+                                <div class="job-header">
+                                    <strong>Athletics & Recreation Videographer</strong>
+                                    <span>Aug. 2023 - Apr. 2026</span>
+                                </div>
+                                <div class="job-sub">Wilfrid Laurier University, Waterloo, ON</div>
+                                <ul>
+                                    <li>Capture and produce high quality video content for university athletic events and recreational activities.</li>
+                                    <li>Operate professional video recording equipment, ensuring optimal framing, focus, and audio quality.</li>
+                                    <li>Edit and post produce footage to create engaging highlight reels and promotional videos.</li>
+                                </ul>
+                            </div>
+
+                            <div class="job-item">
+                                <div class="job-header">
+                                    <strong>Freelance Developer & Creative Producer</strong>
+                                    <span>2020 - Jan. 2026</span>
+                                </div>
+                                <div class="job-sub">Independent Contractor</div>
+                                <ul>
+                                    <li>Achieved top tier freelancer status with a 4.8 star rating across 1,400+ completed orders and 700+ client reviews.</li>
+                                    <li>Scaled an independent business to over $30K in revenue, serving a global client base with custom web applications.</li>
+                                    <li>Developed and deployed custom full stack architectures for global clients, enforcing secure data storage, credential isolation, and environment reproducibility.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Projects</h2>
+                            
+                            <div class="project-item">
+                                <div class="project-header">
+                                    <strong>Real-Time 3D OpenGL Engine</strong> | <em>C++, OpenGL 3.3, GLSL, GLFW, GLAD</em>
+                                    <span>2025</span>
+                                </div>
+                                <ul>
+                                    <li>Developed a real-time 3D rendering engine implementing custom programmable shader pipelines and camera systems.</li>
+                                    <li>Optimized rendering performance using vertex buffer objects (VBO) and index buffer objects (EBO) in Modern OpenGL.</li>
+                                    <li>Integrated the Assimp library to parse and render complex 3D assets with real-time Phong illumination model shading.</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <div class="project-header">
+                                    <strong>Light Years - C++20 Space Shooter Engine</strong> | <em>C++20, SFML, CMake, Box2D, vcpkg</em>
+                                    <span>2025</span>
+                                </div>
+                                <ul>
+                                    <li>Engineered a 2D space shooter game engine in C++20, utilizing a fixed-timestep application loop for synchronized physics and rendering updates.</li>
+                                    <li>Configured cross-platform native compilation pipelines using CMake Presets and managed dependencies via vcpkg integration.</li>
+                                    <li>Implemented object pooling design patterns for high-frequency entity spawning to reduce runtime heap allocation overhead.</li>
+                                </ul>
+                            </div>
+
+                            <div class="project-item">
+                                <div class="project-header">
+                                    <strong>findYOU - Cybersec and Systems Productivity OS</strong> | <em>Python, React, Docker, Playwright</em>
+                                    <span>2026</span>
+                                </div>
+                                <ul>
+                                    <li>Developed a local productivity engine featuring a Python http backend, an Eisenhower matrix planner, and a Pomodoro timer.</li>
+                                    <li>Built a security-isolated crawling script using Playwright and Python-JobSpy to scrape and aggregate active job data.</li>
+                                    <li>Implemented local vault write-backs to Markdown files and containerized the entire ecosystem with Docker for deployment.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Education</h2>
+                            <div class="education-item">
+                                <div class="education-header">
+                                    <strong>Bachelor of Computer Science</strong>
+                                    <span>Sep. 2021 - Spring 2027 (Expected)</span>
+                                </div>
+                                <div class="education-sub">Wilfrid Laurier University, Waterloo, ON</div>
+                                <div class="coursework"><em>Relevant Coursework:</em> Data Structures & Algorithms, Object-Oriented Programming, Operating Systems, Computer Graphics, Linear Algebra</div>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Awards</h2>
+                            <ul>
+                                <li>Bronze & Silver Medalist - Skills Ontario Competition (3D Animation, Blender), 2018</li>
+                            </ul>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Tab 3: Resume B - General -->
+                <section id="tab-resume-general" class="tab-pane">
+                    <div class="resume-controls">
+                        <h2>General Resume (Resume B - ASAP Jobs)</h2>
+                        <button id="btn-print-general" class="action-btn" onclick="window.print()">Print / Export PDF</button>
+                    </div>
+
+                    <!-- Paper Resume Container -->
+                    <div id="resume-b-paper" class="paper-resume">
+                        <header class="resume-header">
+                            <h1>Solomon Olufelo</h1>
+                            <div class="contact-line">
+                                <span>solomonolufelo@outlook.com</span> | 
+                                <span>(289) 233-8317</span> | 
+                                <span>github.com/solufelo</span> | 
+                                <span>captainsolo.ca</span>
+                            </div>
+                        </header>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Professional Summary</h2>
+                            <p>Detail-oriented and highly motivated professional with extensive experience in creative media, customer-facing freelance operations, and team coordination. Strong background in organizing digital workflows, client communication, and media production. Fast learner with a high technical literacy, seeking to leverage coordination, problem-solving, and communication skills to support healthcare, non-profit, or administrative operations.</p>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Key Skills</h2>
+                            <div class="skills-grid">
+                                <div><strong>Communication & Coordination:</strong> Client relations, project management, schedule coordination, team collaboration</div>
+                                <div><strong>Technical Literacy:</strong> Advanced data management, spreadsheets (Excel/Google Sheets), digital filing, system configurations</div>
+                                <div><strong>Creative Media:</strong> Video production, video editing (Premiere Pro/Resolve), asset management, 3D digital art</div>
+                                <div><strong>Operations:</strong> Workflow optimization, quality assurance, remote service delivery, problem troubleshooting</div>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Experience</h2>
+                            
+                            <div class="job-item">
+                                <div class="job-header">
+                                    <strong>Athletics & Recreation Videographer</strong>
+                                    <span>Aug. 2023 - Apr. 2026</span>
+                                </div>
+                                <div class="job-sub">Wilfrid Laurier University, Waterloo, ON</div>
+                                <ul>
+                                    <li>Coordinated and produced video coverage for university-wide athletic events, managing scheduling and equipment logistics.</li>
+                                    <li>Communicated directly with athletic coordinators and coaching staff to identify and deliver key media assets on tight schedules.</li>
+                                    <li>Managed digital media archives, optimizing file structures for rapid search, distribution, and social media integration.</li>
+                                </ul>
+                            </div>
+
+                            <div class="job-item">
+                                <div class="job-header">
+                                    <strong>Freelance Media & Logistics Contractor</strong>
+                                    <span>2020 - Jan. 2026</span>
+                                </div>
+                                <div class="job-sub">Independent Contractor</div>
+                                <ul>
+                                    <li>Managed end-to-end service delivery for a global client base, completing 1,400+ distinct orders with a 4.8/5-star satisfaction rating.</li>
+                                    <li>Managed all client onboarding, scoping, budget estimation, project tracking, and post-delivery support.</li>
+                                    <li>Maintained strict organization of digital documents, files, and project environments to ensure consistency and speed of delivery.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Volunteer & Community Involvement</h2>
+                            
+                            <div class="job-item">
+                                <div class="job-header">
+                                    <strong>Digital Literacy Support Volunteer</strong>
+                                    <span>2024 - Present</span>
+                                </div>
+                                <div class="job-sub">Community Initiatives</div>
+                                <ul>
+                                    <li>Assisted local seniors and community members in setting up digital devices, configuring secure passwords, and navigating online systems.</li>
+                                    <li>Explained technical concepts in simple, accessible terms, fostering independence and building user confidence.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Education</h2>
+                            <div class="education-item">
+                                <div class="education-header">
+                                    <strong>Bachelor of Computer Science Student</strong>
+                                    <span>Sep. 2021 - Present</span>
+                                </div>
+                                <div class="education-sub">Wilfrid Laurier University, Waterloo, ON</div>
+                                <div class="coursework"><em>Focus:</em> System organization, data structures, logic, and problem-solving.</div>
+                            </div>
+                        </section>
+
+                        <section class="resume-section">
+                            <h2 class="section-title">Awards</h2>
+                            <ul>
+                                <li>Bronze & Silver Medalist - Skills Ontario Competition (3D Animation, Blender), 2018</li>
+                            </ul>
+                        </section>
+                    </div>
+                </section>
+
+                <!-- Tab 4: Job Applications Tracker -->
+                <section id="tab-jobs" class="tab-pane">
+                    <h1 class="pane-title">Job Applications Tracker</h1>
+                    
+                    <div class="jobs-layout-grid">
+                        
+                        <!-- Add Job Form -->
+                        <div class="tracker-form-card">
+                            <h3>Log New Application</h3>
+                            <form id="job-form" onsubmit="addJob(event)">
+                                <div class="form-group">
+                                    <label for="job-company">Company / Organization *</label>
+                                    <input type="text" id="job-company" required placeholder="e.g. Grand River Hospital">
+                                </div>
+                                <div class="form-group">
+                                    <label for="job-role">Role *</label>
+                                    <input type="text" id="job-role" required placeholder="e.g. Administrative Support Clerk">
+                                </div>
+                                <div class="form-group">
+                                    <label for="job-date">Date Applied *</label>
+                                    <input type="date" id="job-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="job-status">Status</label>
+                                    <select id="job-status">
+                                        <option value="Applied">Applied</option>
+                                        <option value="Follow-Up Sent">Follow-Up Sent</option>
+                                        <option value="Interview Scheduled">Interview Scheduled</option>
+                                        <option value="Offer Received">Offer Received</option>
+                                        <option value="Rejected">Rejected / Inactive</option>
+                                    </select>
+                                </div>
+                                <button type="submit" id="btn-submit-job" class="action-btn">Log Application</button>
+                            </form>
+                        </div>
+
+                        <!-- Active pipeline list -->
+                        <div class="tracker-list-card">
+                            <h3>Application Funnel</h3>
+                            <div class="table-container">
+                                <table id="jobs-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Company</th>
+                                            <th>Role</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Follow-Up Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="jobs-list">
+                                        <!-- Dynamic JS Insertion -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="dashboard.js"></script>
+</body>
+</html>

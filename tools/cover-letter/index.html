@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interactive Cover Letter & Portfolio Hub for Solomon Ifeoluwatomi Olufelo — Systems Developer, Data Analyst, & Creative Technologist.">
+    <title>Solomon Olufelo | Interactive Cover Letter & Portfolio Hub</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Style -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+    <div class="page-bg-overlay"></div>
+    
+    <div class="app-container">
+        <!-- Profile Header Header -->
+        <header class="profile-header card-glass">
+            <div class="header-main-area">
+                <div class="avatar-area">
+                    <div class="avatar-icon"><i class="fa-solid fa-code-branch"></i></div>
+                </div>
+                <div class="title-area">
+                    <h1>Solomon Ifeoluwatomi Olufelo</h1>
+                    <p class="subtitle">Systems Developer &enspace;$\cdot$&enspace; Data Analyst &enspace;$\cdot$&enspace; Creative Technologist</p>
+                    <div class="badges-row">
+                        <span class="badge"><i class="fa-solid fa-passport"></i> Dual US/Canada Citizen</span>
+                        <span class="badge"><i class="fa-solid fa-truck-ramp-box"></i> Ready to Relocate</span>
+                        <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Wilfrid Laurier CS Coursework</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dynamic Portal Grid -->
+        <div class="workspace-grid">
+            
+            <!-- Left Panel: Interactive Dynamic Letter -->
+            <section class="letter-panel card-glass" aria-labelledby="letter-title">
+                <div class="panel-header">
+                    <h2 id="letter-title"><i class="fa-solid fa-envelope-open-text text-accent"></i> Dynamic Cover Letter</h2>
+                    <p class="panel-subtitle">Customize this cover letter dynamically in real-time to match your company profile.</p>
+                </div>
+
+                <!-- Customization Form Controls -->
+                <div class="controls-panel">
+                    <div class="control-row">
+                        <div class="control-group">
+                            <label for="company-input">Target Company</label>
+                            <input type="text" id="company-input" value="Tech Innovators" placeholder="e.g. Razer, Nvidia">
+                        </div>
+                        <div class="control-group">
+                            <label for="recipient-input">Hiring Contact</label>
+                            <input type="text" id="recipient-input" value="Hiring Team" placeholder="e.g. Talent Acquisition, Tech Lead">
+                        </div>
+                    </div>
+                    <div class="control-row">
+                        <div class="control-group width-100">
+                            <label for="role-preset">Target Job Category Profile</label>
+                            <select id="role-preset">
+                                <option value="developer" selected>Systems & Software Developer 💻</option>
+                                <option value="analyst">Data & Systems Analyst 📊</option>
+                                <option value="web_designer">E-Commerce Web Designer 🎨</option>
+                                <option value="journalist">Technology Journalist / Tech Writer 📰</option>
+                                <option value="labourer">Event Crew & Production Assistant 🛠️</option>
+                                <option value="volunteer">Tech Support & Community Volunteer 🤝</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cover Letter Preview Card -->
+                <div class="letter-document card-glass-dark">
+                    <div class="document-header">
+                        <p class="doc-date" id="doc-date-display">June 19, 2026</p>
+                        <p class="doc-recipient">To: <span id="doc-rec-display">Hiring Team</span></p>
+                        <p class="doc-company"><span id="doc-comp-display">Tech Innovators</span></p>
+                    </div>
+
+                    <div class="document-body" id="doc-body-display">
+                        <!-- Dynamic content will be injected by app.js -->
+                    </div>
+
+                    <div class="document-footer">
+                        <p>Sincerely,</p>
+                        <p class="signature">Solomon Ifeoluwatomi Olufelo</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Pitch Video & Portfolio Hub -->
+            <div class="sidebar-panel">
+                
+                <!-- S-Tier 60s Video Pitch Card -->
+                <section class="widget-card card-glass" aria-labelledby="pitch-title">
+                    <h2 id="pitch-title" class="widget-title"><i class="fa-solid fa-circle-play text-accent"></i> 60-Second Video Pitch</h2>
+                    <div class="video-mock-container">
+                        <div class="video-preview-image">
+                            <div class="play-button"><i class="fa-solid fa-play"></i></div>
+                            <div class="video-overlay-text">Watch S-Tier Intro & Demo</div>
+                        </div>
+                    </div>
+                    <p class="video-caption">Demonstrating C++ native space shooter compiled directly to WebAssembly and running in-browser.</p>
+                </section>
+
+                <!-- Tailored Resumes Downloads -->
+                <section class="widget-card card-glass" aria-labelledby="resumes-title">
+                    <h2 id="resumes-title" class="widget-title"><i class="fa-solid fa-file-pdf text-accent"></i> Download Tailored Resumes</h2>
+                    <p class="widget-desc">Open the matching resume PDF compiled for each track:</p>
+                    <div class="resumes-grid">
+                        <a href="resumes/resume_developer.pdf" target="_blank" class="resume-btn btn-dev">
+                            <i class="fa-solid fa-code"></i> Developer Profile PDF
+                        </a>
+                        <a href="resumes/resume_analyst.pdf" target="_blank" class="resume-btn btn-analyst">
+                            <i class="fa-solid fa-chart-simple"></i> Analyst Profile PDF
+                        </a>
+                        <a href="resumes/resume_web_designer.pdf" target="_blank" class="resume-btn btn-web" style="background: rgba(186, 100, 46, 0.1); border: 1px solid var(--accent); color: var(--accent);">
+                            <i class="fa-solid fa-palette"></i> Web Designer Profile PDF
+                        </a>
+                        <a href="resumes/resume_journalist.pdf" target="_blank" class="resume-btn btn-journo">
+                            <i class="fa-solid fa-newspaper"></i> Journalist Profile PDF
+                        </a>
+                        <a href="resumes/resume_labourer.pdf" target="_blank" class="resume-btn btn-crew">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Event Crew/Labourer PDF
+                        </a>
+                        <a href="resumes/resume_volunteer.pdf" target="_blank" class="resume-btn btn-vol">
+                            <i class="fa-solid fa-handshake-angle"></i> Tech Volunteer PDF
+                        </a>
+                        <a href="resumes/resume_general.pdf" target="_blank" class="resume-btn btn-gen">
+                            <i class="fa-solid fa-address-card"></i> General Resume PDF
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Project Quickcases -->
+                <section class="widget-card card-glass" aria-labelledby="projects-title">
+                    <h2 id="projects-title" class="widget-title"><i class="fa-solid fa-diagram-project text-accent"></i> Portfolio Showcase</h2>
+                    <div class="project-mini-cards">
+                        <!-- Project 1 -->
+                        <div class="project-mini-card">
+                            <div class="proj-header">
+                                <h3>findYOU</h3>
+                                <span class="tag tag-sys">Python/React</span>
+                            </div>
+                            <p>Systems productivity engine featuring Playwright automated job scraping, SQLite persistence, and Obsidian vault write-backs.</p>
+                        </div>
+                        <!-- Project 2 -->
+                        <div class="project-mini-card">
+                            <div class="proj-header">
+                                <h3>captainsolo.ca</h3>
+                                <span class="tag tag-web">HTML/CSS</span>
+                            </div>
+                            <p>Personal homepage and portfolio hub showcasing 3D Blender models, automation plugins, and web layouts.</p>
+                        </div>
+                        <!-- Project 3 -->
+                        <div class="project-mini-card">
+                            <div class="proj-header">
+                                <h3>Light Years Engine</h3>
+                                <span class="tag tag-game">C++20/WASM</span>
+                            </div>
+                            <p>2D space shooter game engine written in native C++20 and SFML, utilizing CMake presets and Emscripten WebAssembly compilation.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Call to Action Connect Panel -->
+                <section class="widget-card card-glass" aria-labelledby="connect-title">
+                    <h2 id="connect-title" class="widget-title"><i class="fa-solid fa-address-book text-accent"></i> Connect With Me</h2>
+                    <div class="connect-links">
+                        <a href="mailto:solomonolufelo@outlook.com" class="connect-link"><i class="fa-solid fa-envelope"></i> Email</a>
+                        <a href="https://github.com/solufelo" target="_blank" class="connect-link"><i class="fa-brands fa-github"></i> GitHub</a>
+                        <a href="https://linkedin.com/in/solomonolufelo" target="_blank" class="connect-link"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://captainsolo.ca" target="_blank" class="connect-link"><i class="fa-solid fa-globe"></i> Portfolio</a>
+                    </div>
+                </section>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Video Modal Mockup -->
+    <div class="modal-overlay hidden" id="video-modal">
+        <div class="modal-content card-glass">
+            <button class="close-btn" id="close-video-modal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-body">
+                <h3>S-Tier Video Pitch Walkthrough</h3>
+                <div class="iframe-container">
+                    <!-- Simulate Loom Embedded Iframe -->
+                    <div class="loom-mock">
+                        <i class="fa-solid fa-video fa-4x text-accent"></i>
+                        <p>Demo Video Pitch Placeholder</p>
+                        <span style="font-size:0.85rem;color:var(--text-secondary);">Recruiters: Contact Solomon directly at <a href="mailto:solomonolufelo@outlook.com" style="color:var(--accent);">solomonolufelo@outlook.com</a> to view this 60s pitch deck live.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
