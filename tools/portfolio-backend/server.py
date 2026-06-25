@@ -5,8 +5,17 @@ import sqlite3
 import hashlib
 import uuid
 import sys
+import base64
 import urllib.parse
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 from datetime import datetime
+
+try:
+    import stripe
+except ImportError:
+    stripe = None
 
 # Ensure stdout is unbuffered
 sys.stdout.reconfigure(line_buffering=True)
@@ -152,6 +161,43 @@ def init_db():
         )
     ''')
     
+    # 9. Contact Submissions table
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS contact_submissions (
+            id TEXT PRIMARY KEY,
+            name TEXT,
+            email TEXT,
+            phone TEXT,
+            service TEXT,
+            budget TEXT,
+            message TEXT,
+            created_at TEXT
+        )
+    ''')
+
+    # 10. Showcase Projects table (portfolio CMS — editable without code)
+    c.execute('''
+        CREATE TABLE IF NOT EXISTS projects (
+            id TEXT PRIMARY KEY,
+            user_id TEXT,
+            name TEXT,
+            category TEXT,
+            status TEXT DEFAULT 'wip',
+            blurb TEXT,
+            stack TEXT,
+            image_url TEXT,
+            video_url TEXT,
+            demo_url TEXT,
+            github_url TEXT,
+            case_study_url TEXT,
+            internal_demo INTEGER DEFAULT 0,
+            sort_order INTEGER DEFAULT 0,
+            published INTEGER DEFAULT 0,
+            created_at TEXT,
+            updated_at TEXT
+        )
+    ''')
+
     conn.commit()
     conn.close()
 
@@ -165,6 +211,21 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             if token in SESSIONS:
                 return SESSIONS[token]
         return None
+
+    def get_authenticated_email(self):
+        uid = self.get_authenticated_user()
+        if not uid:
+            return None
+        conn = get_db_connection()
+        c = conn.cursor()
+        c.execute("SELECT email FROM users WHERE id = ?", (uid,))
+        row = c.fetchone()
+        conn.close()
+        return row[0] if row else None
+
+    def is_admin_request(self):
+        email = self.get_authenticated_email()
+        return bool(email and (email == "solomonolufelo@outlook.com" or "admin" in email))
 
     def end_headers(self):
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -193,6 +254,22 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.handle_login()
         elif parsed_url.path == "/api/auth/logout":
             self.handle_logout()
+        elif parsed_url.path == "/api/order/checkout":
+            self.handle_checkout()
+        elif parsed_url.path == "/api/stripe/webhook":
+            self.handle_stripe_webhook()
+        elif parsed_url.path == "/api/order/message-notification":
+            self.handle_message_notification()
+        elif parsed_url.path == "/api/order/revision-notification":
+            self.handle_revision_notification()
+        elif parsed_url.path == "/api/contact/submit":
+            self.handle_contact_submit()
+        elif parsed_url.path == "/api/upload":
+            self.handle_upload()
+        elif parsed_url.path == "/api/admin/create-client-project":
+            self.handle_create_client_project()
+        elif parsed_url.path == "/api/project/notify":
+            self.handle_project_notify()
         elif parsed_url.path.startswith("/api/db/"):
             table_name = parsed_url.path.split("/api/db/")[1]
             self.handle_database_query(table_name)
@@ -360,7 +437,7 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             is_single = params.get("isSingle", False)
             data = params.get("data")
             
-            if table_name == "blog_posts" and operation == "select" and conditions.get("published") == 1:
+            if table_name in ("blog_posts", "projects") and operation == "select" and conditions.get("published") == 1:
                 is_public_blog_request = True
                 
             if not user_id and not is_public_blog_request:
@@ -546,6 +623,688 @@ class RequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_checkout(self):
+        try:
+            if not stripe:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Stripe package not installed on server."}).encode("utf-8"))
+                return
+
+            stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
+            if not stripe.api_key:
+                self.send_response(500)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "STRIPE_SECRET_KEY is not configured"}).encode("utf-8"))
+                return
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length)
+            params = json.loads(body.decode("utf-8"))
+
+            amount = params.get("amount")
+            service_type = params.get("serviceType")
+            package_type = params.get("packageType")
+            user_id = params.get("userId")
+            order_id = params.get("orderId", "")
+            order_data = params.get("orderData", {})
+
+            if not amount or not service_type or not package_type or not user_id:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Missing required fields"}).encode("utf-8"))
+                return
+
+            session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        'price_data': {
+                            'currency': 'usd',
+                            'product_data': {
+                                'name': f"{service_type} - {package_type}",
+                                'description': f"Voice tag order: {order_data.get('voiceTagText', package_type)}",
+                            },
+                            'unit_amount': int(amount * 100),
+                        },
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                success_url=f"{os.environ.get('URL', 'https://captainsolo.ca')}/order/success?session_id={{CHECKOUT_SESSION_ID}}",
+                cancel_url=f"{os.environ.get('URL', 'https://captainsolo.ca')}/order/voice-tag?canceled=true",
+                metadata={
+                    'userId': user_id,
+                    'serviceType': service_type,
+                    'packageType': package_type,
+                    'orderId': order_id,
+                    'orderData': json.dumps(order_data),
+                },
+                customer_email=order_data.get('email') or None,
+                allow_promotion_codes=True,
+                payment_intent_data={
+                    'statement_descriptor': 'CAPTAINSOLO',
+                    'statement_descriptor_suffix': 'VOICE',
+                },
+                phone_number_collection={'enabled': True},
+                invoice_creation={
+                    'enabled': True,
+                    'invoice_data': {
+                        'description': f"{service_type} - {package_type} package",
+                        'metadata': {
+                            'service_type': service_type,
+                            'package_type': package_type,
+                        },
+                    },
+                },
+            )
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"sessionId": session.id, "url": session.url}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_stripe_webhook(self):
+        try:
+            if not stripe:
+                self.send_response(500)
+                self.end_headers()
+                return
+
+            stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
+            webhook_secret = os.environ.get("STRIPE_WEBHOOK_SECRET")
+
+            sig = self.headers.get("stripe-signature")
+            content_length = int(self.headers.get("Content-Length", 0))
+            payload = self.rfile.read(content_length)
+
+            try:
+                event = stripe.Webhook.construct_event(payload, sig, webhook_secret)
+            except Exception as e:
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": f"Webhook Error: {str(e)}"}).encode("utf-8"))
+                return
+
+            if event['type'] == 'checkout.session.completed':
+                session = event['data']['object']
+                metadata = session.get('metadata', {})
+                u_id = metadata.get('userId')
+                if u_id:
+                    order_id = metadata.get('orderId')
+                    service_type = metadata.get('serviceType')
+                    package_type = metadata.get('packageType')
+                    order_data = json.loads(metadata.get('orderData', '{}'))
+                    session_id = session.get('id')
+                    payment_intent = session.get('payment_intent')
+                    amount_total = session.get('amount_total', 0) / 100.0
+
+                    conn = get_db_connection()
+                    c = conn.cursor()
+                    
+                    order_to_update = None
+                    if order_id:
+                        c.execute("SELECT id FROM orders WHERE id = ?", (order_id,))
+                        row = c.fetchone()
+                        if row:
+                            order_to_update = row[0]
+                            
+                    if not order_to_update:
+                        c.execute("SELECT id FROM orders WHERE stripe_checkout_session_id = ?", (session_id,))
+                        row = c.fetchone()
+                        if row:
+                            order_to_update = row[0]
+                            
+                    if not order_to_update:
+                        c.execute('''
+                            SELECT id FROM orders 
+                            WHERE user_id = ? AND status = 'pending' AND service_type = ? AND package_type = ?
+                            ORDER BY created_at DESC LIMIT 1
+                        ''', (u_id, service_type, package_type))
+                        row = c.fetchone()
+                        if row:
+                            order_to_update = row[0]
+
+                    updated_at = datetime.now().isoformat()
+                    if order_to_update:
+                        c.execute('''
+                            UPDATE orders 
+                            SET status = 'paid', stripe_checkout_session_id = ?, stripe_payment_intent_id = ?, updated_at = ?
+                            WHERE id = ?
+                        ''', (session_id, payment_intent, updated_at, order_to_update))
+                    else:
+                        new_oid = str(uuid.uuid4())
+                        c.execute('''
+                            INSERT INTO orders (id, user_id, service_type, package_type, price, status, stripe_checkout_session_id, stripe_payment_intent_id, requirements, created_at, updated_at)
+                            VALUES (?, ?, ?, ?, ?, 'paid', ?, ?, ?, ?, ?)
+                        ''', (new_oid, u_id, service_type, package_type, amount_total, session_id, payment_intent, json.dumps(order_data), updated_at, updated_at))
+                    conn.commit()
+                    conn.close()
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"received": True}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def send_email_smtp(self, to_email, subject, html_content):
+        smtp_host = os.environ.get("SMTP_HOST", "localhost")
+        smtp_port = int(os.environ.get("SMTP_PORT", "587"))
+        smtp_user = os.environ.get("SMTP_USER", "")
+        smtp_pass = os.environ.get("SMTP_PASS", "")
+
+        if not smtp_user or not smtp_pass:
+            print(f"[MOCK EMAIL] To: {to_email}, Subject: {subject}")
+            return True
+
+        try:
+            msg = MIMEMultipart("alternative")
+            msg["Subject"] = subject
+            msg["From"] = f"CaptainSolo <{smtp_user}>"
+            msg["To"] = to_email
+
+            part = MIMEText(html_content, "html")
+            msg.attach(part)
+
+            with smtplib.SMTP(smtp_host, smtp_port) as server:
+                if smtp_port == 587:
+                    server.starttls()
+                server.login(smtp_user, smtp_pass)
+                server.sendmail(smtp_user, to_email, msg.as_string())
+            print(f"[SMTP EMAIL SENT] To: {to_email}, Subject: {subject}")
+            return True
+        except Exception as e:
+            print(f"[SMTP EMAIL ERROR] Failed to send email to {to_email}: {e}")
+            return False
+
+    def handle_message_notification(self):
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length)
+            params = json.loads(body.decode("utf-8"))
+
+            order_id = params.get("orderId")
+            recipient_email = params.get("recipientEmail")
+            recipient_name = params.get("recipientName", "Customer")
+            sender_name = params.get("senderName", "Admin")
+            message_preview = params.get("messagePreview", "")
+            is_admin = params.get("isAdmin", False)
+            order_url = params.get("orderUrl")
+
+            if not recipient_email or not sender_name or not order_url:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Missing required fields"}).encode("utf-8"))
+                return
+
+            subject = f"New message from {sender_name} on your order" if is_admin else f"New message from {sender_name} on order #{order_id[:8] if order_id else ''}"
+
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                    .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                    .header {{ background: #CFA355; color: white; padding: 20px; text-align: center; }}
+                    .content {{ padding: 20px; background: #f9f9f9; }}
+                    .button {{ display: inline-block; padding: 12px 24px; background: #CFA355; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }}
+                    .message-preview {{ background: white; padding: 15px; border-left: 4px solid #CFA355; margin: 20px 0; }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>CaptainSolo - New Message</h1>
+                    </div>
+                    <div class="content">
+                        <h2>You have a new message!</h2>
+                        <p>Hi {recipient_name},</p>
+                        <p>{'An admin' if is_admin else 'A customer'} has sent you a new message regarding your order.</p>
+                        
+                        <div class="message-preview">
+                            <strong>Message Preview:</strong>
+                            <p>{message_preview[:100] + ('...' if len(message_preview) > 100 else '')}</p>
+                        </div>
+                        
+                        <p>Click the button below to view the full conversation and respond:</p>
+                        <a href="{order_url}" class="button" style="color: white;">View Order & Respond</a>
+                        
+                        <p style="margin-top: 30px; font-size: 12px; color: #666;">
+                            This is an automated email from CaptainSolo. Please do not reply to this email.
+                        </p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
+
+            self.send_email_smtp(recipient_email, subject, html_content)
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Email notification queued"}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_revision_notification(self):
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length)
+            params = json.loads(body.decode("utf-8"))
+
+            order_id = params.get("orderId")
+            revision_number = params.get("revisionNumber")
+            request_description = params.get("requestDescription", "")
+            status = params.get("status", "pending")
+            recipient_email = params.get("recipientEmail", "work@captainsolo.ca")
+            recipient_name = params.get("recipientName", "Admin")
+            customer_name = params.get("customerName", "Customer")
+            is_update = params.get("isUpdate", False)
+            order_url = params.get("orderUrl")
+
+            if not order_id or not order_url:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Missing required fields"}).encode("utf-8"))
+                return
+
+            subject = f"Revision #{revision_number} status updated - {status}" if is_update else f"New revision request #{revision_number} from {customer_name}"
+
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                    .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                    .header {{ background: #CFA355; color: white; padding: 20px; text-align: center; }}
+                    .content {{ padding: 20px; background: #f9f9f9; }}
+                    .button {{ display: inline-block; padding: 12px 24px; background: #CFA355; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }}
+                    .revision-details {{ background: white; padding: 15px; border-left: 4px solid #CFA355; margin: 20px 0; }}
+                    .status-badge {{ display: inline-block; padding: 5px 10px; border-radius: 3px; font-weight: bold; }}
+                    .status-pending {{ background: #fbbf24; color: #78350f; }}
+                    .status-in-progress {{ background: #3b82f6; color: white; }}
+                    .status-completed {{ background: #10b981; color: white; }}
+                    .status-rejected {{ background: #ef4444; color: white; }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>CaptainSolo - Revision { 'Update' if is_update else 'Request' }</h1>
+                    </div>
+                    <div class="content">
+                        <h2>{ 'Revision Status Updated' if is_update else 'New Revision Request' }</h2>
+                        <p>Hi {recipient_name},</p>
+                        
+                        { f'''
+                        <p>The status of revision #{revision_number} for your order has been updated.</p>
+                        <div class="revision-details">
+                            <p><strong>Revision #{revision_number}</strong></p>
+                            <p><strong>New Status:</strong> <span class="status-badge status-{status}">{status.upper()}</span></p>
+                        </div>
+                        ''' if is_update else f'''
+                        <p><strong>{customer_name}</strong> has submitted a new revision request for order #{order_id[:8] if order_id else ''}.</p>
+                        <div class="revision-details">
+                            <p><strong>Revision #{revision_number}</strong></p>
+                            <p><strong>Customer:</strong> {customer_name}</p>
+                            <p><strong>Request:</strong></p>
+                            <p>{request_description}</p>
+                        </div>
+                        ''' }
+                        
+                        <p>Click the button below to view the order and see the details:</p>
+                        <a href="{order_url}" class="button" style="color: white;">View Order</a>
+                        
+                        <p style="margin-top: 30px; font-size: 12px; color: #666;">
+                            This is an automated email from CaptainSolo. Please do not reply to this email.
+                        </p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
+
+            self.send_email_smtp(recipient_email, subject, html_content)
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Email notification queued"}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_contact_submit(self):
+        try:
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length)
+            params = json.loads(body.decode("utf-8"))
+
+            name = params.get("name", "").strip()
+            email = params.get("email", "").strip()
+            phone = params.get("phone", "").strip()
+            service = params.get("service", "").strip()
+            budget = params.get("budget", "").strip()
+            message = params.get("message", "").strip()
+
+            if not name or not email or not message:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Name, email, and message are required"}).encode("utf-8"))
+                return
+
+            submission_id = str(uuid.uuid4())
+            created_at = datetime.now().isoformat()
+
+            # Store in SQLite
+            conn = get_db_connection()
+            c = conn.cursor()
+            c.execute('''
+                INSERT INTO contact_submissions (id, name, email, phone, service, budget, message, created_at)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            ''', (submission_id, name, email, phone, service, budget, message, created_at))
+            conn.commit()
+            conn.close()
+
+            # Send Email Alert to Admin
+            admin_email = os.environ.get("SMTP_USER", "work@captainsolo.ca")
+            subject = f"New Contact Form Submission from {name}"
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                    .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                    .header {{ background: #CFA355; color: white; padding: 15px; text-align: center; }}
+                    .content {{ padding: 20px; background: #f9f9f9; }}
+                    .details {{ background: white; padding: 15px; border-left: 4px solid #CFA355; margin: 15px 0; }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header">
+                        <h1>New Inquiry Received</h1>
+                    </div>
+                    <div class="content">
+                        <p>You have received a new contact form submission on <strong>captainsolo.ca</strong>.</p>
+                        
+                        <div class="details">
+                            <p><strong>Name:</strong> {name}</p>
+                            <p><strong>Email:</strong> {email}</p>
+                            <p><strong>Phone:</strong> {phone or 'Not provided'}</p>
+                            <p><strong>Service:</strong> {service or 'Not selected'}</p>
+                            <p><strong>Budget:</strong> {budget or 'Not selected'}</p>
+                            <p><strong>Message:</strong></p>
+                            <p>{message}</p>
+                        </div>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
+            self.send_email_smtp(admin_email, subject, html_content)
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True, "message": "Inquiry submitted successfully"}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_upload(self):
+        """Accept a base64 data-URL image/video, save it to the public assets dir,
+        and return its web path. Requires an authenticated (admin) session.
+
+        On cPanel set UPLOAD_DIR -> ~/public_html/assets/projects/uploads and
+        UPLOAD_URL_PREFIX -> /assets/projects/uploads (defaults target local dev)."""
+        try:
+            user_id = self.get_authenticated_user()
+            if not user_id:
+                self.send_response(401)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Unauthorized"}).encode("utf-8"))
+                return
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            body = self.rfile.read(content_length)
+            params = json.loads(body.decode("utf-8"))
+
+            filename = params.get("filename", "upload")
+            data_url = params.get("dataUrl", "")
+
+            if not data_url or "," not in data_url:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Missing or invalid dataUrl"}).encode("utf-8"))
+                return
+
+            header, b64 = data_url.split(",", 1)
+            ext = os.path.splitext(filename)[1].lower().lstrip(".")
+            if not ext and "image/" in header:
+                ext = header.split("image/")[1].split(";")[0]
+            allowed = {"png", "jpg", "jpeg", "webp", "gif", "svg", "mp4"}
+            if ext not in allowed:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": f"Unsupported file type: .{ext}"}).encode("utf-8"))
+                return
+
+            default_dir = os.path.normpath(os.path.join(
+                os.path.dirname(os.path.abspath(__file__)),
+                "..", "..", "public", "assets", "projects", "uploads"))
+            upload_dir = os.environ.get("UPLOAD_DIR", default_dir)
+            url_prefix = os.environ.get("UPLOAD_URL_PREFIX", "/assets/projects/uploads")
+            os.makedirs(upload_dir, exist_ok=True)
+
+            safe_name = f"{uuid.uuid4().hex}.{ext}"
+            with open(os.path.join(upload_dir, safe_name), "wb") as f:
+                f.write(base64.b64decode(b64))
+
+            web_url = f"{url_prefix.rstrip('/')}/{safe_name}"
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"url": web_url}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+
+    def handle_create_client_project(self):
+        """Admin-only: create (or reuse) a client account by email and open a
+        project (order row) for them. Returns the new order id and, if the
+        account was just created, a temp password for the admin to share."""
+        try:
+            if not self.is_admin_request():
+                self.send_response(403)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Admin only"}).encode("utf-8"))
+                return
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            params = json.loads(self.rfile.read(content_length).decode("utf-8"))
+
+            client_email = params.get("clientEmail", "").strip().lower()
+            client_name = params.get("clientName", "").strip()
+            title = params.get("title", "").strip()
+            description = params.get("description", "").strip()
+            stage = params.get("stage", "intake").strip() or "intake"
+
+            if not client_email or not title:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "clientEmail and title are required"}).encode("utf-8"))
+                return
+
+            now = datetime.now().isoformat()
+            temp_password = None
+            conn = get_db_connection()
+            c = conn.cursor()
+            c.execute("SELECT id FROM users WHERE email = ?", (client_email,))
+            row = c.fetchone()
+            if row:
+                client_id = row[0]
+            else:
+                client_id = str(uuid.uuid4())
+                temp_password = uuid.uuid4().hex[:10]
+                pw_hash = hashlib.sha256(temp_password.encode("utf-8")).hexdigest()
+                full_name = client_name or client_email.split("@")[0].capitalize()
+                c.execute("INSERT INTO users (id, email, password_hash, created_at) VALUES (?, ?, ?, ?)",
+                          (client_id, client_email, pw_hash, now))
+                c.execute("INSERT INTO profiles (id, email, full_name, created_at, updated_at) VALUES (?, ?, ?, ?, ?)",
+                          (client_id, client_email, full_name, now, now))
+
+            order_id = str(uuid.uuid4())
+            requirements = json.dumps({"description": description, "isClientProject": True})
+            c.execute('''
+                INSERT INTO orders (id, user_id, service_type, package_type, price, status, requirements, created_at, updated_at)
+                VALUES (?, ?, 'project', ?, 0, ?, ?, ?, ?)
+            ''', (order_id, client_id, title, stage, requirements, now, now))
+            conn.commit()
+            conn.close()
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({
+                "user_id": client_id,
+                "order_id": order_id,
+                "tempPassword": temp_password,
+            }).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
+    def handle_project_notify(self):
+        """Admin-only: email a client about a project stage change or a new
+        deliverable. type = 'status' | 'deliverable'."""
+        try:
+            if not self.is_admin_request():
+                self.send_response(403)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "Admin only"}).encode("utf-8"))
+                return
+
+            content_length = int(self.headers.get("Content-Length", 0))
+            params = json.loads(self.rfile.read(content_length).decode("utf-8"))
+
+            recipient_email = params.get("recipientEmail", "").strip()
+            recipient_name = params.get("recipientName", "there")
+            notify_type = params.get("type", "status")
+            project_title = params.get("projectTitle", "your project")
+            stage = params.get("stage", "")
+            file_name = params.get("fileName", "")
+            order_url = params.get("orderUrl", "https://captainsolo.ca/dashboard")
+
+            if not recipient_email:
+                self.send_response(400)
+                self.send_header("Content-Type", "application/json")
+                self.end_headers()
+                self.wfile.write(json.dumps({"error": "recipientEmail required"}).encode("utf-8"))
+                return
+
+            if notify_type == "deliverable":
+                subject = f"New deliverable ready — {project_title}"
+                inner = f"""
+                    <h2>Your files are ready</h2>
+                    <p>Hi {recipient_name},</p>
+                    <p>A new deliverable has been added to <strong>{project_title}</strong>:</p>
+                    <div class="message-preview"><strong>{file_name or 'New file'}</strong></div>
+                    <p>Open your project to view and download it.</p>
+                """
+            else:
+                subject = f"Project update — {project_title}"
+                inner = f"""
+                    <h2>Project status updated</h2>
+                    <p>Hi {recipient_name},</p>
+                    <p>The status of <strong>{project_title}</strong> is now:</p>
+                    <div class="message-preview"><strong>{stage.replace('-', ' ').title()}</strong></div>
+                """
+
+            html_content = f"""
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    body {{ font-family: Arial, sans-serif; line-height: 1.6; color: #333; }}
+                    .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+                    .header {{ background: #CFA355; color: white; padding: 20px; text-align: center; }}
+                    .content {{ padding: 20px; background: #f9f9f9; }}
+                    .button {{ display: inline-block; padding: 12px 24px; background: #CFA355; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }}
+                    .message-preview {{ background: white; padding: 15px; border-left: 4px solid #CFA355; margin: 20px 0; }}
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <div class="header"><h1>captainsolo.ca — Project Update</h1></div>
+                    <div class="content">
+                        {inner}
+                        <a href="{order_url}" class="button" style="color: white;">Open project</a>
+                        <p style="margin-top: 30px; font-size: 12px; color: #666;">Automated message from captainsolo.ca.</p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            """
+
+            self.send_email_smtp(recipient_email, subject, html_content)
+
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"success": True}).encode("utf-8"))
+
+        except Exception as e:
+            self.send_response(500)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            self.wfile.write(json.dumps({"error": str(e)}).encode("utf-8"))
+
 
 def run(port=8081):
     server_address = ("", port)

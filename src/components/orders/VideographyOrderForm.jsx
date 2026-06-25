@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabase';
 import { ensureProfileExists } from '../../lib/profileUtils';
@@ -421,14 +422,14 @@ const VideographyOrderForm = () => {
                 />
                 <span className="text-sm text-primary">
                   I agree to the{' '}
-                  <a
-                    href="/terms-of-service"
+                  <Link
+                    to="/terms-of-service"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gold hover:underline"
                   >
                     Terms of Service
-                  </a>
+                  </Link>
                 </span>
               </label>
             </div>

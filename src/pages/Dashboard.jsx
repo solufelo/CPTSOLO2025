@@ -10,6 +10,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import AuthGuard from '../components/auth/AuthGuard';
 import LogoHeader from '../components/LogoHeader';
 import Navbar from '../sections/Navbar';
+import { stageLabel, stageColor } from '../lib/projectStatus';
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
@@ -64,17 +65,6 @@ const Dashboard = () => {
     }
   };
 
-  const getStatusColor = (status) => {
-    const colors = {
-      pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
-      paid: 'bg-blue-500/20 text-blue-400 border-blue-500/50',
-      'in-progress': 'bg-purple-500/20 text-purple-400 border-purple-500/50',
-      completed: 'bg-green-500/20 text-green-400 border-green-500/50',
-      cancelled: 'bg-red-500/20 text-red-400 border-red-500/50',
-    };
-    return colors[status] || colors.pending;
-  };
-
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -112,7 +102,7 @@ const Dashboard = () => {
           {/* Orders Section */}
           <div className="bg-primary/10 border border-SageGray/30 rounded-lg p-8">
             <h2 className="font-amiamie-round text-2xl font-black text-primary mb-6">
-              Your Orders
+              Your Projects
             </h2>
 
             {loading && (
@@ -129,14 +119,7 @@ const Dashboard = () => {
 
             {!loading && !error && orders.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-SageGray mb-4">No orders yet.</p>
-                <Link
-                  to="/order/voice-tag"
-                  className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold py-3 px-6 rounded-lg
-                           hover:bg-gold/90 transition-colors"
-                >
-                  Place Your First Order
-                </Link>
+                <p className="text-SageGray">No projects yet. Your projects will appear here once they’re set up.</p>
               </div>
             )}
 
@@ -155,23 +138,26 @@ const Dashboard = () => {
                       <div className="flex justify-between items-start mb-4">
                         <div>
                           <h3 className="font-amiamie-round text-xl font-bold text-primary mb-2">
+                            {order.service_type === 'project' && (order.package_type || 'Project')}
                             {order.service_type === 'voice-tag' && 'Voice Tag'}
                             {order.service_type === 'web-development' && 'Web Development'}
                             {order.service_type === 'videography' && 'Videography'}
-                            {' '}
-                            {order.package_type && `- ${order.package_type.charAt(0).toUpperCase() + order.package_type.slice(1)}`}
+                            {order.service_type !== 'project' && order.package_type &&
+                              ` - ${order.package_type.charAt(0).toUpperCase() + order.package_type.slice(1)}`}
                           </h3>
                           <p className="text-sm text-SageGray">
-                            Order #{order.id.slice(0, 8)} • {formatDate(order.created_at)}
+                            {order.service_type === 'project' ? 'Project' : 'Order'} #{order.id.slice(0, 8)} • {formatDate(order.created_at)}
                           </p>
                         </div>
                         <div className="flex items-center gap-4">
-                          <span className={`px-3 py-1 rounded text-xs font-bold border ${getStatusColor(order.status)}`}>
-                            {order.status.replace('-', ' ').toUpperCase()}
+                          <span className={`px-3 py-1 rounded text-xs font-bold border ${stageColor(order.status)}`}>
+                            {stageLabel(order.status).toUpperCase()}
                           </span>
-                          <span className="text-lg font-bold text-gold">
-                            ${order.price}
-                          </span>
+                          {order.service_type !== 'project' && Number(order.price) > 0 && (
+                            <span className="text-lg font-bold text-gold">
+                              ${order.price}
+                            </span>
+                          )}
                         </div>
                       </div>
 
@@ -199,20 +185,8 @@ const Dashboard = () => {
                           to={`/order/${order.id}`}
                           className="text-gold hover:underline text-sm font-amiamie-round font-bold"
                         >
-                          View Details & Chat →
+                          Open project · chat · deliverables →
                         </Link>
-                        {order.status === 'completed' && (
-                          <a
-                            href="#"
-                            className="text-green-400 hover:underline text-sm"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              alert('Download link will be available when files are uploaded');
-                            }}
-                          >
-                            Download Deliverables →
-                          </a>
-                        )}
                       </div>
                     </div>
                   );

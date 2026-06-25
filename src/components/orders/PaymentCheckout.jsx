@@ -43,8 +43,8 @@ const PaymentCheckout = ({ amount, serviceType, packageType, orderData, onCreate
         voiceTagText: serviceType === 'voice-tag' ? 'Voice tag order' : '',
       };
 
-      // Create checkout session via Netlify function
-      const response = await fetch('/.netlify/functions/create-checkout-session', {
+      // Create checkout session via cPanel backend
+      const response = await fetch('/api/order/checkout', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

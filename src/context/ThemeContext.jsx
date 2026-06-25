@@ -32,13 +32,13 @@ export const THEMES = {
 };
 
 export const ThemeProvider = ({ children }) => {
-  // Get initial theme from localStorage or default to 'dark'
+  // Get initial theme from localStorage or default to 'light' (white) mode
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('portfolio-theme');
-      return saved && THEMES[saved] ? saved : 'glass';
+      return saved && THEMES[saved] ? saved : 'light';
     }
-    return 'glass';
+    return 'light';
   });
 
   // Apply theme class to document root
@@ -50,7 +50,10 @@ export const ThemeProvider = ({ children }) => {
     
     // Add current theme class
     root.classList.add(`theme-${theme}`);
-    
+
+    // Keep the native color-scheme in sync (form controls, scrollbars, etc.)
+    root.style.colorScheme = theme === 'light' ? 'light' : 'dark';
+
     // Save to localStorage
     localStorage.setItem('portfolio-theme', theme);
   }, [theme]);

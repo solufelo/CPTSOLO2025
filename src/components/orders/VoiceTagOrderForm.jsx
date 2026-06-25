@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabase';
 import { ensureProfileExists } from '../../lib/profileUtils';
@@ -641,9 +642,9 @@ const VoiceTagOrderForm = () => {
                   By clicking the box below, you agree that you are the owner or authorized purchaser 
                   for the PayPal account or credit/debit card that you are using to make a purchase on 
                   this site and that you have read and agreed to our Terms of Service. *
-                  <a href="/terms-of-service" target="_blank" className="text-gold hover:underline ml-1">
+                  <Link to="/terms-of-service" target="_blank" className="text-gold hover:underline ml-1">
                     Click Here To Read: Terms of Service
-                  </a>
+                  </Link>
                 </span>
               </label>
             </div>
@@ -695,13 +696,13 @@ const VoiceTagOrderForm = () => {
             <p className="text-sm text-SageGray mb-8">
               You'll receive a confirmation email shortly. Check your dashboard to track order progress.
             </p>
-            <a
-              href="/dashboard"
+            <Link
+              to="/dashboard"
               className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold py-3 px-6 rounded-lg
                        hover:bg-gold/90 transition-colors"
             >
               View Dashboard
-            </a>
+            </Link>
           </div>
         )}
       </div>

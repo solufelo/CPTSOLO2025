@@ -1,0 +1,52 @@
+# === PASSENGER (Python /api) — required for login + contact form ===
+# If signup returns JSON parse error, this block was missing (wiped by site upload).
+# After editing: cPanel -> Setup Python App -> Restart
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/captttyo/portfolio-backend"
+PassengerBaseURI "/api"
+PassengerPython "/home/captttyo/virtualenv/portfolio-backend/3.9/bin/python"
+PassengerAppType wsgi
+PassengerStartupFile passenger_wsgi.py
+PassengerEntryPoint application
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END
+
+RewriteEngine On
+
+# SSL DCV / ACME — serve real files, never route to SPA
+RewriteRule ^\.well-known/ - [L]
+
+# www → non-www (cert is on captainsolo.ca only)
+RewriteCond %{HTTP_HOST} ^www\.captainsolo\.ca [NC]
+RewriteRule ^(.*)$ https://captainsolo.ca/$1 [L,R=301]
+
+# Force SSL / HTTPS redirection
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Support React SPA routing (never rewrite /api — Passenger handles that)
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_URI} !^/api
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+
+# === Caching & compression ===
+# Vite fingerprints asset filenames (e.g. index-AbC123.js), so those can be
+# cached forever. index.html must never cache so new deploys show immediately.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:js|mjs|css|woff2?|ttf|otf|eot|svg|png|jpe?g|gif|webp|avif|ico|mp4)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(?:html)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  # Never cache the Python API
+  <FilesMatch "^api">
+    Header set Cache-Control "no-store"
+  </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript \
+    application/javascript application/json application/xml image/svg+xml
+</IfModule>

@@ -184,7 +184,7 @@ const OrderChat = ({ orderId }) => {
   const sendMessageNotification = async ({ orderId, recipientEmail, recipientName, senderName, messagePreview, isAdmin }) => {
     try {
       // Call Netlify function to send email
-      const response = await fetch('/.netlify/functions/send-message-notification', {
+      const response = await fetch('/api/order/message-notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

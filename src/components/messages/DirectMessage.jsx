@@ -280,7 +280,7 @@ const DirectMessage = ({ conversationId, onNewConversation }) => {
   // Send email notification
   const sendDirectMessageNotification = async ({ conversationId, subject, messagePreview, userEmail, userName, recipientEmail, recipientName, senderName, isAdmin }) => {
     try {
-      const response = await fetch('/.netlify/functions/send-message-notification', {
+      const response = await fetch('/api/order/message-notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

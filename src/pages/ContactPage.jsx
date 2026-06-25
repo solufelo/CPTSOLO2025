@@ -6,6 +6,7 @@ import ContactForm from '../components/ContactForm';
 import Marquee from '../components/Marquee';
 import { socials } from '../constants';
 import AnimatedHeaderSection from '../components/AnimatedHeaderSection';
+import { isAuthEnabled } from '../lib/featureFlags';
 
 /**
  * Contact Page
@@ -152,28 +153,45 @@ const ContactPage = () => {
             </div>
           </div>
 
-          {/* Get Started CTA */}
+          {/* CTA */}
           <div className="px-4 sm:px-6 lg:px-10 mb-20">
             <div className="flex flex-col items-center justify-center text-center">
-              <h2 className="font-amiamie-round text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
-                Ready to Get Started?
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl">
-                Create an account to place orders, track your projects, and communicate directly with us.
-              </p>
-              <Link
-                to="/signup"
-                className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold text-xl md:text-2xl px-8 md:px-12 py-4 md:py-5 rounded-lg
-                         hover:bg-gold/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-gold/50"
-              >
-                Get Started
-              </Link>
-              <p className="text-white/60 text-sm mt-4">
-                Already have an account?{' '}
-                <Link to="/login" className="text-gold hover:underline font-medium">
-                  Sign in
-                </Link>
-              </p>
+              {isAuthEnabled ? (
+                <>
+                  <h2 className="font-amiamie-round text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+                    Ready to Get Started?
+                  </h2>
+                  <p className="text-white/80 text-lg md:text-xl mb-8 max-w-2xl">
+                    Create an account to place orders, track your projects, and communicate directly with us.
+                  </p>
+                  <Link
+                    to="/signup"
+                    className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold text-xl md:text-2xl px-8 md:px-12 py-4 md:py-5 rounded-lg
+                             hover:bg-gold/90 transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-gold/50"
+                  >
+                    Get Started
+                  </Link>
+                  <p className="text-white/60 text-sm mt-4">
+                    Already have an account?{' '}
+                    <Link to="/login" className="text-gold hover:underline font-medium">
+                      Sign in
+                    </Link>
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h2 className="font-amiamie-round text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4">
+                    Let&apos;s talk
+                  </h2>
+                  <p className="text-white/80 text-lg md:text-xl max-w-2xl">
+                    Email{' '}
+                    <a href="mailto:work@captainsolo.ca" className="text-gold hover:underline font-medium">
+                      work@captainsolo.ca
+                    </a>{' '}
+                    or use the form above — I reply within 1–2 business days.
+                  </p>
+                </>
+              )}
             </div>
           </div>
         </div>

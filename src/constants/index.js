@@ -20,7 +20,7 @@ export const servicesData = [
       {
         title: "Backend Engineering",
         description: "(Node.js, Express, Supabase, REST APIs, Authentication)",
-        hoverDescription: "Secure backends, user auth, payment processing (Stripe), RESTful APIs, serverless functions (Netlify). Built admin dashboards, order management systems, and webhook integrations. Like the payment and order system on this site.",
+        hoverDescription: "Secure backends, user auth, payment processing (Stripe), RESTful APIs, and Python/Node APIs on cPanel. Admin dashboards, order management, and webhooks — like the system on this site.",
         video: "/assets/videos/backend-dev.mp4",
       },
       {
@@ -302,7 +302,7 @@ export const contactInfo = {
   phoneFormatted: "(289) 233-8317",
   location: "Brampton, Ontario, Canada",
   locationShort: "Brampton, ON",
-  website: "https://www.captainsolo.ca/",
+  website: "https://captainsolo.ca/",
   availability: "Monday-Sunday (See schedule for details)",
 };
 
@@ -310,12 +310,12 @@ export const contactInfo = {
 // STATS FOR HERO SECTION
 // =============================================================================
 export const stats = [
-  { label: "Video Projects", value: "100+" },
+  { label: "Freelance Orders", value: "1,400+" },
   { label: "Client Rating", value: "4.8/5.0" },
   { label: "Years Experience", value: "6+" },
+  { label: "Video Projects", value: "100+" },
   { label: "On-Time Delivery", value: "99%" },
-  { label: "Happy Clients", value: "50+" },
-  { label: "Combined Experience", value: "Dev + Video" },
+  { label: "GTA + Remote", value: "Web & Video" },
 ];
 
 // =============================================================================
@@ -376,16 +376,7 @@ export const skills = {
 // TESTIMONIALS (Placeholder - collect real ones)
 // =============================================================================
 export const testimonials = [
-  {
-    id: 1,
-    name: "Client Name",
-    role: "Business Owner",
-    company: "Company Name",
-    content: "Working with Solomon was a game-changer for our business. Professional, reliable, and delivered results that exceeded expectations.",
-    rating: 5,
-    project: "Brand Content Package",
-  },
-  // Add more testimonials as you collect them
+  // Placeholder testimonials removed — add real client quotes when available
 ];
 
 // =============================================================================

@@ -12,6 +12,8 @@ import LogoHeader from '../components/LogoHeader';
 import Navbar from '../sections/Navbar';
 import OrderChat from '../components/orders/OrderChat';
 import RevisionRequest from '../components/orders/RevisionRequest';
+import DeliverablesPanel from '../components/orders/DeliverablesPanel';
+import { stageLabel, stageColor } from '../lib/projectStatus';
 
 const OrderDetailPage = () => {
   const { orderId } = useParams();
@@ -64,17 +66,6 @@ const OrderDetailPage = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const getStatusColor = (status) => {
-    const colors = {
-      pending: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/50',
-      paid: 'bg-blue-500/20 text-blue-400 border-blue-500/50',
-      'in-progress': 'bg-purple-500/20 text-purple-400 border-purple-500/50',
-      completed: 'bg-green-500/20 text-green-400 border-green-500/50',
-      cancelled: 'bg-red-500/20 text-red-400 border-red-500/50',
-    };
-    return colors[status] || colors.pending;
   };
 
   const formatDate = (dateString) => {
@@ -142,7 +133,7 @@ const OrderDetailPage = () => {
           <div className="flex justify-between items-center mb-8">
             <div>
               <h1 className="font-amiamie-round text-4xl font-black text-primary mb-2">
-                Order Details
+                Project
               </h1>
               {isAdmin && (
                 <p className="text-SageGray">
@@ -164,23 +155,26 @@ const OrderDetailPage = () => {
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h2 className="font-amiamie-round text-2xl font-black text-primary mb-2">
+                  {order.service_type === 'project' && (order.package_type || 'Project')}
                   {order.service_type === 'voice-tag' && '🎤 Voice Tag'}
                   {order.service_type === 'web-development' && '💻 Web Development'}
                   {order.service_type === 'videography' && '🎥 Videography'}
-                  {' '}
-                  {order.package_type && `- ${order.package_type.charAt(0).toUpperCase() + order.package_type.slice(1)}`}
+                  {order.service_type !== 'project' && order.package_type &&
+                    ` - ${order.package_type.charAt(0).toUpperCase() + order.package_type.slice(1)}`}
                 </h2>
                 <p className="text-sm text-SageGray">
-                  Order #{order.id.slice(0, 8)} • {formatDate(order.created_at)}
+                  {order.service_type === 'project' ? 'Project' : 'Order'} #{order.id.slice(0, 8)} • {formatDate(order.created_at)}
                 </p>
               </div>
               <div className="flex flex-col items-end gap-2">
-                <span className={`px-3 py-1 rounded text-xs font-bold border ${getStatusColor(order.status)}`}>
-                  {order.status.replace('-', ' ').toUpperCase()}
+                <span className={`px-3 py-1 rounded text-xs font-bold border ${stageColor(order.status)}`}>
+                  {stageLabel(order.status).toUpperCase()}
                 </span>
-                <span className="text-2xl font-black text-gold">
-                  ${order.price}
-                </span>
+                {order.service_type !== 'project' && Number(order.price) > 0 && (
+                  <span className="text-2xl font-black text-gold">
+                    ${order.price}
+                  </span>
+                )}
               </div>
             </div>
 
@@ -191,6 +185,9 @@ const OrderDetailPage = () => {
                   Order Requirements:
                 </h3>
                 <div className="text-sm text-SageGray space-y-2">
+                  {requirements.description && (
+                    <p className="whitespace-pre-wrap">{requirements.description}</p>
+                  )}
                   {requirements.voiceTagText && (
                     <p><strong>Voice Tag:</strong> {requirements.voiceTagText}</p>
                   )}
@@ -239,26 +236,8 @@ const OrderDetailPage = () => {
             </div>
           </div>
 
-          {/* Deliverables (if completed) */}
-          {order.status === 'completed' && (
-            <div className="mt-6 bg-green-500/10 border border-green-500/30 rounded-lg p-6">
-              <h3 className="font-amiamie-round font-bold text-green-400 mb-4">
-                ✅ Order Completed
-              </h3>
-              <p className="text-SageGray mb-4">
-                Your order has been completed! Download your deliverables below.
-              </p>
-              <button
-                onClick={() => {
-                  alert('Download link will be available when files are uploaded');
-                }}
-                className="bg-green-500/20 border border-green-500/50 text-green-400 px-6 py-3 rounded-lg
-                         hover:bg-green-500/30 transition-colors font-amiamie-round font-bold"
-              >
-                Download Deliverables
-              </button>
-            </div>
-          )}
+          {/* Deliverables */}
+          <DeliverablesPanel order={order} isAdmin={isAdmin} />
         </div>
       </div>
     </AuthGuard>

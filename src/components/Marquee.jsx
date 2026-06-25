@@ -118,34 +118,100 @@ const Marquee = ({
   }
 
   useEffect(() => {
-    const tl = horizontalLoop(itemsRef.current, {
-      repeat: -1,
-      paddingRight: 30,
-      reversed: reverse,
-    });
+    let tl;
+    let observer;
+    let speedTween;
+    let resizeTimer;
+    let cancelled = false;
 
-    Observer.create({
-      onChangeY(self) {
-        // Simple speed up on scroll, preventing reverse glitches
-        // We always use positive factor because the timeline direction handles the reverse prop
-        let factor = 2.5;
-        
-        gsap
-          .timeline({
-            defaults: {
-              ease: "none",
-            },
-          })
-          .to(tl, { timeScale: factor, duration: 0.2, overwrite: true })
-          .to(tl, { timeScale: 1, duration: 1 }, "+=0.3");
-      },
-    });
-    return () => tl.kill();
+    const getEls = () => itemsRef.current.filter(Boolean);
+
+    const build = () => {
+      const els = getEls();
+      if (els.length === 0) return;
+
+      // Clear any transforms left over from a previous build so width/position
+      // measurements start from a clean slate (re-inits otherwise compound and
+      // produce the overlap glitch).
+      gsap.set(els, { clearProps: "all" });
+
+      tl = horizontalLoop(els, {
+        repeat: -1,
+        paddingRight: 30,
+        reversed: reverse,
+      });
+
+      // Scroll speed boost only when user hasn't asked for reduced motion.
+      const prefersReduced =
+        window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+      if (!prefersReduced) {
+        observer = Observer.create({
+          onChangeY() {
+            if (speedTween) speedTween.kill();
+            speedTween = gsap
+              .timeline({ defaults: { ease: "none" } })
+              .to(tl, { timeScale: 2.5, duration: 0.2, overwrite: true })
+              .to(tl, { timeScale: 1, duration: 1 }, "+=0.3");
+          },
+        });
+      }
+    };
+
+    const teardown = () => {
+      if (speedTween) speedTween.kill();
+      if (observer) observer.kill();
+      if (tl) tl.kill();
+      const els = getEls();
+      if (els.length) gsap.set(els, { clearProps: "all" });
+      tl = observer = speedTween = undefined;
+    };
+
+    const start = () => {
+      if (cancelled) return;
+      // Wait a frame after fonts resolve so layout is fully flushed before we
+      // measure widths. Retry once if refs aren't populated yet.
+      requestAnimationFrame(() => {
+        if (cancelled) return;
+        if (getEls().length === 0) {
+          requestAnimationFrame(() => {
+            if (!cancelled) build();
+          });
+          return;
+        }
+        build();
+      });
+    };
+
+    // The #1 cause of marquee overlap is measuring text widths before the web
+    // font (Oswald) has loaded. Build only once fonts are ready.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(start);
+    } else {
+      start();
+    }
+
+    const onResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (cancelled) return;
+        teardown();
+        build();
+      }, 200);
+    };
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      cancelled = true;
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", onResize);
+      teardown();
+    };
   }, [items, reverse]);
   return (
     <div
       ref={containerRef}
-      className={`overflow-hidden w-full h-20 md:h-[100px] flex items-center marquee-text-responsive font-light uppercase whitespace-nowrap ${className}`}
+      aria-hidden="true"
+      className={`overflow-hidden w-full h-20 md:h-[100px] flex items-center marquee-text-responsive font-display font-bold uppercase whitespace-nowrap ${className}`}
     >
       <div className="flex">
         {items.map((text, index) => (

@@ -26,11 +26,17 @@ dist-ssr
 *.sln
 *.sw?
 client_secret_*.json
+.tools/
+deploy/cpanel/zips/
+projects-*.zip
 # Environment files (never commit with real secrets!)
 netlify.env
 *.env
+.env.production
+.env.local
 !netlify.env.example
 !.env.local.example
+!.env.example
 
 # Database files
 *.db

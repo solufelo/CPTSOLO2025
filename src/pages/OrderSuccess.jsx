@@ -4,7 +4,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
 import LogoHeader from '../components/LogoHeader';
 import Navbar from '../sections/Navbar';
@@ -63,13 +63,13 @@ const OrderSuccess = () => {
                 Payment Verification Failed
               </h1>
               <p className="text-SageGray mb-6">{error}</p>
-              <a
-                href="/dashboard"
+              <Link
+                to="/dashboard"
                 className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold py-3 px-6 rounded-lg
                          hover:bg-gold/90 transition-colors"
               >
                 Go to Dashboard
-              </a>
+              </Link>
             </div>
           ) : (
             <div>
@@ -83,13 +83,13 @@ const OrderSuccess = () => {
               <p className="text-sm text-SageGray mb-8">
                 Redirecting to dashboard...
               </p>
-              <a
-                href="/dashboard"
+              <Link
+                to="/dashboard"
                 className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold py-3 px-6 rounded-lg
                          hover:bg-gold/90 transition-colors"
               >
                 Go to Dashboard
-              </a>
+              </Link>
             </div>
           )}
         </div>

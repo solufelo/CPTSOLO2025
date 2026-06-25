@@ -1,0 +1,36 @@
+---
+description: Agent work loop for captainsoloHQ — one modular task per session, build gate, no production breaks
+alwaysApply: true
+---
+
+# Agent work loop (captainsoloHQ)
+
+Before any substantive work, read **`AGENTS.md`** and the latest entry in **`docs/AGENT-SESSION-LOG.md`**.
+
+## Every session
+
+1. Pick **ONE** task from `AGENTS.md` Active queue (or human-assigned task ID).
+2. Edit only files listed under that task's **Files allowed**.
+3. Run `npm run build` (Node: `.tools/node`) — must pass before handoff.
+4. Append session block to `docs/AGENT-SESSION-LOG.md`.
+5. **Do not** upload to cPanel or change DNS unless human explicitly says so.
+
+## Safety (never)
+
+- Commit `.env` / secrets
+- Delete `public_html/.well-known`
+- Large refactors across Works + Services + Router in one session
+- Edit live cPanel files directly
+- Remove auth/admin **code** — only hide from nav when task says cut redundant UI
+
+## Portfolio changes
+
+- New/updated projects → `src/data/showcaseProjects.js` first
+- Reuse `ProjectShowcaseCard` for showcase UI patterns
+- Facts (bio, dates) → sync from `tools/apply-pipeline/profile.yml`
+
+## Handoff to human
+
+Report: task ID, files changed, build status, test URLs, whether upload zip is needed.
+
+Priority reference: `docs/ROADMAP-URGENCY-MATRIX.md`

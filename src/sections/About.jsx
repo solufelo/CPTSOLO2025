@@ -1,32 +1,24 @@
 import { useRef } from "react";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { AnimatedTextLines } from "../components/AnimatedTextLine";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useTheme } from "../context/ThemeContext";
 
 /**
- * About Section Component
- * Solomon's story - Where code meets creativity
- * Features scroll-triggered animations and clip-path image reveal
+ * About Section — Solomon's story (plain language, facts from profile.yml)
  */
 const About = () => {
   const { theme } = useTheme();
-  
-  // Header text - the mission statement
-  const text = `Code meets creativity. Database to deployment, with cinematic content to bring it all to life.`;
 
-  // Main about text - Solomon's authentic story (concise version)
-  const aboutText = `Captain Solo—full-stack developer by trade, videographer by passion.
-  6 years experience. 100+ video projects. 4.8★ rating.
+  const text = `Brampton-based. I build, ship, and host my own work.`;
 
-  The difference? I don't just build your website—I shoot the content to fill it.
-  Restaurant site? Code the menu AND photograph the dishes.
-  Artist portfolio? Build the platform AND film the music video.
+  const lead = `Solomon Olufelo. Captain Solo.`;
 
-  That's the Captain Solo advantage: complete digital solutions, one point of contact.
-
-  Based in Brampton, serving the GTA. Remote web dev, will travel for video shoots.`;
+  const paragraphs = [
+    `I build and ship from Brampton — client sites, this portfolio, the deploy scripts behind it. captainsolo.ca runs on my own stack, and I own every build.`,
+    `My focus right now is findYOU, a productivity OS I'm shaping in the open. Light Years — a C++20 engine — keeps the systems side sharp.`,
+    `Before code paid the bills, video and audio did. Years of it. 1,400+ delivered.`,
+  ];
 
   // Ref for image animation
   const imgRef = useRef(null);
@@ -98,27 +90,51 @@ const About = () => {
     <section id="about" className={`min-h-screen rounded-b-4xl ${getSectionBg()}`}>
       {/* Animated header */}
       <AnimatedHeaderSection
-        subTitle={"Code with purpose, Built to scale"}
+        subTitle={"Brampton · Captain Solo"}
         title={"About"}
         text={text}
         textColor={getHeaderTextColor()}
         withScrollTrigger={true}
       />
       
-      {/* Content: Image + About text */}
-      <div className={`flex flex-col items-center justify-between gap-16 px-10 pb-16 text-xl font-light tracking-wide lg:flex-row md:text-2xl lg:text-3xl ${getTextColor()}`}>
-        {/* Profile image with clip-path reveal animation */}
-        <img
-          ref={imgRef}
-          src="android-chrome-512x512.png"
-          alt="Solomon Olufelo - Captain Solo"
-          className={`w-md rounded-3xl ${
-            theme === 'glass' ? 'ring-2 ring-cyan-400/30' : theme === 'light' ? 'shadow-2xl' : ''
-          }`}
-        />
-        
-        {/* Animated about text */}
-        <AnimatedTextLines text={aboutText} className={"w-full"} />
+      {/* Content: Portrait + bio */}
+      <div className="flex flex-col items-start justify-center gap-12 px-6 pb-20 md:px-10 lg:flex-row lg:gap-16 lg:items-center max-w-6xl mx-auto">
+        {/* Portrait with clip-path reveal */}
+        <div className="w-full max-w-sm shrink-0 mx-auto lg:mx-0">
+          <img
+            ref={imgRef}
+            src="/images/solomon-portrait.png"
+            alt="Solomon Olufelo — Captain Solo"
+            className={`w-full rounded-sm object-cover aspect-[4/5] ${
+              theme === 'glass' ? 'ring-1 ring-cyan-400/20' : theme === 'light' ? 'shadow-2xl' : 'ring-1 ring-white/10'
+            }`}
+          />
+        </div>
+
+        {/* Bio */}
+        <div className={`w-full max-w-xl ${getTextColor()}`}>
+          <p className={`font-display font-bold uppercase tracking-wide text-2xl md:text-3xl lg:text-4xl mb-8 ${getHeaderTextColor()}`}>
+            {lead}
+          </p>
+
+          <div className="space-y-5 font-body text-base md:text-lg leading-relaxed">
+            {paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
+
+          <div className={`mt-10 pt-6 border-t flex flex-wrap items-center gap-x-8 gap-y-2 text-sm font-display uppercase tracking-widest ${
+            theme === 'light' ? 'border-gray-300' : 'border-white/15'
+          }`}>
+            <span>Still building</span>
+            <a
+              href="mailto:work@captainsolo.ca"
+              className={`transition-colors ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}
+            >
+              work@captainsolo.ca
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

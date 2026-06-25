@@ -7,6 +7,7 @@ import { Link } from 'react-scroll'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { useTheme } from '../context/ThemeContext'
+import { isAuthEnabled } from '../lib/featureFlags'
 import ThemeSwitch from '../components/ThemeSwitch'
 
 function Navbar() {
@@ -130,14 +131,23 @@ useEffect(() => {
       }
     };
 
+    const handleEscape = (event) => {
+      if (isOpen && event.key === 'Escape') {
+        setIsOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
     // Add event listener when menu is open
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleEscape);
     }
 
     // Cleanup
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
     };
   }, [isOpen]);
 
@@ -162,6 +172,8 @@ useEffect(() => {
     <>
       <nav
       ref={navRef}
+      id="primary-nav"
+      aria-label="Main navigation"
       className={`fixed z-50 flex flex-col justify-between w-full
       h-full px-10 uppercase py-28 overflow-y-auto overscroll-contain
       gap-y-10 md:w-1/2 md:left-1/2
@@ -172,12 +184,22 @@ useEffect(() => {
         : 'bg-black text-white/80'
       }`}>
         <div className="flex-1">
-          {/* Navigation Links */}
-          <div className='flex flex-col text-5xl gap-y-2 md:text-6xl lg:text-8xl'>
+          {/* Availability status — repurposed header space */}
+          <div className={`mb-10 flex items-center gap-2 text-xs md:text-sm tracking-[0.25em] uppercase ${
+            theme === 'light' ? 'text-gray-500' : 'text-white/50'
+          }`}>
+            <span className="relative flex size-2.5">
+              <span className="absolute inline-flex w-full h-full rounded-full opacity-75 bg-emerald-500 animate-ping"></span>
+              <span className="relative inline-flex rounded-full size-2.5 bg-emerald-500"></span>
+            </span>
+            Available for work
+          </div>
+
+          {/* Primary navigation */}
+          <div className='flex flex-col text-5xl gap-y-1 md:text-6xl lg:text-7xl font-display font-bold'>
               {["home", "about", "services", "work", "contact"].map((item, index) => (
                   <div key={index} ref={el => linksRef.current[index] = el}>
                     {isMainPage ? (
-                      // If on main page, use smooth scroll
                       <Link 
                         to={item}
                         spy={true}
@@ -192,7 +214,6 @@ useEffect(() => {
                         {item}
                       </Link>
                     ) : (
-                      // If on blog page, voice tags page, or any other page, use RouterLink to navigate to main page section
                       <RouterLink 
                         to={`/#${item}`}
                         onClick={() => setIsOpen(false)}
@@ -205,111 +226,79 @@ useEffect(() => {
                     )}
                   </div>
               ))}
-              
-              {/* Voice Tags Link */}
-              <div ref={el => linksRef.current[5] = el}>
-                {isVoiceTagsPage ? (
-                  // If already on voice tags page, smooth scroll to top
-                  <a
-                    href="#voice-tags"
-                    onClick={() => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' });
-                      setIsOpen(false);
-                    }}
-                    className={`transition-all duration-300 cursor-pointer ${
-                      theme === 'light' ? 'text-blue-600 hover:text-blue-700' : 'text-gold hover:text-gold'
-                    }`}
-                  >
-                    voice tags
-                  </a>
-                ) : (
-                  // If on main page, navigate to voice tags page
-                  <RouterLink 
-                    to="/voice-tags"
-                    onClick={() => setIsOpen(false)}
-                    className={`transition-all duration-300 cursor-pointer ${
-                      theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'
-                    }`}
-                  >
-                    voice tags
-                  </RouterLink>
-                )}
-              </div>
+          </div>
 
-              {/* Blog Link */}
-              <div ref={el => linksRef.current[6] = el}>
-                <RouterLink 
-                  to="/blog"
-                  onClick={() => setIsOpen(false)}
-                  className={`transition-all duration-300 cursor-pointer ${
-                    theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'
-                  }`}
-                >
-                  blog
-                </RouterLink>
-              </div>
+          {/* Secondary links — smaller, grouped to cut clutter */}
+          <div
+            ref={el => { linksRef.current[5] = el; }}
+            className={`mt-10 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm md:text-base font-display font-bold uppercase tracking-widest ${
+              theme === 'light' ? 'text-gray-500' : 'text-white/50'
+            }`}
+          >
+            <RouterLink
+              to="/demo"
+              onClick={() => setIsOpen(false)}
+              className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}
+            >
+              demos
+            </RouterLink>
+            <span className="opacity-30">/</span>
+            {isVoiceTagsPage ? (
+              <a
+                href="#voice-tags"
+                onClick={() => { window.scrollTo({ top: 0, behavior: 'smooth' }); setIsOpen(false); }}
+                className={`transition-colors cursor-pointer ${theme === 'light' ? 'text-blue-600' : 'text-gold'}`}
+              >
+                voice tags
+              </a>
+            ) : (
+              <RouterLink
+                to="/voice-tags"
+                onClick={() => setIsOpen(false)}
+                className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}
+              >
+                voice tags
+              </RouterLink>
+            )}
+            <span className="opacity-30">/</span>
+            <RouterLink
+              to="/blog"
+              onClick={() => setIsOpen(false)}
+              className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}
+            >
+              blog
+            </RouterLink>
 
-              {/* Login/Account Links */}
-              <div ref={el => linksRef.current[7] = el} className={`pt-2 mt-2 text-base md:text-lg lg:text-xl space-y-1 border-t ${
-                theme === 'light' ? 'border-gray-200' : 'border-white/10'
-              }`}>
+            {/* Account links — hidden until Python API is live (VITE_ENABLE_AUTH=true) */}
+            {isAuthEnabled && (
+              <>
+                <span className="opacity-30">/</span>
                 {user ? (
                   <>
                     {(user.email === 'solomonolufelo@outlook.com' || user.email?.includes('admin')) && (
-                      <RouterLink 
-                        to="/dashboard/admin"
-                        onClick={() => setIsOpen(false)}
-                        className={`block transition-all duration-300 cursor-pointer ${
-                          theme === 'light' ? 'text-blue-600 hover:text-blue-700' : 'text-gold hover:text-gold'
-                        }`}
-                      >
-                        admin dashboard
+                      <RouterLink to="/dashboard/admin" onClick={() => setIsOpen(false)} className={`transition-colors cursor-pointer ${theme === 'light' ? 'text-blue-600' : 'text-gold'}`}>
+                        admin
                       </RouterLink>
                     )}
-                    <RouterLink 
-                      to="/dashboard"
-                      onClick={() => setIsOpen(false)}
-                      className={`block transition-all duration-300 cursor-pointer ${
-                        theme === 'light' ? 'text-blue-600 hover:text-blue-700' : 'text-gold hover:text-gold'
-                      }`}
-                    >
+                    <RouterLink to="/dashboard" onClick={() => setIsOpen(false)} className={`transition-colors cursor-pointer ${theme === 'light' ? 'text-blue-600' : 'text-gold'}`}>
                       dashboard
                     </RouterLink>
-                    <button
-                      onClick={() => {
-                        signOut();
-                        setIsOpen(false);
-                      }}
-                      className={`block transition-all duration-300 cursor-pointer ${
-                        theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'
-                      }`}
-                    >
+                    <button onClick={() => { signOut(); setIsOpen(false); }} className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}>
                       sign out
                     </button>
                   </>
                 ) : (
                   <>
-                    <RouterLink 
-                      to="/login"
-                      onClick={() => setIsOpen(false)}
-                      className={`block transition-all duration-300 cursor-pointer ${
-                        theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'
-                      }`}
-                    >
+                    <RouterLink to="/login" onClick={() => setIsOpen(false)} className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}>
                       login
                     </RouterLink>
-                    <RouterLink 
-                      to="/signup"
-                      onClick={() => setIsOpen(false)}
-                      className={`block transition-all duration-300 cursor-pointer ${
-                        theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'
-                      }`}
-                    >
+                    <RouterLink to="/signup" onClick={() => setIsOpen(false)} className={`transition-colors cursor-pointer ${theme === 'light' ? 'hover:text-blue-600' : 'hover:text-gold'}`}>
                       sign up
                     </RouterLink>
                   </>
                 )}
-              </div>
+              </>
+            )}
           </div>
         </div>
 
@@ -364,9 +353,13 @@ useEffect(() => {
         <ThemeSwitch />
         
         {/* Hamburger Menu Button */}
-        <div 
+        <button
           ref={menuButtonRef}
+          type="button"
           onClick={toggleMenu}
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isOpen}
+          aria-controls="primary-nav"
           className={`flex flex-col items-center justify-center gap-1 transition-all duration-300
           rounded-full cursor-pointer w-14 h-14 md:w-20 md:h-20
           ${theme === 'glass'
@@ -375,9 +368,9 @@ useEffect(() => {
             ? 'bg-white border border-gray-200 hover:bg-gray-50'
             : 'bg-black hover:bg-white/10'
           }`}>
-          <span ref={topRef} className={`block w-8 h-0.5 rounded-full origin-center ${theme === 'light' ? 'bg-gray-900' : 'bg-white'}`}></span>
-          <span ref={bottomRef} className={`block w-8 h-0.5 rounded-full origin-center ${theme === 'light' ? 'bg-gray-900' : 'bg-white'}`}></span>
-        </div>
+          <span aria-hidden="true" ref={topRef} className={`block w-8 h-0.5 rounded-full origin-center ${theme === 'light' ? 'bg-gray-900' : 'bg-white'}`}></span>
+          <span aria-hidden="true" ref={bottomRef} className={`block w-8 h-0.5 rounded-full origin-center ${theme === 'light' ? 'bg-gray-900' : 'bg-white'}`}></span>
+        </button>
       </div>
     </>
   );

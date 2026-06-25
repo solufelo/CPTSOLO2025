@@ -68,6 +68,20 @@ const AdminDashboard = () => {
 
           {/* Admin Tools Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {/* Projects / Showcase Management */}
+            <button
+              onClick={() => navigate('/dashboard/admin/projects')}
+              className="bg-gold/10 border-2 border-gold/30 rounded-lg p-6 hover:border-gold transition-all text-left group"
+            >
+              <div className="text-4xl mb-3">🗂️</div>
+              <h3 className="font-amiamie-round text-xl font-black text-gold mb-2 group-hover:text-gold/90">
+                Projects / Showcase
+              </h3>
+              <p className="text-sm text-SageGray">
+                Add and edit portfolio work shown on the homepage
+              </p>
+            </button>
+
             {/* Blog Management */}
             <button
               onClick={() => navigate('/dashboard/admin/blog')}

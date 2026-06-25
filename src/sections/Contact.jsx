@@ -6,6 +6,7 @@ import Marquee from "../components/Marquee";
 import { socials } from "../constants";
 import gsap from "gsap";
 import { useTheme } from "../context/ThemeContext";
+import { isAuthEnabled } from "../lib/featureFlags";
 
 /**
  * Contact Section Component
@@ -123,7 +124,7 @@ const Contact = () => {
       <div className="flex-grow">
         {/* Animated header */}
         <AnimatedHeaderSection
-          subTitle={"Let's Create Something Legendary"}
+          subTitle={"Say hi"}
           title={"Contact"}
           text={text}
           textColor={getTextColor()}
@@ -139,7 +140,7 @@ const Contact = () => {
         <div className={`w-full h-px mb-20 ${getDividerColor()}`} />
         
         {/* Contact information */}
-        <div className={`flex px-10 font-light uppercase lg:text-[32px] text-[26px] leading-none mb-20 ${getTextColor()}`}>
+        <div className={`flex px-10 font-display font-bold uppercase lg:text-[32px] text-[26px] leading-none mb-20 ${getTextColor()}`}>
           <div className="flex flex-col w-full gap-10">
             {/* Email */}
             <div className="social-link">
@@ -191,28 +192,45 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Get Started CTA */}
+        {/* CTA */}
         <div className="px-10 mb-20">
           <div className="flex flex-col items-center justify-center text-center">
-            <h2 className={`font-amiamie-round text-3xl md:text-4xl lg:text-5xl font-black mb-4 ${getTextColor()}`}>
-              Ready to Get Started?
-            </h2>
-            <p className={`text-lg md:text-xl mb-8 max-w-2xl ${getMutedColor()}`}>
-              Create an account to place orders, track your projects, and communicate directly with us.
-            </p>
-            <Link
-              to="/signup"
-              className={`inline-block font-amiamie-round font-bold text-xl md:text-2xl px-8 md:px-12 py-4 md:py-5 rounded-lg
-                       transition-all duration-300 hover:scale-105 shadow-lg ${getButtonStyle()}`}
-            >
-              Get Started
-            </Link>
-            <p className={`text-sm mt-4 ${getMutedColor()}`}>
-              Already have an account?{' '}
-              <Link to="/login" className={`hover:underline font-medium ${getAccentColor()}`}>
-                Sign in
-              </Link>
-            </p>
+            {isAuthEnabled ? (
+              <>
+                <h2 className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${getTextColor()}`}>
+                  Ready to Get Started?
+                </h2>
+                <p className={`text-lg md:text-xl mb-8 max-w-2xl ${getMutedColor()}`}>
+                  Create an account to place orders, track your projects, and communicate directly with us.
+                </p>
+                <Link
+                  to="/signup"
+                  className={`inline-block font-amiamie-round font-bold text-xl md:text-2xl px-8 md:px-12 py-4 md:py-5 rounded-lg
+                           transition-all duration-300 hover:scale-105 shadow-lg ${getButtonStyle()}`}
+                >
+                  Get Started
+                </Link>
+                <p className={`text-sm mt-4 ${getMutedColor()}`}>
+                  Already have an account?{' '}
+                  <Link to="/login" className={`hover:underline font-medium ${getAccentColor()}`}>
+                    Sign in
+                  </Link>
+                </p>
+              </>
+            ) : (
+              <>
+                <h2 className={`font-display text-3xl md:text-4xl lg:text-5xl font-bold mb-4 ${getTextColor()}`}>
+                  Let&apos;s talk
+                </h2>
+                <p className={`text-lg md:text-xl mb-4 max-w-2xl ${getMutedColor()}`}>
+                  Use the form above or email{' '}
+                  <a href="mailto:work@captainsolo.ca" className={`hover:underline font-medium ${getAccentColor()}`}>
+                    work@captainsolo.ca
+                  </a>
+                  . I reply within 1–2 business days.
+                </p>
+              </>
+            )}
           </div>
         </div>
       </div>

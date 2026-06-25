@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../lib/supabase';
 import FileUpload from './FileUpload';
@@ -336,13 +337,13 @@ const OrderForm = () => {
             <p className="text-sm text-SageGray mb-8">
               You'll receive a confirmation email shortly. Check your dashboard to track order progress.
             </p>
-            <a
-              href="/dashboard"
+            <Link
+              to="/dashboard"
               className="inline-block bg-gold text-DarkLava font-amiamie-round font-bold py-3 px-6 rounded-lg
                        hover:bg-gold/90 transition-colors"
             >
               View Dashboard
-            </a>
+            </Link>
           </div>
         )}
       </div>

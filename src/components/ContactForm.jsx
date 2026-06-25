@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useTheme } from "../context/ThemeContext";
@@ -23,87 +23,7 @@ const ContactForm = () => {
     budget: "",
     message: "",
   });
-  
-  // Helper function to map package price to budget dropdown option
-  const mapPriceToBudget = (priceRange) => {
-    if (!priceRange) return "";
-    
-    // Extract numeric values from price range (e.g., "$1,500-2,500" -> [1500, 2500])
-    const matches = priceRange.match(/\$?([\d,]+)/g);
-    if (!matches) return "Not sure yet";
-    
-    const minPrice = parseInt(matches[0].replace(/[,$]/g, ''));
-    const maxPrice = matches[1] ? parseInt(matches[1].replace(/[,$]/g, '')) : minPrice;
-    const avgPrice = (minPrice + maxPrice) / 2;
-    
-    // Map to budget options
-    if (avgPrice < 500) return "Under $500";
-    if (avgPrice <= 1000) return "$500 - $1,000";
-    if (avgPrice <= 2500) return "$1,000 - $2,500";
-    if (avgPrice <= 5000) return "$2,500 - $5,000";
-    return "$5,000+";
-  };
 
-  // Helper function to map package name to service dropdown option
-  const mapPackageToService = (packageName) => {
-    if (!packageName) return "";
-    
-    const serviceMapping = {
-      "Landing Page": "Landing Page ($400-600)",
-      "Business Website": "Business Website ($800-1,500)",
-      "Video Content Package": "Video Content Package ($500-900)",
-      "Website + Video Combo": "Website + Video Combo ($1,500-2,500)",
-      "Full Web App": "Full Web App ($2,500-5,000)",
-      "Music Video Production": "Music Video ($600-1,200)",
-      "Run & Gun Music Video": "Music Video ($600-1,200)",
-      "Freestyle Mic Promo": "Video Content Package ($500-900)",
-    };
-    
-    // Check for exact match first
-    if (serviceMapping[packageName]) {
-      return serviceMapping[packageName];
-    }
-    
-    // Check for partial match
-    for (const [key, value] of Object.entries(serviceMapping)) {
-      if (packageName.includes(key)) {
-        return value;
-      }
-    }
-    
-    // Default to custom if no match
-    return "Custom Project (Let's discuss)";
-  };
-
-  // Auto-fill from selected package on mount
-  useEffect(() => {
-    const selectedPackage = sessionStorage.getItem('selectedPackage');
-    if (selectedPackage) {
-      try {
-        const pkg = JSON.parse(selectedPackage);
-        const mappedService = mapPackageToService(pkg.name);
-        const mappedBudget = mapPriceToBudget(pkg.price);
-        
-        setFormData(prev => ({
-          ...prev,
-          service: mappedService,
-          budget: mappedBudget,
-          message: `Hi! I'm interested in the ${pkg.name} package (${pkg.price}). `,
-        }));
-        
-        // Scroll to contact form for better UX
-        setTimeout(() => {
-          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 100);
-        
-        // Clear after using
-        sessionStorage.removeItem('selectedPackage');
-      } catch (error) {
-        console.error('Error parsing selected package:', error);
-      }
-    }
-  }, []);
-  
   const [formStatus, setFormStatus] = useState({
     loading: false,
     success: false,
@@ -113,19 +33,15 @@ const ContactForm = () => {
 
   // Service options for dropdown
   const serviceOptions = [
-    "Landing Page ($400-600)",
-    "Business Website ($800-1,500)",
-    "Video Content Package ($500-900)",
-    "Website + Video Combo ($1,500-2,500)",
-    "Full Web App ($2,500-5,000)",
-    "Music Video ($600-1,200)",
-    "Custom Project (Let's discuss)",
+    "Web app / full-stack build",
+    "Website",
+    "Video / motion",
+    "Collaboration / other",
   ];
 
   // Budget ranges
   const budgetOptions = [
-    "Under $500",
-    "$500 - $1,000",
+    "Under $1,000",
     "$1,000 - $2,500",
     "$2,500 - $5,000",
     "$5,000+",
@@ -213,14 +129,13 @@ const ContactForm = () => {
     });
 
     try {
-      // Netlify Forms - automatically handles form submissions
-      const formElement = formRef.current;
-      const formDataToSend = new FormData(formElement);
-      
-      const response = await fetch("/", {
+      // Submit form via cPanel API
+      const response = await fetch("/api/contact/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formDataToSend).toString(),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
       if (!response.ok) {
@@ -266,23 +181,25 @@ const ContactForm = () => {
 
   // Theme-aware classes
   const getInputClass = () => {
+    const font = "font-body";
     if (theme === 'light') {
-      return `w-full px-4 py-3 bg-gray-100 border border-gray-400 rounded-lg 
+      return `${font} w-full px-4 py-3 bg-gray-100 border border-gray-400 rounded-sm 
               text-gray-900 placeholder-gray-600 
               focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600
               transition-colors duration-200`;
     }
-    return `w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg 
+    return `${font} w-full px-4 py-3 bg-white/10 border border-white/20 rounded-sm 
             text-white placeholder-white/40 
             focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold
             transition-colors duration-200`;
   };
 
   const getLabelClass = () => {
+    const base = "block text-xs font-display font-bold uppercase tracking-widest mb-2";
     if (theme === 'light') {
-      return "block text-sm font-bold text-gray-900 mb-2";
+      return `${base} text-gray-900`;
     }
-    return "block text-sm font-medium text-white/80 mb-2";
+    return `${base} text-white/90`;
   };
 
   const getSelectOptionClass = () => {
@@ -293,16 +210,15 @@ const ContactForm = () => {
   };
 
   const getButtonClass = () => {
+    const base = "w-full py-4 rounded-sm font-display font-bold uppercase tracking-widest text-lg transition-all duration-200";
     if (theme === 'light') {
-      return `w-full py-4 rounded-lg font-medium text-lg
-              transition-all duration-200
+      return `${base}
               ${formStatus.loading || formStatus.success
                 ? "bg-gray-300 text-gray-500 cursor-not-allowed"
                 : "bg-blue-600 text-white hover:bg-blue-700 hover:scale-[1.02]"
               }`;
     }
-    return `w-full py-4 rounded-lg font-medium text-lg
-            transition-all duration-200
+    return `${base}
             ${formStatus.loading || formStatus.success
               ? "bg-white/20 text-white/50 cursor-not-allowed"
               : "bg-gold text-black hover:bg-gold-dark hover:scale-[1.02]"
@@ -313,21 +229,9 @@ const ContactForm = () => {
     <form 
       ref={formRef}
       name="contact"
-      method="POST"
-      data-netlify="true"
-      data-netlify-honeypot="bot-field"
       onSubmit={handleSubmit}
       className="w-full max-w-2xl mx-auto space-y-5"
     >
-      {/* Netlify form detection */}
-      <input type="hidden" name="form-name" value="contact" />
-      
-      {/* Honeypot spam protection */}
-      <p className="hidden">
-        <label>
-          Don't fill this out if you're human: <input name="bot-field" />
-        </label>
-      </p>
       {/* Name and Email row */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {/* Name input */}
@@ -446,6 +350,8 @@ const ContactForm = () => {
       {/* Status message */}
       {formStatus.message && (
         <div
+          role={formStatus.error ? 'alert' : 'status'}
+          aria-live={formStatus.error ? 'assertive' : 'polite'}
           className={`p-4 rounded-lg text-center font-medium ${
             formStatus.success
               ? "bg-green-500/20 text-green-300 border border-green-500/30"

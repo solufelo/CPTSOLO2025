@@ -191,7 +191,7 @@ const RevisionRequest = ({ orderId, onRevisionCreated }) => {
         .eq('id', orderId)
         .single();
 
-      const response = await fetch('/.netlify/functions/send-revision-notification', {
+      const response = await fetch('/api/order/revision-notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -220,7 +220,7 @@ const RevisionRequest = ({ orderId, onRevisionCreated }) => {
   // Send revision update notification email
   const sendRevisionUpdateNotification = async ({ orderId, revisionId, revisionNumber, newStatus, recipientEmail, recipientName }) => {
     try {
-      const response = await fetch('/.netlify/functions/send-revision-notification', {
+      const response = await fetch('/api/order/revision-notification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

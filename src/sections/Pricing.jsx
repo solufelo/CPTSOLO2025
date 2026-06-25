@@ -1,4 +1,5 @@
 import { useRef, useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
@@ -312,8 +313,8 @@ const Pricing = () => {
                   {/* CTA Button */}
                   {/* Video services redirect to signup/login, others go to contact */}
                   {pkg.category === 'Video Production' ? (
-                    <a
-                      href="/signup"
+                    <Link
+                      to="/signup"
                       className={`
                         block w-full py-4 rounded-lg text-center font-medium
                         transition-all duration-200
@@ -325,7 +326,7 @@ const Pricing = () => {
                       `}
                     >
                       Create Account to Message
-                    </a>
+                    </Link>
                   ) : (
                     <a
                       href={`#contact?package=${encodeURIComponent(pkg.name)}&budget=${encodeURIComponent(pkg.priceRange)}`}
@@ -498,8 +499,8 @@ const Pricing = () => {
 
                   {/* CTA Button */}
                   {pkg.category === 'Video Production' ? (
-                    <a
-                      href="/signup"
+                    <Link
+                      to="/signup"
                       className={`
                         block w-full py-3 rounded-lg text-center font-medium
                         transition-all duration-200
@@ -510,7 +511,7 @@ const Pricing = () => {
                       `}
                     >
                       Create Account to Message
-                    </a>
+                    </Link>
                   ) : (
                     <a
                       href={`#contact?package=${encodeURIComponent(pkg.name)}&budget=${encodeURIComponent(pkg.priceRange)}`}

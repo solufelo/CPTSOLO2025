@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:api": "python tools/portfolio-backend/server.py",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
